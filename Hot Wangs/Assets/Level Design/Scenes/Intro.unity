@@ -563,8 +563,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 1356773934}
-  selectedCommands:
-  - {fileID: 1356773942}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -872,7 +871,7 @@ MonoBehaviour:
   indentLevel: 0
   _sceneName:
     stringRef: {fileID: 0}
-    stringVal: ClosingDialogue
+    stringVal: Beer Tap
   loadingImage: {fileID: 0}
   sceneNameOLD: 
 --- !u!114 &1356773941
@@ -891,12 +890,12 @@ MonoBehaviour:
   indentLevel: 0
   _sceneName:
     stringRef: {fileID: 0}
-    stringVal: ClosingDialogue
+    stringVal: Beer Tap
   loadingImage: {fileID: 0}
   sceneNameOLD: 
 --- !u!114 &1356773942
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -926,7 +925,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1356773943
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -956,7 +955,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1356773944
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1163,7 +1162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 0}
+  selectedFlowchart: {fileID: 1356773928}
 --- !u!4 &1807471751
 Transform:
   m_ObjectHideFlags: 1

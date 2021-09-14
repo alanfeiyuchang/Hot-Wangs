@@ -46,7 +46,8 @@ MonoBehaviour:
   nameText: Edie
   nameColor: {r: 0.9150943, g: 0.49899563, b: 0.115681715, a: 1}
   soundEffect: {fileID: 0}
-  portraits: []
+  portraits:
+  - {fileID: 21300000, guid: 0110eca350408644cbcfa3cddeae6bcc, type: 3}
   portraitsFace: 0
   setSayDialog: {fileID: 0}
   description: 

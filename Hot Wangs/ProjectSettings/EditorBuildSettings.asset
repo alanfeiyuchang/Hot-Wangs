@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Level Design/Scenes/Intro.unity
     guid: d459ffcc489ae6543be1e8d97de629e8
   - enabled: 1
-    path: Assets/Level Design/Scenes/ClosingDialogue.unity
+    path: Assets/Scenes/Beer Tap.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Level Design/Scenes/MistakeScene.unity
     guid: 548039095f6449546abd7c2a58130ff4
+  - enabled: 1
+    path: Assets/Level Design/Scenes/NoMistakeScene.unity
+    guid: 68616fffed88a1b439e1cdab0d553271
   m_configObjects: {}
