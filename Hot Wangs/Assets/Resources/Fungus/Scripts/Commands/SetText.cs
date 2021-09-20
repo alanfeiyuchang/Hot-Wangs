@@ -2,23 +2,23 @@
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Fungus
 {
     /// <summary>
     /// Sets the text property on a UI Text object and/or an Input Field object.
     /// </summary>
-    [CommandInfo("UI", 
-                 "Set Text", 
+    [CommandInfo("UI",
+                 "Set Text",
                  "Sets the text property on a UI Text object and/or an Input Field object.")]
     [AddComponentMenu("")]
-    public class SetText : Command, ILocalizable 
+    public class SetText : Command, ILocalizable
     {
         [Tooltip("Text object to set text on. Can be a UI Text, Text Field or Text Mesh object.")]
         [SerializeField] protected GameObject targetTextObject;
-        
+
         [Tooltip("String value to assign to the text object")]
         [FormerlySerializedAs("stringData")]
         [SerializeField] protected StringDataMulti text;
@@ -32,7 +32,7 @@ namespace Fungus
         {
             var flowchart = GetFlowchart();
             string newText = flowchart.SubstituteVariables(text.Value);
-            
+
             if (targetTextObject == null)
             {
                 Continue();
@@ -49,17 +49,17 @@ namespace Fungus
 
             Continue();
         }
-        
+
         public override string GetSummary()
         {
             if (targetTextObject != null)
             {
                 return targetTextObject.name + " : " + text.Value;
             }
-            
+
             return "Error: No text object selected";
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(235, 191, 217, 255);
@@ -102,7 +102,7 @@ namespace Fungus
         {
             return description;
         }
-        
+
         public virtual string GetStringId()
         {
             // String id for Set Text commands is SETTEXT.<Localization Id>.<Command id>
@@ -126,5 +126,5 @@ namespace Fungus
         }
 
         #endregion
-    }    
+    }
 }

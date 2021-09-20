@@ -29,10 +29,10 @@ namespace Fungus
     /// <summary>
     /// Controls the stage on which character portraits are displayed.
     /// </summary>
-    [CommandInfo("Narrative", 
+    [CommandInfo("Narrative",
                  "Control Stage",
                  "Controls the stage on which character portraits are displayed.")]
-    public class ControlStage : ControlWithDisplay<StageDisplayType> 
+    public class ControlStage : ControlWithDisplay<StageDisplayType>
     {
         [Tooltip("Stage to display characters on")]
         [SerializeField] protected Stage stage;
@@ -47,11 +47,11 @@ namespace Fungus
 
         [Tooltip("Fade Duration")]
         [SerializeField] protected float fadeDuration;
-        
+
         [Tooltip("Wait until the tween has finished before executing the next command")]
         [SerializeField] protected bool waitUntilFinished = false;
 
-        protected virtual void Show(Stage stage, bool visible) 
+        protected virtual void Show(Stage stage, bool visible)
         {
             float duration = (fadeDuration == 0) ? float.Epsilon : fadeDuration;
             float targetAlpha = visible ? 1f : 0f;
@@ -63,9 +63,11 @@ namespace Fungus
                 return;
             }
 
-            LeanTween.value(canvasGroup.gameObject, canvasGroup.alpha, targetAlpha, duration).setOnUpdate( (float alpha) => {
+            LeanTween.value(canvasGroup.gameObject, canvasGroup.alpha, targetAlpha, duration).setOnUpdate((float alpha) =>
+            {
                 canvasGroup.alpha = alpha;
-            }).setOnComplete( () => {
+            }).setOnComplete(() =>
+            {
                 OnComplete();
             });
         }
@@ -87,7 +89,7 @@ namespace Fungus
             }
         }
 
-        protected virtual void UndimAllPortraits(Stage stage) 
+        protected virtual void UndimAllPortraits(Stage stage)
         {
             stage.DimPortraits = false;
             var charactersOnStage = stage.CharactersOnStage;
@@ -98,12 +100,12 @@ namespace Fungus
             }
         }
 
-        protected virtual void DimNonSpeakingPortraits(Stage stage) 
+        protected virtual void DimNonSpeakingPortraits(Stage stage)
         {
             stage.DimPortraits = true;
         }
 
-        protected virtual void OnComplete() 
+        protected virtual void OnComplete()
         {
             if (waitUntilFinished)
             {
@@ -123,7 +125,7 @@ namespace Fungus
             }
 
             // Selected "use default Portrait Stage"
-            if (stage == null)           
+            if (stage == null)
             {
                 // If no default specified, try to get any portrait stage in the scene
                 stage = FindObjectOfType<Stage>();
@@ -135,7 +137,7 @@ namespace Fungus
                     return;
                 }
             }
-           
+
             // Selected "use default Portrait Stage"
             if (display == StageDisplayType.Swap)            // Default portrait stage selected
             {
@@ -155,27 +157,27 @@ namespace Fungus
             {
                 fadeDuration = stage.FadeDuration;
             }
-            switch(display)
+            switch (display)
             {
-            case (StageDisplayType.Show):
-                Show(stage, true);
-                break;
-            case (StageDisplayType.Hide):
-                Show(stage, false);
-                break;
-            case (StageDisplayType.Swap):
-                Show(stage, true);
-                Show(replacedStage, false);
-                break;
-            case (StageDisplayType.MoveToFront):
-                MoveToFront(stage);
-                break;
-            case (StageDisplayType.UndimAllPortraits):
-                UndimAllPortraits(stage);
-                break;
-            case (StageDisplayType.DimNonSpeakingPortraits):
-                DimNonSpeakingPortraits(stage);
-                break;
+                case (StageDisplayType.Show):
+                    Show(stage, true);
+                    break;
+                case (StageDisplayType.Hide):
+                    Show(stage, false);
+                    break;
+                case (StageDisplayType.Swap):
+                    Show(stage, true);
+                    Show(replacedStage, false);
+                    break;
+                case (StageDisplayType.MoveToFront):
+                    MoveToFront(stage);
+                    break;
+                case (StageDisplayType.UndimAllPortraits):
+                    UndimAllPortraits(stage);
+                    break;
+                case (StageDisplayType.DimNonSpeakingPortraits):
+                    DimNonSpeakingPortraits(stage);
+                    break;
             }
 
             if (!waitUntilFinished)
@@ -202,7 +204,7 @@ namespace Fungus
             }
             return displaySummary + stageSummary;
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(230, 200, 250, 255);

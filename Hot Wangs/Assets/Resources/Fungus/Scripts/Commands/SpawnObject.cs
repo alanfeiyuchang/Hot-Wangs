@@ -9,9 +9,9 @@ namespace Fungus
     /// <summary>
     /// Spawns a new object based on a reference to a scene or prefab game object.
     /// </summary>
-    [CommandInfo("Scripting", 
-                 "Spawn Object", 
-                 "Spawns a new object based on a reference to a scene or prefab game object.", 
+    [CommandInfo("Scripting",
+                 "Spawn Object",
+                 "Spawns a new object based on a reference to a scene or prefab game object.",
         Priority = 10)]
     [CommandInfo("GameObject",
                  "Instantiate",
@@ -55,7 +55,7 @@ namespace Fungus
 
             if (_parentTransform.Value != null)
             {
-                newObject = GameObject.Instantiate(_sourceObject.Value,_parentTransform.Value);
+                newObject = GameObject.Instantiate(_sourceObject.Value, _parentTransform.Value);
             }
             else
             {
@@ -86,7 +86,7 @@ namespace Fungus
 
             return _sourceObject.Value.name;
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(235, 191, 217, 255);

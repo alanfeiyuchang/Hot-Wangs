@@ -1,27 +1,27 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(Label))]
+    [CustomEditor(typeof(Label))]
     public class LabelEditor : CommandEditor
     {
         protected SerializedProperty keyProp;
-        
-        public static void LabelField(SerializedProperty property, 
-                                      GUIContent labelText, 
+
+        public static void LabelField(SerializedProperty property,
+                                      GUIContent labelText,
                                       Block block)
         {
             List<string> labelKeys = new List<string>();
             List<Label> labelObjects = new List<Label>();
-            
+
             labelKeys.Add("<None>");
             labelObjects.Add(null);
-            
+
             Label selectedLabel = property.objectReferenceValue as Label;
 
             int index = 0;
@@ -37,9 +37,9 @@ namespace Fungus.EditorUtils
 
                 labelKeys.Add(label.Key);
                 labelObjects.Add(label);
-                
+
                 index++;
-                
+
                 if (label == selectedLabel)
                 {
                     selectedIndex = index;
@@ -57,7 +57,7 @@ namespace Fungus.EditorUtils
 
             keyProp = serializedObject.FindProperty("key");
         }
-        
+
         public override void DrawCommandGUI()
         {
             Label t = target as Label;
@@ -67,7 +67,7 @@ namespace Fungus.EditorUtils
             {
                 return;
             }
-        
+
             serializedObject.Update();
 
             EditorGUILayout.PropertyField(keyProp);
@@ -75,5 +75,5 @@ namespace Fungus.EditorUtils
 
             serializedObject.ApplyModifiedProperties();
         }
-    }    
+    }
 }

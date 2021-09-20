@@ -1,18 +1,18 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(Say))]
+    [CustomEditor(typeof(Say))]
     public class SayEditor : CommandEditor
     {
         public static bool showTagHelp;
         public Texture2D blackTex;
-        
+
         public static void DrawTagHelpLabel()
         {
             string tagsText = TextTagParser.GetTagHelp();
@@ -23,7 +23,7 @@ namespace Fungus.EditorUtils
                 List<Transform> activeCustomTagGroup = new List<Transform>();
                 foreach (CustomTag ct in CustomTag.activeCustomTags)
                 {
-                    if(ct.transform.parent != null)
+                    if (ct.transform.parent != null)
                     {
                         if (!activeCustomTagGroup.Contains(ct.transform.parent.transform))
                         {
@@ -35,7 +35,7 @@ namespace Fungus.EditorUtils
                         activeCustomTagGroup.Add(ct.transform);
                     }
                 }
-                foreach(Transform parent in activeCustomTagGroup)
+                foreach (Transform parent in activeCustomTagGroup)
                 {
                     string tagName = parent.name;
                     string tagStartSymbol = "";
@@ -48,7 +48,7 @@ namespace Fungus.EditorUtils
                         tagEndSymbol = parentTag.TagEndSymbol;
                     }
                     tagsText += "\n\n\t" + tagStartSymbol + " " + tagName + " " + tagEndSymbol;
-                    foreach(Transform child in parent)
+                    foreach (Transform child in parent)
                     {
                         tagName = child.name;
                         tagStartSymbol = "";
@@ -60,7 +60,7 @@ namespace Fungus.EditorUtils
                             tagStartSymbol = childTag.TagStartSymbol;
                             tagEndSymbol = childTag.TagEndSymbol;
                         }
-                            tagsText += "\n\t      " + tagStartSymbol + " " + tagName + " " + tagEndSymbol;
+                        tagsText += "\n\t      " + tagStartSymbol + " " + tagName + " " + tagEndSymbol;
                     }
                 }
             }
@@ -68,7 +68,7 @@ namespace Fungus.EditorUtils
             float pixelHeight = EditorStyles.miniLabel.CalcHeight(new GUIContent(tagsText), EditorGUIUtility.currentViewWidth);
             EditorGUILayout.SelectableLabel(tagsText, GUI.skin.GetStyle("HelpBox"), GUILayout.MinHeight(pixelHeight));
         }
-        
+
         protected SerializedProperty characterProp;
         protected SerializedProperty portraitProp;
         protected SerializedProperty storyTextProp;
@@ -106,13 +106,13 @@ namespace Fungus.EditorUtils
                 blackTex = CustomGUI.CreateBlackTexture();
             }
         }
-        
+
         protected virtual void OnDisable()
         {
             DestroyImmediate(blackTex);
         }
 
-        public override void DrawCommandGUI() 
+        public override void DrawCommandGUI()
         {
             serializedObject.Update();
 
@@ -124,7 +124,7 @@ namespace Fungus.EditorUtils
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.PrefixLabel(" ");
-            characterProp.objectReferenceValue = (Character) EditorGUILayout.ObjectField(characterProp.objectReferenceValue, typeof(Character), true);
+            characterProp.objectReferenceValue = (Character)EditorGUILayout.ObjectField(characterProp.objectReferenceValue, typeof(Character), true);
             EditorGUILayout.EndHorizontal();
 
             Say t = target as Say;
@@ -132,15 +132,15 @@ namespace Fungus.EditorUtils
             // Only show portrait selection if...
             if (t._Character != null &&              // Character is selected
                 t._Character.Portraits != null &&    // Character has a portraits field
-                t._Character.Portraits.Count > 0 )   // Selected Character has at least 1 portrait
+                t._Character.Portraits.Count > 0)   // Selected Character has at least 1 portrait
             {
-                showPortraits = true;    
+                showPortraits = true;
             }
 
-            if (showPortraits) 
+            if (showPortraits)
             {
-                CommandEditor.ObjectField<Sprite>(portraitProp, 
-                                                  new GUIContent("Portrait", "Portrait representing speaking character"), 
+                CommandEditor.ObjectField<Sprite>(portraitProp,
+                                                  new GUIContent("Portrait", "Portrait representing speaking character"),
                                                   new GUIContent("<None>"),
                                                   t._Character.Portraits);
             }
@@ -151,7 +151,7 @@ namespace Fungus.EditorUtils
                     t.Portrait = null;
                 }
             }
-            
+
             EditorGUILayout.PropertyField(storyTextProp);
 
             EditorGUILayout.PropertyField(descriptionProp);
@@ -167,19 +167,19 @@ namespace Fungus.EditorUtils
                 showTagHelp = !showTagHelp;
             }
             EditorGUILayout.EndHorizontal();
-            
+
             if (showTagHelp)
             {
                 DrawTagHelpLabel();
             }
-            
+
             EditorGUILayout.Separator();
-            
-            EditorGUILayout.PropertyField(voiceOverClipProp, 
+
+            EditorGUILayout.PropertyField(voiceOverClipProp,
                                           new GUIContent("Voice Over Clip", "Voice over audio to play when the text is displayed"));
 
             EditorGUILayout.PropertyField(showAlwaysProp);
-            
+
             if (showAlwaysProp.boolValue == false)
             {
                 EditorGUILayout.PropertyField(showCountProp);
@@ -199,7 +199,7 @@ namespace Fungus.EditorUtils
             EditorGUILayout.PropertyField(stopVoiceoverProp);
             EditorGUILayout.PropertyField(setSayDialogProp);
             EditorGUILayout.PropertyField(waitForVOProp);
-            
+
             if (showPortraits && t.Portrait != null)
             {
                 Texture2D characterTexture = t.Portrait.texture;
@@ -207,11 +207,11 @@ namespace Fungus.EditorUtils
                 Rect previewRect = GUILayoutUtility.GetAspectRect(aspect, GUILayout.Width(100), GUILayout.ExpandWidth(true));
                 if (characterTexture != null)
                 {
-                    GUI.DrawTexture(previewRect,characterTexture,ScaleMode.ScaleToFit,true,aspect);
+                    GUI.DrawTexture(previewRect, characterTexture, ScaleMode.ScaleToFit, true, aspect);
                 }
             }
-            
+
             serializedObject.ApplyModifiedProperties();
         }
-    }    
+    }
 }

@@ -252,13 +252,13 @@ namespace Fungus
                     (anyVar, compareOperator) =>
                     {
                         var subbedRHS = anyVar.variable.GetFlowchart().SubstituteVariables(anyVar.data.stringData.Value);
-                        return anyVar.variable.Evaluate(compareOperator, subbedRHS); 
+                        return anyVar.variable.Evaluate(compareOperator, subbedRHS);
                     },
                     (anyVar) => anyVar.data.stringData.GetDescription(),
                     (anyVar, setOperator) =>
                     {
                         var subbedRHS = anyVar.variable.GetFlowchart().SubstituteVariables(anyVar.data.stringData.Value);
-                        anyVar.variable.Apply(setOperator, subbedRHS); 
+                        anyVar.variable.Apply(setOperator, subbedRHS);
                     })},
             { typeof(TextureVariable),
                 new TypeActions( "textureData",

@@ -8,8 +8,10 @@ namespace Fungus.EditorUtils
 {
     public static class SerializedPropertyExtensions
     {
-        public static void ResetValue(this SerializedProperty element) {
-            switch (element.type) {
+        public static void ResetValue(this SerializedProperty element)
+        {
+            switch (element.type)
+            {
                 case "string":
                     element.stringValue = "";
                     break;
@@ -37,7 +39,7 @@ namespace Fungus.EditorUtils
                 case "ColorRGBA":
                     element.colorValue = Color.black;
                     break;
-                
+
                 default:
                     if (element.type.StartsWith("PPtr"))
                         element.objectReferenceValue = null;

@@ -4,15 +4,15 @@
 #if UNITY_5_3_OR_NEWER
 
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Fungus
 {
     /// <summary>
     /// A singleton game object which displays a simple UI for the save system.
     /// </summary>
-    public class SaveMenu : MonoBehaviour 
+    public class SaveMenu : MonoBehaviour
     {
         [Tooltip("The string key used to store save game data in Player Prefs. If you have multiple games defined in the same Unity project, use a unique key for each one.")]
         [SerializeField] protected string saveDataKey = FungusConstants.DefaultSaveDataKey;
@@ -43,7 +43,7 @@ namespace Fungus
 
         [Tooltip("The button which fast forwards the save history to the next save point.")]
         [SerializeField] protected Button forwardButton;
-        
+
         [Tooltip("The button which restarts the game.")]
         [SerializeField] protected Button restartButton;
 
@@ -121,7 +121,7 @@ namespace Fungus
                 saveButton.gameObject.SetActive(showSaveAndLoad);
                 loadButton.gameObject.SetActive(showSaveAndLoad);
             }
- 
+
             if (showSaveAndLoad)
             {
                 if (saveButton != null)
@@ -213,22 +213,26 @@ namespace Fungus
                 // Switch menu off
                 LeanTween.value(saveMenuGroup.gameObject, saveMenuGroup.alpha, 0f, 0.2f)
                     .setEase(LeanTweenType.easeOutQuint)
-                    .setOnUpdate( (t) => {
-                    saveMenuGroup.alpha = t;
-                }).setOnComplete( () => {
-                    saveMenuGroup.alpha = 0f;
-                });
+                    .setOnUpdate((t) =>
+                    {
+                        saveMenuGroup.alpha = t;
+                    }).setOnComplete(() =>
+                    {
+                        saveMenuGroup.alpha = 0f;
+                    });
             }
             else
             {
                 // Switch menu on
                 LeanTween.value(saveMenuGroup.gameObject, saveMenuGroup.alpha, 1f, 0.2f)
                     .setEase(LeanTweenType.easeOutQuint)
-                    .setOnUpdate( (t) => {
-                    saveMenuGroup.alpha = t;
-                }).setOnComplete( () => {
-                    saveMenuGroup.alpha = 1f;
-                });
+                    .setOnUpdate((t) =>
+                    {
+                        saveMenuGroup.alpha = t;
+                    }).setOnComplete(() =>
+                    {
+                        saveMenuGroup.alpha = 1f;
+                    });
             }
 
             saveMenuActive = !saveMenuActive;

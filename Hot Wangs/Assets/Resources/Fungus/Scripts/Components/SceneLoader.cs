@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 #if UNITY_5_0 || UNITY_5_1 || UNITY_5_2
 #else
 using UnityEngine.SceneManagement;
@@ -30,7 +30,7 @@ namespace Fungus
         protected virtual IEnumerator DoLoadBlock()
         {
             // Wait until loading image has been displayed in OnGUI
-            while (loadingTexture != null && 
+            while (loadingTexture != null &&
                    !displayedImage)
             {
                 yield return new WaitForEndOfFrame();
@@ -72,13 +72,13 @@ namespace Fungus
             }
 
             GUI.depth = -2000;
-            
+
             float h = Screen.height;
             float w = (float)loadingTexture.width * (h / (float)loadingTexture.height);
-            
+
             float x = Screen.width / 2 - w / 2;
             float y = 0;
-            
+
             Rect rect = new Rect(x, y, w, h);
 
             GUI.DrawTexture(rect, loadingTexture);

@@ -1,13 +1,13 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
-using UnityEditor;
 using System.IO;
+using UnityEditor;
+using UnityEngine;
 
 namespace Fungus
 {
-    public class MenuItems 
+    public class MenuItems
     {
         [MenuItem("Tools/Fungus/Create/Lua", false, 2000)]
         static void CreateLua()
@@ -19,7 +19,7 @@ namespace Fungus
         static void CreateLuaFile()
         {
             string path = EditorUtility.SaveFilePanelInProject("Create Lua File", "script.txt", "txt", "Please select a file name for the new Lua script. Note: Lua files in Unity use the .txt extension.");
-            if(path.Length == 0) 
+            if (path.Length == 0)
             {
                 return;
             }
@@ -36,7 +36,7 @@ namespace Fungus
             {
                 EditorUtility.FocusProjectWindow();
                 EditorGUIUtility.PingObject(asset);
-            }            
+            }
         }
 
         [MenuItem("Tools/Fungus/Create/Lua Environment", false, 2100)]
@@ -112,7 +112,8 @@ namespace Fungus
         /// escape key when asset is initially being named.
         /// </summary>
         /// <typeparam name="T">Type of scriptable object.</typeparam>
-        public static void CreateAsset<T>() where T : ScriptableObject {
+        public static void CreateAsset<T>() where T : ScriptableObject
+        {
             var asset = ScriptableObject.CreateInstance<T>();
             ProjectWindowUtil.CreateAsset(asset, typeof(T).Name + ".asset");
         }

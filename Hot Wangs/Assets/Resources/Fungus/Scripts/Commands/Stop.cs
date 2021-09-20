@@ -8,8 +8,8 @@ namespace Fungus
     /// <summary>
     /// Stop executing the Block that contains this command.
     /// </summary>
-    [CommandInfo("Flow", 
-                 "Stop", 
+    [CommandInfo("Flow",
+                 "Stop",
                  "Stop executing the Block that contains this command.")]
     [AddComponentMenu("")]
     public class Stop : Command

@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace Fungus.EditorUtils
 {
-    public class SaveMenuItems 
+    public class SaveMenuItems
     {
         [MenuItem("Tools/Fungus/Create/Save Menu", false, 1100)]
         static void CreateSaveMenu()

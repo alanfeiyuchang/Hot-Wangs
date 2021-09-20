@@ -122,7 +122,7 @@ namespace Fungus
 
             flowchartData.FlowchartName = flowchart.name;
 
-            for (int i = 0; i < flowchart.Variables.Count; i++) 
+            for (int i = 0; i < flowchart.Variables.Count; i++)
             {
                 var v = flowchart.Variables[i];
 

@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Fungus
@@ -91,7 +91,7 @@ namespace Fungus
         }
 
         public virtual void DoTween()
-        {}
+        { }
 
         public override string GetSummary()
         {
@@ -140,7 +140,7 @@ namespace Fungus
             {
                 _duration.Value = durationOLD;
                 durationOLD = default(float);
-            }       
+            }
         }
 
         #endregion

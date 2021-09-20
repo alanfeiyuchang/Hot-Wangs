@@ -1,10 +1,9 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEngine;
 using MoonSharp.Interpreter;
+using UnityEngine;
 using Debug = UnityEngine.Debug;
-using Object = UnityEngine.Object;
 
 namespace Fungus
 {
@@ -49,7 +48,7 @@ namespace Fungus
         protected Closure luaFunction;
 
         // Recursively build the full hierarchy path to this game object
-        protected static string GetPath(Transform current) 
+        protected static string GetPath(Transform current)
         {
             if (current.parent == null)
             {
@@ -73,13 +72,13 @@ namespace Fungus
                 return;
             }
 
-            if (luaEnvironment == null)        
+            if (luaEnvironment == null)
             {
                 // Create a Lua Environment if none exists yet
                 luaEnvironment = LuaEnvironment.GetLua();
             }
 
-            if (luaEnvironment == null)        
+            if (luaEnvironment == null)
             {
                 Debug.LogError("No Lua Environment found");
                 return;

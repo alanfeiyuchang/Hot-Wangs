@@ -8,11 +8,11 @@ namespace Fungus
     /// <summary>
     /// Sets a custom menu dialog to use when displaying multiple choice menus.
     /// </summary>
-    [CommandInfo("Narrative", 
-                 "Set Menu Dialog", 
+    [CommandInfo("Narrative",
+                 "Set Menu Dialog",
                  "Sets a custom menu dialog to use when displaying multiple choice menus")]
     [AddComponentMenu("")]
-    public class SetMenuDialog : Command 
+    public class SetMenuDialog : Command
     {
         [Tooltip("The Menu Dialog to use for displaying menu buttons")]
         [SerializeField] protected MenuDialog menuDialog;

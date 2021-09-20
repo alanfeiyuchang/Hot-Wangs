@@ -1,10 +1,6 @@
 ﻿// This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Fungus
 {
     /// <summary>
@@ -27,7 +23,7 @@ namespace Fungus
 
         public override string GetSummary()
         {
-            if(outVar == null)
+            if (outVar == null)
             {
                 return "Error: No out var supplied";
             }

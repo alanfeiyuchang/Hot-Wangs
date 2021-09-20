@@ -2,7 +2,6 @@
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 using UnityEngine;
-using System.Collections;
 
 namespace Fungus
 {
@@ -23,36 +22,36 @@ namespace Fungus
         {
             switch (setOperator)
             {
-            case SetOperator.Negate:
-                Value = Value * -1;
-                break;
-            case SetOperator.Add:
-                Value += value;
-                break;
-            case SetOperator.Subtract:
-                Value -= value;
-                break;
-            case SetOperator.Multiply:
+                case SetOperator.Negate:
+                    Value = Value * -1;
+                    break;
+                case SetOperator.Add:
+                    Value += value;
+                    break;
+                case SetOperator.Subtract:
+                    Value -= value;
+                    break;
+                case SetOperator.Multiply:
 #if UNITY_2019_2_OR_NEWER
-                Value *= value;
+                    Value *= value;
 #else
                 var tmpM = Value;
                 tmpM.Scale(value);
                 Value = tmpM;
 #endif
-                break;
-            case SetOperator.Divide:
+                    break;
+                case SetOperator.Divide:
 #if UNITY_2019_2_OR_NEWER
-                Value /= value;
+                    Value /= value;
 #else
                 var tmpD = Value;
                 tmpD.Scale(new Vector2(1.0f / value.x, 1.0f / value.y));
                 Value = tmpD;
 #endif
-                break;
-            default:
-                base.Apply(setOperator, value);
-                break;
+                    break;
+                default:
+                    base.Apply(setOperator, value);
+                    break;
             }
         }
     }
@@ -66,7 +65,7 @@ namespace Fungus
         [SerializeField]
         [VariableProperty("<Value>", typeof(Vector2Variable))]
         public Vector2Variable vector2Ref;
-        
+
         [SerializeField]
         public Vector2 vector2Val;
 
@@ -75,7 +74,7 @@ namespace Fungus
             vector2Val = v;
             vector2Ref = null;
         }
-        
+
         public static implicit operator Vector2(Vector2Data vector2Data)
         {
             return vector2Data.Value;

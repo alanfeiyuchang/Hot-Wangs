@@ -1,9 +1,9 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Reflection;
 
 namespace Fungus
 {
@@ -49,7 +49,7 @@ namespace Fungus
 #endif
                 writerTextDestination = go.GetComponentInChildren<IWriterTextDestination>();
             }
-            
+
             // Try to find any component with a text property
             if (textUI == null && inputField == null && textMesh == null && writerTextDestination == null)
             {
@@ -238,7 +238,7 @@ namespace Fungus
             get
             {
 #if UNITY_2018_1_OR_NEWER
-                if(tmpro != null)
+                if (tmpro != null)
                 {
                     return tmpro.textInfo.characterInfo[tmpro.maxVisibleCharacters].character;
                 }

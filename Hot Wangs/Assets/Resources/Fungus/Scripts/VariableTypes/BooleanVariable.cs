@@ -22,12 +22,12 @@ namespace Fungus
         {
             switch (op)
             {
-            case SetOperator.Negate:
-                Value = !value;
-                break;
-            default:
-                base.Apply(op, value);
-                break;
+                case SetOperator.Negate:
+                    Value = !value;
+                    break;
+                default:
+                    base.Apply(op, value);
+                    break;
             }
         }
     }
@@ -50,7 +50,7 @@ namespace Fungus
             booleanVal = v;
             booleanRef = null;
         }
-        
+
         public static implicit operator bool(BooleanData booleanData)
         {
             return booleanData.Value;

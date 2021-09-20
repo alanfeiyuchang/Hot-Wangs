@@ -8,8 +8,8 @@ namespace Fungus
     /// <summary>
     /// Loads a saved value and stores it in a Boolean, Integer, Float or String variable. If the key is not found then the variable is not modified.
     /// </summary>
-    [CommandInfo("Variable", 
-                 "Load Variable", 
+    [CommandInfo("Variable",
+                 "Load Variable",
                  "Loads a saved value and stores it in a Boolean, Integer, Float or String variable. If the key is not found then the variable is not modified.")]
     [AddComponentMenu("")]
     public class LoadVariable : Command
@@ -19,8 +19,8 @@ namespace Fungus
 
         [Tooltip("Variable to store the value in.")]
         [VariableProperty(typeof(BooleanVariable),
-                          typeof(IntegerVariable), 
-                          typeof(FloatVariable), 
+                          typeof(IntegerVariable),
+                          typeof(FloatVariable),
                           typeof(StringVariable))]
         [SerializeField] protected Variable variable;
 
@@ -78,14 +78,14 @@ namespace Fungus
 
             Continue();
         }
-        
+
         public override string GetSummary()
         {
             if (key.Length == 0)
             {
                 return "Error: No stored value key selected";
             }
-        
+
             if (variable == null)
             {
                 return "Error: No variable selected";

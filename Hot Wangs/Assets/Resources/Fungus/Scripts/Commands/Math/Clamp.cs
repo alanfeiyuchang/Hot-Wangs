@@ -20,7 +20,7 @@ namespace Fungus
             Repeat,
             PingPong
         }
-        
+
         [SerializeField]
         protected Mode mode = Mode.Clamp;
 

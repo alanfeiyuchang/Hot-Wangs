@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-
+﻿
 #if UNITY_2019_3_12
 namespace Fungus.EditorUtils
 {

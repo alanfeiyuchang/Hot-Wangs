@@ -1,15 +1,15 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 namespace Fungus
 {
     /// <summary>
     /// Do multiple say and portrait commands in a single block of text. Format is: [character] [portrait] [stage position] [hide] [<<< | >>>] [clear | noclear] [wait | nowait] [fade | nofade] [: Story text].
     /// </summary>
-    [CommandInfo("Narrative", 
+    [CommandInfo("Narrative",
                  "Conversation",
                  "Do multiple say and portrait commands in a single block of text. Format is: [character] [portrait] [stage position] [hide] [<<< | >>>] [clear | noclear] [wait | nowait] [fade | nofade] [: Story text]")]
     [AddComponentMenu("")]
@@ -65,7 +65,7 @@ namespace Fungus
 
         public override bool HasReference(Variable variable)
         {
-            return clearPrevious.booleanRef == variable || waitForInput.booleanRef == variable || 
+            return clearPrevious.booleanRef == variable || waitForInput.booleanRef == variable ||
                 waitForSeconds.floatRef == variable || fadeWhenDone.booleanRef == variable ||
                 base.HasReference(variable);
         }
@@ -81,7 +81,7 @@ namespace Fungus
 
             var f = GetFlowchart();
 
-            if(!string.IsNullOrEmpty(conversationText.Value))
+            if (!string.IsNullOrEmpty(conversationText.Value))
                 f.DetermineSubstituteVariables(conversationText, referencedVariables);
         }
 #endif

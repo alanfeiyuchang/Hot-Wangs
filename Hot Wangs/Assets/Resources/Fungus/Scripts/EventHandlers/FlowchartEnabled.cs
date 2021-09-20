@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -13,7 +13,7 @@ namespace Fungus
                       "The block will execute when the Flowchart game object is enabled.")]
     [AddComponentMenu("")]
     public class FlowchartEnabled : EventHandler
-    {   
+    {
         protected virtual void OnEnable()
         {
             // Blocks use coroutines to schedule command execution, but Unity's coroutines are

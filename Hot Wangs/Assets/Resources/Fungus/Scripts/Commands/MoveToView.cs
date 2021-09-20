@@ -8,11 +8,11 @@ namespace Fungus
     /// <summary>
     /// Moves the camera to a location specified by a View object.
     /// </summary>
-    [CommandInfo("Camera", 
-                 "Move To View", 
+    [CommandInfo("Camera",
+                 "Move To View",
                  "Moves the camera to a location specified by a View object.")]
     [AddComponentMenu("")]
-    public class MoveToView : Command 
+    public class MoveToView : Command
     {
         [Tooltip("Time for move effect to complete")]
         [SerializeField] protected float duration = 1;
@@ -68,7 +68,8 @@ namespace Fungus
             Quaternion targetRotation = targetView.transform.rotation;
             float targetSize = targetView.ViewSize;
 
-            cameraManager.PanToPosition(targetCamera, targetPosition, targetRotation, targetSize, duration, delegate {
+            cameraManager.PanToPosition(targetCamera, targetPosition, targetRotation, targetSize, duration, delegate
+            {
                 if (waitUntilFinished)
                 {
                     Continue();

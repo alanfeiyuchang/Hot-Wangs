@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Fungus
 {
     [CommandInfo("Flow",
-                 "Save Point", 
+                 "Save Point",
                  "Creates a Save Point and adds it to the Save History. The player can save the Save History to persistent storage and load it again later using the Save Menu.")]
     public class SavePoint : Command
     {
@@ -71,10 +71,10 @@ namespace Fungus
         /// <summary>
         /// Gets a string key which uniquely identifies this Save Point.
         /// </summary>
-        public string SavePointKey 
-        { 
-            get 
-            { 
+        public string SavePointKey
+        {
+            get
+            {
                 if (keyMode == KeyMode.BlockName)
                 {
                     return ParentBlock.BlockName;
@@ -85,9 +85,9 @@ namespace Fungus
                 }
                 else
                 {
-                    return customKey; 
+                    return customKey;
                 }
-            } 
+            }
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Fungus
                 }
                 else
                 {
-                    return customDescription; 
+                    return customDescription;
                 }
             }
         }

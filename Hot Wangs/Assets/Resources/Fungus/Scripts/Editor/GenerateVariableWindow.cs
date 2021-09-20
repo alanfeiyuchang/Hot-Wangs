@@ -33,7 +33,7 @@ namespace Fungus.EditorUtils
         {
             EditorGUI.BeginChangeCheck();
 
-            if(GUILayout.Button("Generate All from List"))
+            if (GUILayout.Button("Generate All from List"))
             {
                 foreach (var item in VariableScriptGenerator.AllGeneratedVariableTypeClassNames)
                 {
@@ -52,7 +52,7 @@ namespace Fungus.EditorUtils
 
                 try
                 {
-                    typeList = generator.types.Where(x =>  string.Compare(x.Name,userInputClassName,StringComparison.InvariantCultureIgnoreCase) == 0).ToList();
+                    typeList = generator.types.Where(x => string.Compare(x.Name, userInputClassName, StringComparison.InvariantCultureIgnoreCase) == 0).ToList();
                 }
                 catch (Exception)
                 {

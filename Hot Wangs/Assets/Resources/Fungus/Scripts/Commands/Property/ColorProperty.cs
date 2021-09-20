@@ -13,23 +13,23 @@ namespace Fungus
     [AddComponentMenu("")]
     public class ColorProperty : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            R, 
-            G, 
-            B, 
-            A, 
-            Grayscale, 
-            Linear, 
-            Gamma, 
-            MaxColorComponent, 
+        //generated property
+        public enum Property
+        {
+            R,
+            G,
+            B,
+            A,
+            Grayscale,
+            Linear,
+            Gamma,
+            MaxColorComponent,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         [VariableProperty(typeof(ColorVariable))]
         protected ColorVariable colorVar;

@@ -1,21 +1,21 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
-using System.Collections;
-using System.Reflection;
-using System.Collections.Generic;
-using System;
-using UnityEngine.Events;
 using MarkerMetro.Unity.WinLegacy.Reflection;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Fungus
 {
     /// <summary>
     /// Invokes a method of a component via reflection. Supports passing multiple parameters and storing returned values in a Fungus variable.
     /// </summary>
-    [CommandInfo("Scripting", 
-                 "Invoke Method", 
+    [CommandInfo("Scripting",
+                 "Invoke Method",
                  "Invokes a method of a component via reflection. Supports passing multiple parameters and storing returned values in a Fungus variable.")]
     public class InvokeMethod : Command
     {
@@ -291,7 +291,7 @@ namespace Fungus
                     {
                         Continue();
                     }
-                    else if(callMode == CallMode.Stop)
+                    else if (callMode == CallMode.Stop)
                     {
                         StopParentBlock();
                     }
@@ -300,7 +300,7 @@ namespace Fungus
             catch (System.Exception ex)
             {
                 Debug.LogError("Error: " + ex.Message);
-            }      
+            }
         }
 
         public override Color GetButtonColor()
@@ -360,39 +360,39 @@ namespace Fungus
         {
             switch (typeFullname)
             {
-            case "System.Int32":
-                return intValue;
-            case "System.Boolean":
-                return boolValue;
-            case "System.Single":
-                return floatValue;
-            case "System.String":
-                return stringValue;
-            case "UnityEngine.Color":
-                return colorValue;
-            case "UnityEngine.GameObject":
-                return gameObjectValue;
-            case "UnityEngine.Material":
-                return materialValue;
-            case "UnityEngine.Sprite":
-                return spriteValue;
-            case "UnityEngine.Texture":
-                return textureValue;
-            case "UnityEngine.Vector2":
-                return vector2Value;
-            case "UnityEngine.Vector3":
-                return vector3Value;
-            default:
-                var objType = ReflectionHelper.GetType(typeAssemblyname);
+                case "System.Int32":
+                    return intValue;
+                case "System.Boolean":
+                    return boolValue;
+                case "System.Single":
+                    return floatValue;
+                case "System.String":
+                    return stringValue;
+                case "UnityEngine.Color":
+                    return colorValue;
+                case "UnityEngine.GameObject":
+                    return gameObjectValue;
+                case "UnityEngine.Material":
+                    return materialValue;
+                case "UnityEngine.Sprite":
+                    return spriteValue;
+                case "UnityEngine.Texture":
+                    return textureValue;
+                case "UnityEngine.Vector2":
+                    return vector2Value;
+                case "UnityEngine.Vector3":
+                    return vector3Value;
+                default:
+                    var objType = ReflectionHelper.GetType(typeAssemblyname);
 
-                if (objType.IsSubclassOf(typeof(UnityEngine.Object)))
-                {
-                    return objectValue;
-                }
-                else if (objType.IsEnum())
-                    return System.Enum.ToObject(objType, intValue);
+                    if (objType.IsSubclassOf(typeof(UnityEngine.Object)))
+                    {
+                        return objectValue;
+                    }
+                    else if (objType.IsEnum())
+                        return System.Enum.ToObject(objType, intValue);
 
-                break;
+                    break;
             }
 
             return null;

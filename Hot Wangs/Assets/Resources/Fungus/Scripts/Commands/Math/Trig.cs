@@ -25,11 +25,11 @@ namespace Fungus
             Sin,
             Tan
         }
-        
+
         [Tooltip("Trigonometric function to run.")]
         [SerializeField]
         protected Function function = Function.Sin;
-        
+
         public override void OnEnter()
         {
             switch (function)
@@ -61,7 +61,7 @@ namespace Fungus
                 default:
                     break;
             }
-            
+
             Continue();
         }
 

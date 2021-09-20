@@ -13,21 +13,21 @@ namespace Fungus
     [AddComponentMenu("")]
     public class TextureProperty : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            Width, 
-            Height, 
-            IsReadable, 
-            AnisoLevel, 
-            MipMapBias, 
-            TexelSize, 
+        //generated property
+        public enum Property
+        {
+            Width,
+            Height,
+            IsReadable,
+            AnisoLevel,
+            MipMapBias,
+            TexelSize,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         [VariableProperty(typeof(TextureVariable))]
         protected TextureVariable textureVar;

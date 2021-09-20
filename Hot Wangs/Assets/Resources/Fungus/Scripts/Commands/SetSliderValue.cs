@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Fungus
@@ -12,7 +12,7 @@ namespace Fungus
     [CommandInfo("UI",
                  "Set Slider Value",
                  "Sets the value property of a slider object")]
-    public class SetSliderValue : Command 
+    public class SetSliderValue : Command
     {
         [Tooltip("Target slider object to set the value on")]
         [SerializeField] protected Slider slider;
@@ -22,7 +22,7 @@ namespace Fungus
 
         #region Public members
 
-        public override void OnEnter() 
+        public override void OnEnter()
         {
             if (slider != null)
             {

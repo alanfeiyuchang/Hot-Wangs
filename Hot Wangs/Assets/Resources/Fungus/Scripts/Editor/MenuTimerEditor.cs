@@ -6,8 +6,8 @@ using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(MenuTimer))]
-    public class MenuTimerEditor : CommandEditor 
+    [CustomEditor(typeof(MenuTimer))]
+    public class MenuTimerEditor : CommandEditor
     {
         protected SerializedProperty durationProp;
         protected SerializedProperty targetBlockProp;
@@ -19,7 +19,7 @@ namespace Fungus.EditorUtils
             durationProp = serializedObject.FindProperty("_duration");
             targetBlockProp = serializedObject.FindProperty("targetBlock");
         }
-        
+
         public override void DrawCommandGUI()
         {
             var flowchart = FlowchartWindow.GetFlowchart();
@@ -27,16 +27,16 @@ namespace Fungus.EditorUtils
             {
                 return;
             }
-            
+
             serializedObject.Update();
-            
+
             EditorGUILayout.PropertyField(durationProp);
-            
+
             BlockEditor.BlockField(targetBlockProp,
-                                         new GUIContent("Target Block", "Block to call when timer expires"), 
-                                         new GUIContent("<None>"), 
+                                         new GUIContent("Target Block", "Block to call when timer expires"),
+                                         new GUIContent("<None>"),
                                          flowchart);
-            
+
             serializedObject.ApplyModifiedProperties();
         }
     }

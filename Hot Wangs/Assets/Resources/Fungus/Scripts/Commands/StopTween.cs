@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Fungus
@@ -9,8 +9,8 @@ namespace Fungus
     /// <summary>
     /// Stops an active iTween by name.
     /// </summary>
-    [CommandInfo("iTween", 
-                 "Stop Tween", 
+    [CommandInfo("iTween",
+                 "Stop Tween",
                  "Stops an active iTween by name.")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]

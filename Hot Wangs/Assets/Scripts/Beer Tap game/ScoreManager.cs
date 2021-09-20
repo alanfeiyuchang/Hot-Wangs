@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -70,7 +69,7 @@ public class ScoreManager : MonoBehaviour
             reset.interactable = false;
             //Time.timeScale = 0f;
             gameOver = true;
-            
+
         }
         StartCoroutine(waitToTransition());
     }

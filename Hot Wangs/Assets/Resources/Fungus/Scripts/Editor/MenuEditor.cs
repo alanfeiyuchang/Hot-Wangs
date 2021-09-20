@@ -6,8 +6,8 @@ using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(Menu))]
-    public class MenuEditor : CommandEditor 
+    [CustomEditor(typeof(Menu))]
+    public class MenuEditor : CommandEditor
     {
         protected SerializedProperty textProp;
         protected SerializedProperty descriptionProp;
@@ -29,7 +29,7 @@ namespace Fungus.EditorUtils
             setMenuDialogProp = serializedObject.FindProperty("setMenuDialog");
             hideThisOptionProp = serializedObject.FindProperty("hideThisOption");
         }
-        
+
         public override void DrawCommandGUI()
         {
             var flowchart = FlowchartWindow.GetFlowchart();
@@ -37,20 +37,20 @@ namespace Fungus.EditorUtils
             {
                 return;
             }
-            
+
             serializedObject.Update();
-            
+
             EditorGUILayout.PropertyField(textProp);
 
             EditorGUILayout.PropertyField(descriptionProp);
 
             EditorGUILayout.BeginHorizontal();
             BlockEditor.BlockField(targetBlockProp,
-                                   new GUIContent("Target Block", "Block to call when option is selected"), 
-                                   new GUIContent("<None>"), 
+                                   new GUIContent("Target Block", "Block to call when option is selected"),
+                                   new GUIContent("<None>"),
                                    flowchart);
             const int popupWidth = 17;
-            if(targetBlockProp.objectReferenceValue == null && GUILayout.Button("+",GUILayout.MaxWidth(popupWidth)))
+            if (targetBlockProp.objectReferenceValue == null && GUILayout.Button("+", GUILayout.MaxWidth(popupWidth)))
             {
                 var fw = EditorWindow.GetWindow<FlowchartWindow>();
                 var t = (Menu)target;
@@ -67,8 +67,8 @@ namespace Fungus.EditorUtils
             EditorGUILayout.PropertyField(interactableProp);
             EditorGUILayout.PropertyField(setMenuDialogProp);
             EditorGUILayout.PropertyField(hideThisOptionProp);
-            
+
             serializedObject.ApplyModifiedProperties();
         }
-    }    
+    }
 }

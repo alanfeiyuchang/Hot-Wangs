@@ -8,7 +8,7 @@ namespace Fungus
     /// <summary>
     /// Plays a once-off sound effect. Multiple sound effects can be played at the same time.
     /// </summary>
-    [CommandInfo("Audio", 
+    [CommandInfo("Audio",
                  "Play Sound",
                  "Plays a once-off sound effect. Multiple sound effects can be played at the same time.")]
     [AddComponentMenu("")]
@@ -17,7 +17,7 @@ namespace Fungus
         [Tooltip("Sound effect clip to play")]
         [SerializeField] protected AudioClip soundClip;
 
-        [Range(0,1)]
+        [Range(0, 1)]
         [Tooltip("Volume level of the sound effect")]
         [SerializeField] protected float volume = 1;
 

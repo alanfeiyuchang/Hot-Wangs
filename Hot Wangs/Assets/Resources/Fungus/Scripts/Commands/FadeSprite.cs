@@ -9,8 +9,8 @@ namespace Fungus
     /// <summary>
     /// Fades a sprite to a target color over a period of time.
     /// </summary>
-    [CommandInfo("Sprite", 
-                 "Fade Sprite", 
+    [CommandInfo("Sprite",
+                 "Fade Sprite",
                  "Fades a sprite to a target color over a period of time.")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]
@@ -38,7 +38,8 @@ namespace Fungus
                 return;
             }
 
-            SpriteFader.FadeSprite(spriteRenderer, _targetColor.Value, _duration.Value, Vector2.zero, delegate {
+            SpriteFader.FadeSprite(spriteRenderer, _targetColor.Value, _duration.Value, Vector2.zero, delegate
+            {
                 if (waitUntilFinished)
                 {
                     Continue();

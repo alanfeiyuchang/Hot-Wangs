@@ -3,8 +3,8 @@
 
 #if UNITY_5_3_OR_NEWER
 
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Fungus
@@ -112,14 +112,14 @@ namespace Fungus
 
             foreach (var savePoint in savePoints)
             {
-                debugInfo += savePoint.Substring(0, savePoint.IndexOf(',')).Replace("\n", "").Replace("{", "").Replace("}","") + "\n";
+                debugInfo += savePoint.Substring(0, savePoint.IndexOf(',')).Replace("\n", "").Replace("{", "").Replace("}", "") + "\n";
             }
 
             debugInfo += "Rewound points:\n";
 
             foreach (var savePoint in rewoundSavePoints)
             {
-                debugInfo += savePoint.Substring(0, savePoint.IndexOf(',')).Replace("\n", "").Replace("{", "").Replace("}","") + "\n";
+                debugInfo += savePoint.Substring(0, savePoint.IndexOf(',')).Replace("\n", "").Replace("{", "").Replace("}", "") + "\n";
             }
 
             return debugInfo;

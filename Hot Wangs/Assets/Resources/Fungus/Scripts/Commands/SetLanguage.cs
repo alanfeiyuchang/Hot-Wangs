@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Fungus
@@ -9,15 +9,15 @@ namespace Fungus
     /// <summary>
     /// Set the active language for the scene. A Localization object with a localization file must be present in the scene.
     /// </summary>
-    [CommandInfo("Narrative", 
-                 "Set Language", 
+    [CommandInfo("Narrative",
+                 "Set Language",
                  "Set the active language for the scene. A Localization object with a localization file must be present in the scene.")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]
     public class SetLanguage : Command
     {
         [Tooltip("Code of the language to set. e.g. ES, DE, JA")]
-        [SerializeField] protected StringData _languageCode = new StringData(); 
+        [SerializeField] protected StringData _languageCode = new StringData();
 
         #region Public members
 

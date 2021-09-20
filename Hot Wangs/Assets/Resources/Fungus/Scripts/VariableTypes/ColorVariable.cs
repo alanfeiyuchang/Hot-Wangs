@@ -2,7 +2,6 @@
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 using UnityEngine;
-using System.Collections;
 
 namespace Fungus
 {
@@ -23,21 +22,21 @@ namespace Fungus
         {
             switch (setOperator)
             {
-            case SetOperator.Add:
-                Value += value;
-                break;
-            case SetOperator.Subtract:
-                Value -= value;
-                break;
-            case SetOperator.Multiply:
-                Value *= value;
-                break;
-            case SetOperator.Divide:
-                Value *= new Color(1.0f/value.r, 1.0f / value.g, 1.0f / value.b, 1.0f / value.a);
-                break;
-            default:
-                base.Apply(setOperator, value);
-                break;
+                case SetOperator.Add:
+                    Value += value;
+                    break;
+                case SetOperator.Subtract:
+                    Value -= value;
+                    break;
+                case SetOperator.Multiply:
+                    Value *= value;
+                    break;
+                case SetOperator.Divide:
+                    Value *= new Color(1.0f / value.r, 1.0f / value.g, 1.0f / value.b, 1.0f / value.a);
+                    break;
+                default:
+                    base.Apply(setOperator, value);
+                    break;
             }
         }
     }
@@ -51,7 +50,7 @@ namespace Fungus
         [SerializeField]
         [VariableProperty("<Value>", typeof(ColorVariable))]
         public ColorVariable colorRef;
-        
+
         [SerializeField]
         public Color colorVal;
 
@@ -60,7 +59,7 @@ namespace Fungus
             colorVal = v;
             colorRef = null;
         }
-        
+
         public static implicit operator Color(ColorData colorData)
         {
             return colorData.Value;

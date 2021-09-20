@@ -38,17 +38,17 @@ namespace Fungus
         {
             switch (function)
             {
-            case Mode.RoundToInt:
-                outValue.Value = Mathf.RoundToInt(inValue.Value);
-                break;
-            case Mode.FloorToInt:
-                outValue.Value = Mathf.FloorToInt(inValue.Value);
-                break;
-            case Mode.CeilToInt:
-                outValue.Value = Mathf.CeilToInt(inValue.Value);
-                break;
-            default:
-                break;
+                case Mode.RoundToInt:
+                    outValue.Value = Mathf.RoundToInt(inValue.Value);
+                    break;
+                case Mode.FloorToInt:
+                    outValue.Value = Mathf.FloorToInt(inValue.Value);
+                    break;
+                case Mode.CeilToInt:
+                    outValue.Value = Mathf.CeilToInt(inValue.Value);
+                    break;
+                default:
+                    break;
             }
 
             Continue();
@@ -56,8 +56,8 @@ namespace Fungus
 
         public override string GetSummary()
         {
-            return function.ToString() + 
-                   " in: " + (inValue.floatRef != null ? inValue.floatRef.Key : inValue.Value.ToString()) + 
+            return function.ToString() +
+                   " in: " + (inValue.floatRef != null ? inValue.floatRef.Key : inValue.Value.ToString()) +
                    ", out: " + (outValue.integerRef != null ? outValue.integerRef.Key : outValue.Value.ToString()); ;
         }
 

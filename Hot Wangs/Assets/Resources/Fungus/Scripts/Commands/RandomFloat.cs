@@ -8,11 +8,11 @@ namespace Fungus
     /// <summary>
     /// Sets an float variable to a random value in the defined range.
     /// </summary>
-    [CommandInfo("Variable", 
-                 "Random Float", 
+    [CommandInfo("Variable",
+                 "Random Float",
                  "Sets an float variable to a random value in the defined range.")]
     [AddComponentMenu("")]
-    public class RandomFloat : Command 
+    public class RandomFloat : Command
     {
         [Tooltip("The variable whos value will be set")]
         [VariableProperty(typeof(FloatVariable))]

@@ -105,7 +105,7 @@ namespace Fungus
             }
             return true;
         }
-        
+
         public override string GetSummary()
         {
             if (!this.HasNeededProperties())

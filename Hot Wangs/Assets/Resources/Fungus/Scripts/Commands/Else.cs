@@ -8,8 +8,8 @@ namespace Fungus
     /// <summary>
     /// Marks the start of a command block to be executed when the preceding If statement is False.
     /// </summary>
-    [CommandInfo("Flow", 
-                 "Else", 
+    [CommandInfo("Flow",
+                 "Else",
                  "Marks the start of a command block to be executed when the preceding If statement is False.")]
     [AddComponentMenu("")]
     public class Else : Command

@@ -1,14 +1,14 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System.IO;
 using UnityEditor;
 using UnityEngine;
-using System.IO;
 
 namespace Fungus.EditorUtils
 {
     [CustomEditor(typeof(Localization))]
-    public class LocalizationEditor : Editor 
+    public class LocalizationEditor : Editor
     {
         protected SerializedProperty activeLanguageProp;
         protected SerializedProperty localizationFileProp;
@@ -60,12 +60,12 @@ namespace Fungus.EditorUtils
                                                                "localization.csv",
                                                                "csv",
                                                                "Please enter a filename to save the localization file to");
-            if (path.Length == 0) 
+            if (path.Length == 0)
             {
                 return;
             }
 
-            string csvData = localization.GetCSVData();         
+            string csvData = localization.GetCSVData();
             File.WriteAllText(path, csvData);
             AssetDatabase.ImportAsset(path);
 
@@ -81,24 +81,24 @@ namespace Fungus.EditorUtils
         public virtual void ExportStandardText(Localization localization)
         {
             string path = EditorUtility.SaveFilePanel("Export Standard Text", "Assets/", "standard.txt", "");
-            if (path.Length == 0) 
+            if (path.Length == 0)
             {
                 return;
             }
 
             localization.ClearLocalizeableCache();
 
-            string textData = localization.GetStandardText();           
+            string textData = localization.GetStandardText();
             File.WriteAllText(path, textData);
             AssetDatabase.Refresh();
 
             ShowNotification(localization);
         }
-        
+
         public virtual void ImportStandardText(Localization localization)
         {
             string path = EditorUtility.OpenFilePanel("Import Standard Text", "Assets/", "txt");
-            if (path.Length == 0) 
+            if (path.Length == 0)
             {
                 return;
             }

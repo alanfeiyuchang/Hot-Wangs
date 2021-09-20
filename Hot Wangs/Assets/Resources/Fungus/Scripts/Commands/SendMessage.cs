@@ -24,8 +24,8 @@ namespace Fungus
     /// <summary>
     /// Sends a message to either the owner Flowchart or all Flowcharts in the scene. Blocks can listen for this message using a Message Received event handler.
     /// </summary>
-    [CommandInfo("Flow", 
-                 "Send Message", 
+    [CommandInfo("Flow",
+                 "Send Message",
                  "Sends a message to either the owner Flowchart or all Flowcharts in the scene. Blocks can listen for this message using a Message Received event handler.")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]
@@ -75,10 +75,10 @@ namespace Fungus
             {
                 return "Error: No message specified";
             }
-            
+
             return _message.Value;
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(235, 191, 217, 255);

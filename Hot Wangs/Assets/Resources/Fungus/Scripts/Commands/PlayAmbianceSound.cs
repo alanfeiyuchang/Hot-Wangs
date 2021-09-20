@@ -22,7 +22,7 @@ namespace Fungus
         [Tooltip("Volume level of the sound effect")]
         [SerializeField]
         protected float volume = 1;
-        
+
         [Tooltip("Sound effect clip to play")]
         [SerializeField]
         protected bool loop;

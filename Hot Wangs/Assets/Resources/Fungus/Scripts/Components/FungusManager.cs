@@ -2,7 +2,6 @@
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 using UnityEngine;
-using System.Collections;
 
 namespace Fungus
 {
@@ -16,7 +15,7 @@ namespace Fungus
 #if UNITY_5_3_OR_NEWER
     [RequireComponent(typeof(SaveManager))]
     [RequireComponent(typeof(NarrativeLog))]
-    #endif
+#endif
     public sealed class FungusManager : MonoBehaviour
     {
         volatile static FungusManager instance;  // The keyword "volatile" is friendly to the multi-thread.
@@ -32,7 +31,7 @@ namespace Fungus
 #if UNITY_5_3_OR_NEWER
             SaveManager = GetComponent<SaveManager>();
             NarrativeLog = GetComponent<NarrativeLog>();
-            #endif
+#endif
         }
 
         /// <summary>
@@ -43,7 +42,7 @@ namespace Fungus
         ///   even after stopping playing the Application. Really bad!
         /// So, this was made to be sure we're not creating that buggy ghost object.
         /// </summary>
-        void OnDestroy () 
+        void OnDestroy()
         {
             applicationIsQuitting = true;
         }
@@ -75,13 +74,13 @@ namespace Fungus
         /// Gets the save manager singleton instance.
         /// </summary>
         public SaveManager SaveManager { get; private set; }
-        
+
         /// <summary>
         /// Gets the history manager singleton instance.
         /// </summary>
         public NarrativeLog NarrativeLog { get; private set; }
-        
-        #endif
+
+#endif
 
         /// <summary>
         /// Gets the FungusManager singleton instance.
@@ -90,7 +89,7 @@ namespace Fungus
         {
             get
             {
-                if (applicationIsQuitting) 
+                if (applicationIsQuitting)
                 {
                     Debug.LogWarning("FungusManager.Instance() was called while application is quitting. Returning null instead.");
                     return null;
@@ -111,7 +110,7 @@ namespace Fungus
 
                     }
                 }
-                
+
                 return instance;
             }
         }

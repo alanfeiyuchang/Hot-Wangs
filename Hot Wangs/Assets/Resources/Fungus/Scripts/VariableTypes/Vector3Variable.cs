@@ -2,7 +2,6 @@
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 using UnityEngine;
-using System.Collections;
 
 namespace Fungus
 {
@@ -25,26 +24,26 @@ namespace Fungus
 
             switch (setOperator)
             {
-            case SetOperator.Negate:
-                Value = Value * -1;
-                break;
-            case SetOperator.Add:
-                Value += value;
-                break;
-            case SetOperator.Subtract:
-                Value -= value;
-                break;
-            case SetOperator.Multiply:
-                local.Scale(value);
-                Value = local;
-                break;
-            case SetOperator.Divide:
-                local.Scale(new Vector3(1.0f / value.x, 1.0f / value.y, 1.0f / value.z));
-                Value = local;
-                break;
-            default:
-                base.Apply(setOperator, value);
-                break;
+                case SetOperator.Negate:
+                    Value = Value * -1;
+                    break;
+                case SetOperator.Add:
+                    Value += value;
+                    break;
+                case SetOperator.Subtract:
+                    Value -= value;
+                    break;
+                case SetOperator.Multiply:
+                    local.Scale(value);
+                    Value = local;
+                    break;
+                case SetOperator.Divide:
+                    local.Scale(new Vector3(1.0f / value.x, 1.0f / value.y, 1.0f / value.z));
+                    Value = local;
+                    break;
+                default:
+                    base.Apply(setOperator, value);
+                    break;
             }
         }
     }
@@ -58,7 +57,7 @@ namespace Fungus
         [SerializeField]
         [VariableProperty("<Value>", typeof(Vector3Variable))]
         public Vector3Variable vector3Ref;
-        
+
         [SerializeField]
         public Vector3 vector3Val;
 
@@ -67,7 +66,7 @@ namespace Fungus
             vector3Val = v;
             vector3Ref = null;
         }
-        
+
         public static implicit operator Vector3(Vector3Data vector3Data)
         {
             return vector3Data.Value;

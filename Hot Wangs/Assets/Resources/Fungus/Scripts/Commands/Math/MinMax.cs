@@ -16,8 +16,8 @@ namespace Fungus
     {
         public enum Function
         {
-           Min,
-           Max
+            Min,
+            Max
         }
 
         [Tooltip("Min Or Max")]

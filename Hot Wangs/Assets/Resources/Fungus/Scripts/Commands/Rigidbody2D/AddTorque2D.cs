@@ -1,8 +1,6 @@
 ﻿// This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Fungus
@@ -47,7 +45,7 @@ namespace Fungus
         {
             return new Color32(235, 191, 217, 255);
         }
-        
+
         public override bool HasReference(Variable variable)
         {
             if (rb.rigidbody2DRef == variable || force.floatRef == variable)

@@ -1,11 +1,10 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEditor;
-using UnityEngine;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
+using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
@@ -48,7 +47,7 @@ namespace Fungus.EditorUtils
         protected int hoverIndex;
         protected readonly string SEARCH_CONTROL_NAME = "PopupSearchControlName";
         protected readonly float ROW_HEIGHT = EditorGUIUtility.singleLineHeight;
-        protected List<FilteredListItem> allItems = new List<FilteredListItem>(), 
+        protected List<FilteredListItem> allItems = new List<FilteredListItem>(),
             visibleItems = new List<FilteredListItem>();
         protected string currentFilter = string.Empty;
         protected Vector2 scroll;
@@ -58,7 +57,7 @@ namespace Fungus.EditorUtils
         protected Vector2 size;
         protected bool hasNoneOption = false;
 
-        static readonly char[] SEARCH_SPLITS = new char[]{ CATEGORY_CHAR, ' ' };
+        static readonly char[] SEARCH_SPLITS = new char[] { CATEGORY_CHAR, ' ' };
         protected static readonly char CATEGORY_CHAR = '/';
 
         public BasePopupWindowContent(string currentHandlerName, int width, int height, bool showNoneOption = false)
@@ -68,18 +67,18 @@ namespace Fungus.EditorUtils
 
             PrepareAllItems();
 
-            allItems.Sort((lhs, rhs) => 
+            allItems.Sort((lhs, rhs) =>
             {
                 //order root level objects first
                 var islhsRoot = lhs.lowerName.IndexOf(CATEGORY_CHAR) != -1;
                 var isrhsRoot = rhs.lowerName.IndexOf(CATEGORY_CHAR) != -1;
 
-                if(islhsRoot == isrhsRoot)
+                if (islhsRoot == isrhsRoot)
                     return lhs.lowerName.CompareTo(rhs.lowerName);
                 return islhsRoot ? 1 : -1;
             });
             UpdateFilter();
-            currentIndex = Mathf.Max(0, visibleItems.FindIndex(x=>x.name.Contains(currentHandlerName)));
+            currentIndex = Mathf.Max(0, visibleItems.FindIndex(x => x.name.Contains(currentHandlerName)));
             hoverIndex = currentIndex;
         }
 
@@ -145,7 +144,7 @@ namespace Fungus.EditorUtils
 
             hoverIndex = 0;
             scroll = Vector2.zero;
-            if(hasNoneOption)
+            if (hasNoneOption)
                 visibleItems.Insert(0, new FilteredListItem(-1, "None"));
         }
 

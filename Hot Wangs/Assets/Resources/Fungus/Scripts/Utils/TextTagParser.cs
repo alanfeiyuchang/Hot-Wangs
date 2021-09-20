@@ -1,9 +1,9 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEngine;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -18,25 +18,25 @@ namespace Fungus
         {
             TextTagToken token = new TextTagToken();
             token.type = TokenType.Words;
-            token.paramList = new List<string>(); 
+            token.paramList = new List<string>();
             token.paramList.Add(words);
             tokenList.Add(token);
         }
-        
+
         private static void AddTagToken(List<TextTagToken> tokenList, string tagText)
         {
             if (tagText.Length < 3 ||
-                tagText.Substring(0,1) != "{" ||
-                tagText.Substring(tagText.Length - 1,1) != "}")
+                tagText.Substring(0, 1) != "{" ||
+                tagText.Substring(tagText.Length - 1, 1) != "}")
             {
                 return;
             }
-            
+
             string tag = tagText.Substring(1, tagText.Length - 2);
-            
+
             var type = TokenType.Invalid;
             List<string> parameters = ExtractParameters(tag);
-            
+
             if (tag == "b")
             {
                 type = TokenType.BoldStart;
@@ -174,7 +174,7 @@ namespace Fungus
             {
                 TextTagToken token = new TextTagToken();
                 token.type = type;
-                token.paramList = parameters;           
+                token.paramList = parameters;
                 tokenList.Add(token);
             }
             else
@@ -210,7 +210,7 @@ namespace Fungus
         public static string GetTagHelp()
         {
             return "" +
-                "\t{b} Bold Text {/b}\n" + 
+                "\t{b} Bold Text {/b}\n" +
                 "\t{i} Italic Text {/i}\n" +
                 "\t{color=red} Color Text (color){/color}\n" +
                 "\t{size=30} Text size {/size}\n" +
@@ -301,5 +301,5 @@ namespace Fungus
         }
 
         #endregion
-    }    
+    }
 }

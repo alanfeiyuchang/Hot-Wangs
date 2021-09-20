@@ -5,8 +5,8 @@
 
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Fungus
 {
@@ -85,7 +85,8 @@ namespace Fungus
 
             UnityAction<Scene, LoadSceneMode> onSceneLoadedAction = null;
 
-            onSceneLoadedAction = (scene, mode) =>  {
+            onSceneLoadedAction = (scene, mode) =>
+            {
                 // Additive scene loads and non-matching scene loads could happen if the client is using the
                 // SceneManager directly. We just ignore these events and hope they know what they're doing!
                 if (mode == LoadSceneMode.Additive ||
@@ -105,10 +106,10 @@ namespace Fungus
 
                 SaveManagerSignals.DoSavePointLoaded(savePointData.savePointKey);
             };
-                
+
             SceneManager.sceneLoaded += onSceneLoadedAction;
             SceneManager.LoadScene(savePointData.SceneName);
-        }     
+        }
 
         #endregion
     }

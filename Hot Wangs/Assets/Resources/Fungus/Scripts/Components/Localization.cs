@@ -1,9 +1,8 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 #if UNITY_EDITOR
-using UnityEditor;
 #endif
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -41,13 +40,13 @@ namespace Fungus
 
         protected static Dictionary<string, string> localizedStrings = new Dictionary<string, string>();
 
-        #if UNITY_5_4_OR_NEWER
-        #else
+#if UNITY_5_4_OR_NEWER
+#else
         public virtual void OnLevelWasLoaded(int level) 
         {
             LevelWasLoaded();
         }
-        #endif
+#endif
 
         protected virtual void LevelWasLoaded()
         {
@@ -67,17 +66,17 @@ namespace Fungus
         protected virtual void OnEnable()
         {
             StringSubstituter.RegisterHandler(this);
-            #if UNITY_5_4_OR_NEWER
+#if UNITY_5_4_OR_NEWER
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
-            #endif
+#endif
         }
 
         protected virtual void OnDisable()
         {
             StringSubstituter.UnregisterHandler(this);
-            #if UNITY_5_4_OR_NEWER
+#if UNITY_5_4_OR_NEWER
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged -= SceneManager_activeSceneChanged;
-            #endif
+#endif
         }
 
         protected virtual void Start()
@@ -196,7 +195,7 @@ namespace Fungus
 
             // Parse header row
             string[] columnNames = csvTable[0];
-            
+
             for (int i = 1; i < csvTable.Length; ++i)
             {
                 string[] fields = csvTable[i];
@@ -205,13 +204,13 @@ namespace Fungus
                     // No standard text or localized string fields present
                     continue;
                 }
-                
+
                 string stringId = fields[0];
 
                 if (!textItems.ContainsKey(stringId))
                 {
-                    if (stringId.StartsWith("CHARACTER.") || 
-                        stringId.StartsWith("SAY.") || 
+                    if (stringId.StartsWith("CHARACTER.") ||
+                        stringId.StartsWith("SAY.") ||
                         stringId.StartsWith("MENU.") ||
                         stringId.StartsWith("WRITE.") ||
                         stringId.StartsWith("SETTEXT."))
@@ -238,7 +237,7 @@ namespace Fungus
                     }
                     string languageCode = columnNames[j];
                     string languageEntry = CSVSupport.Unescape(fields[j]);
-                    
+
                     if (languageEntry.Length > 0)
                     {
                         textItem.localizedStrings[languageCode] = languageEntry;

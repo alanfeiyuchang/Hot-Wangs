@@ -1,8 +1,8 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEngine;
 using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Fungus
@@ -29,9 +29,9 @@ namespace Fungus
     /// This command is more efficient than the Invoke Method command but can only pass a single parameter and doesn't support return values.
     /// This command uses the UnityEvent system to call methods in script. http://docs.unity3d.com/Manual/UnityEvents.html
     /// </summary>
-    [CommandInfo("Scripting", 
-                 "Invoke Event", 
-                 "Calls a list of component methods via the Unity Event System (as used in the Unity UI). " + 
+    [CommandInfo("Scripting",
+                 "Invoke Event",
+                 "Calls a list of component methods via the Unity Event System (as used in the Unity UI). " +
                  "This command is more efficient than the Invoke Method command but can only pass a single parameter and doesn't support return values.")]
     [AddComponentMenu("")]
     public class InvokeEvent : Command
@@ -56,13 +56,13 @@ namespace Fungus
 
         [Tooltip("Integer parameter to pass to the invoked methods.")]
         [SerializeField] protected IntegerData integerParameter;
-        
+
         [Tooltip("List of methods to call. Supports methods with one integer parameter.")]
         [SerializeField] protected IntegerEvent integerEvent = new IntegerEvent();
 
         [Tooltip("Float parameter to pass to the invoked methods.")]
         [SerializeField] protected FloatData floatParameter;
-        
+
         [Tooltip("List of methods to call. Supports methods with one float parameter.")]
         [SerializeField] protected FloatEvent floatEvent = new FloatEvent();
 
@@ -97,10 +97,10 @@ namespace Fungus
 
         #region Public members
 
-        [Serializable] public class BooleanEvent : UnityEvent<bool> {}
-        [Serializable] public class IntegerEvent : UnityEvent<int> {}
-        [Serializable] public class FloatEvent : UnityEvent<float> {}
-        [Serializable] public class StringEvent : UnityEvent<string> {}
+        [Serializable] public class BooleanEvent : UnityEvent<bool> { }
+        [Serializable] public class IntegerEvent : UnityEvent<int> { }
+        [Serializable] public class FloatEvent : UnityEvent<float> { }
+        [Serializable] public class StringEvent : UnityEvent<string> { }
 
         public override void OnEnter()
         {
@@ -127,27 +127,27 @@ namespace Fungus
 
             switch (invokeType)
             {
-            default:
-            case InvokeType.Static:
-                summary += staticEvent.GetPersistentEventCount();
-                break;
-            case InvokeType.DynamicBoolean:
-                summary += booleanEvent.GetPersistentEventCount();
-                break;
-            case InvokeType.DynamicInteger:
-                summary += integerEvent.GetPersistentEventCount();
-                break;
-            case InvokeType.DynamicFloat:
-                summary += floatEvent.GetPersistentEventCount();
-                break;
-            case InvokeType.DynamicString:
-                summary += stringEvent.GetPersistentEventCount();
-                break;
+                default:
+                case InvokeType.Static:
+                    summary += staticEvent.GetPersistentEventCount();
+                    break;
+                case InvokeType.DynamicBoolean:
+                    summary += booleanEvent.GetPersistentEventCount();
+                    break;
+                case InvokeType.DynamicInteger:
+                    summary += integerEvent.GetPersistentEventCount();
+                    break;
+                case InvokeType.DynamicFloat:
+                    summary += floatEvent.GetPersistentEventCount();
+                    break;
+                case InvokeType.DynamicString:
+                    summary += stringEvent.GetPersistentEventCount();
+                    break;
             }
 
             return summary + " methods";
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(235, 191, 217, 255);

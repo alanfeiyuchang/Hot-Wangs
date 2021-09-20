@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -13,7 +13,7 @@ namespace Fungus
                  "Sets a Draggable2D component to be draggable / non-draggable.")]
     [AddComponentMenu("")]
     public class SetDraggable2D : Command
-    {      
+    {
         [Tooltip("Reference to Draggable2D component on a gameobject")]
         [SerializeField] protected Draggable2D targetDraggable2D;
 
@@ -22,11 +22,11 @@ namespace Fungus
 
         #region Public members
 
-        public override void OnEnter() 
+        public override void OnEnter()
         {
-            if (targetDraggable2D != null)         
+            if (targetDraggable2D != null)
             {
-                targetDraggable2D.DragEnabled = activeState.Value;     
+                targetDraggable2D.DragEnabled = activeState.Value;
             }
 
             Continue();
@@ -34,9 +34,9 @@ namespace Fungus
 
         public override string GetSummary()
         {
-            if (targetDraggable2D == null)         
+            if (targetDraggable2D == null)
             {
-                return "Error: No Draggable2D component selected";     
+                return "Error: No Draggable2D component selected";
             }
 
             return targetDraggable2D.gameObject.name;

@@ -1,9 +1,9 @@
 ﻿// This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEngine;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -33,7 +33,7 @@ namespace Fungus
 
         protected virtual void Log(string message)
         {
-            if(onLog != null)
+            if (onLog != null)
             {
                 onLog(message);
             }
@@ -68,13 +68,13 @@ namespace Fungus
         public virtual void AddListener<T>(TypedDelegate<T> listener) where T : class
         {
             var type = typeof(T);
-            if(!delegates.ContainsKey(type))
+            if (!delegates.ContainsKey(type))
             {
                 delegates.Add(type, new List<Delegate>());
             }
 
             var list = delegates[type];
-            if(!list.Contains(listener))
+            if (!list.Contains(listener))
             {
                 list.Add(listener);
             }
@@ -86,7 +86,7 @@ namespace Fungus
         public virtual void RemoveListener<T>(TypedDelegate<T> listener) where T : class
         {
             var type = typeof(T);
-            if(delegates.ContainsKey(type))
+            if (delegates.ContainsKey(type))
             {
                 delegates[type].Remove(listener);
                 return;
@@ -98,30 +98,30 @@ namespace Fungus
         /// </summary>
         public virtual void Raise<T>(T evt) where T : class
         {
-            if(evt == null)
+            if (evt == null)
             {
                 Log("Raised a null event");
                 return;
             }
 
             var list = GetDelegateListCopy(evt);
-            if(list == null || list.Count < 1)
+            if (list == null || list.Count < 1)
             {
                 Log("Raised an event with no listeners");
                 return;
             }
 
-            for(int i = 0; i < list.Count; ++i)
+            for (int i = 0; i < list.Count; ++i)
             {
                 var callback = list[i] as TypedDelegate<T>;
 
-                if(callback != null)
+                if (callback != null)
                 {
                     try
                     {
                         callback(evt);
                     }
-                    catch(Exception gotcha)
+                    catch (Exception gotcha)
                     {
                         Log(gotcha.Message);
                     }

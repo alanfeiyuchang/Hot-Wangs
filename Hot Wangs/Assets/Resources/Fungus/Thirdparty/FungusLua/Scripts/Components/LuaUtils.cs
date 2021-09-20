@@ -1,14 +1,14 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using MoonSharp.Interpreter;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using MoonSharp.Interpreter;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -77,7 +77,7 @@ namespace Fungus
         {
             StringSubstituter.UnregisterHandler(this);
         }
-            
+
         /// <summary>
         /// Registers all listed c# types for interop with Lua.
         /// You can also register types directly in the Awake method of any 
@@ -211,7 +211,7 @@ namespace Fungus
             }
 
             // Populate the string table by parsing the string table JSON files
-            stringTable = new Table(interpreter); 
+            stringTable = new Table(interpreter);
             fungusTable["stringtable"] = stringTable;
             foreach (TextAsset stringFile in stringTables)
             {
@@ -262,7 +262,7 @@ namespace Fungus
 #endif
 
             if (fungusModule == FungusModuleOptions.UseGlobalVariables)
-            {               
+            {
                 // Copy all items from the Fungus table to global variables
                 foreach (TablePair p in fungusTable.Pairs)
                 {
@@ -330,7 +330,7 @@ namespace Fungus
                     luaEnvironment.InitEnvironment();
                 }
             }
-                    
+
             if (luaEnvironment == null)
             {
                 UnityEngine.Debug.LogError("No Lua Environment found");
@@ -345,7 +345,7 @@ namespace Fungus
 
             // Remove all tabs from input
             input.Replace("\t", "");
-                
+
             MoonSharp.Interpreter.Script interpreter = luaEnvironment.Interpreter;
 
             // Instantiate the regular expression object.
@@ -475,7 +475,7 @@ namespace Fungus
         /// <summary>
         /// Returns the current say dialog.
         /// </summary>
-        public virtual SayDialog GetSayDialog ()
+        public virtual SayDialog GetSayDialog()
         {
             return SayDialog.GetSayDialog();
         }
@@ -501,7 +501,7 @@ namespace Fungus
         #region LuaEnvironmentInitializer implementation
 
         public override void Initialize()
-        {   
+        {
             luaEnvironment = GetComponent<LuaEnvironment>();
             if (luaEnvironment == null)
             {
@@ -526,5 +526,5 @@ namespace Fungus
         }
 
         #endregion
-   }
+    }
 }

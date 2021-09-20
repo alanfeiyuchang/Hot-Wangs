@@ -66,7 +66,7 @@ namespace Fungus.EditorUtils
             var dataProp = GetDataProp(property);
 
             return EditorGUI.GetPropertyHeight(property.FindPropertyRelative("variable")) +
-                (dataProp != null ? 
+                (dataProp != null ?
                     EditorGUI.GetPropertyHeight(dataProp) :
                     EditorGUIUtility.singleLineHeight);
         }

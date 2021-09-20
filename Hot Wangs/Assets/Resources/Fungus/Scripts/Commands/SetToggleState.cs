@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Fungus
@@ -12,7 +12,7 @@ namespace Fungus
     [CommandInfo("UI",
                  "Set Toggle State",
                  "Sets the state of a toggle UI object")]
-    public class SetToggleState : Command 
+    public class SetToggleState : Command
     {
         [Tooltip("Target toggle object to set the state on")]
         [SerializeField] protected Toggle toggle;
@@ -22,7 +22,7 @@ namespace Fungus
 
         #region Public members
 
-        public override void OnEnter() 
+        public override void OnEnter()
         {
             if (toggle != null)
             {

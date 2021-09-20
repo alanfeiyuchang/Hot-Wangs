@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -26,7 +26,7 @@ namespace Fungus
                       "The block will execute when a key press event occurs.")]
     [AddComponentMenu("")]
     public class KeyPressed : EventHandler
-    {   
+    {
         [Tooltip("The type of keypress to activate on")]
         [SerializeField] protected KeyPressType keyPressType;
 
@@ -37,24 +37,24 @@ namespace Fungus
         {
             switch (keyPressType)
             {
-            case KeyPressType.KeyDown:
-                if (Input.GetKeyDown(keyCode))
-                {
-                    ExecuteBlock();
-                }
-                break;
-            case KeyPressType.KeyUp:
-                if (Input.GetKeyUp(keyCode))
-                {
-                    ExecuteBlock();
-                }
-                break;
-            case KeyPressType.KeyRepeat:
-                if (Input.GetKey(keyCode))
-                {
-                    ExecuteBlock();
-                }
-                break;
+                case KeyPressType.KeyDown:
+                    if (Input.GetKeyDown(keyCode))
+                    {
+                        ExecuteBlock();
+                    }
+                    break;
+                case KeyPressType.KeyUp:
+                    if (Input.GetKeyUp(keyCode))
+                    {
+                        ExecuteBlock();
+                    }
+                    break;
+                case KeyPressType.KeyRepeat:
+                    if (Input.GetKey(keyCode))
+                    {
+                        ExecuteBlock();
+                    }
+                    break;
             }
         }
 

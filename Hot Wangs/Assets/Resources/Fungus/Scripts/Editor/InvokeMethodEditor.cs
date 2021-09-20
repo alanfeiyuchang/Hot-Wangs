@@ -1,13 +1,13 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using System;
 using System.Collections;
-using UnityEditor;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System;
-using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
@@ -225,8 +225,8 @@ namespace Fungus.EditorUtils
 
             if (method.ReturnType == typeof(IEnumerator))
             {
-                GUILayout.Space(20);          
-                EditorGUILayout.PropertyField(callModeProp);           
+                GUILayout.Space(20);
+                EditorGUILayout.PropertyField(callModeProp);
             }
             else if (method.ReturnType != typeof(void))
             {
@@ -243,11 +243,11 @@ namespace Fungus.EditorUtils
 
                     if (index != -1)
                     {
-                        returnValueKeyProp.stringValue = vars[index];                    
+                        returnValueKeyProp.stringValue = vars[index];
                     }
                 }
 
-                EditorGUILayout.EndVertical();           
+                EditorGUILayout.EndVertical();
             }
             else
             {

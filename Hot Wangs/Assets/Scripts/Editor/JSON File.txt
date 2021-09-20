@@ -1,0 +1,59 @@
+[
+    {
+        "commandType": "Move",
+        "character": "Jason",
+        "showhide": "Show",
+        "portrait": "Jason",
+        "start": "offscreen left",
+        "end": "middle"
+    },
+    {
+        "commandType": "Say",
+        "character": "Jason",
+        "text": "Hello there"
+    },
+    {
+        "commandType": "Menu"
+    },
+    {
+        "commandType": "Option",
+        "text": "Hi"
+    },
+    {
+        "commandType": "Say",
+        "character": "Jason",
+        "text": "Something"
+    },
+    {
+        "commandType": "Menu"
+    },
+    {
+        "commandType": "Option",
+        "text": "Something1"
+    },
+    {
+        "commandType": "Option",
+        "text": "Something2"
+    },
+    {
+        "commandType": "EndMenu"
+    },
+    {
+        "commandType": "Option",
+        "text": "Bye"
+    },
+    {
+        "commandType": "Say",
+        "character": "Jason",
+        "text": "Bye"
+    },
+    {
+        "commandType": "EndMenu"
+    },
+    {
+        "commandType": "Move",
+        "character": "Jason",
+        "showhide": "Hide",
+        "end": "middle"
+    }
+]

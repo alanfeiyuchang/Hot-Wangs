@@ -2,9 +2,6 @@
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 using UnityEngine;
-using UnityEngine.Serialization;
-using System.Collections;
-using System;
 
 namespace Fungus
 {
@@ -30,7 +27,7 @@ namespace Fungus
         [SerializeField]
         protected bool isLocal;
 
-        public enum RotateMode { PureRotate, LookAt2D, LookAt3D}
+        public enum RotateMode { PureRotate, LookAt2D, LookAt3D }
         [Tooltip("Whether to use the provided Transform or Vector as a target to look at rather than a euler to match.")]
         [SerializeField]
         protected RotateMode rotateMode = RotateMode.PureRotate;
@@ -40,13 +37,13 @@ namespace Fungus
         {
             var rot = _toTransform.Value == null ? _toRotation.Value : _toTransform.Value.rotation.eulerAngles;
 
-            if(rotateMode == RotateMode.LookAt3D)
+            if (rotateMode == RotateMode.LookAt3D)
             {
                 var pos = _toTransform.Value == null ? _toRotation.Value : _toTransform.Value.position;
                 var dif = pos - _targetObject.Value.transform.position;
                 rot = Quaternion.LookRotation(dif.normalized).eulerAngles;
             }
-            else if(rotateMode == RotateMode.LookAt2D)
+            else if (rotateMode == RotateMode.LookAt2D)
             {
                 var pos = _toTransform.Value == null ? _toRotation.Value : _toTransform.Value.position;
                 var dif = pos - _targetObject.Value.transform.position;

@@ -8,11 +8,11 @@ namespace Fungus
     /// <summary>
     /// Deactivates swipe panning mode.
     /// </summary>
-    [CommandInfo("Camera", 
-                 "Stop Swipe", 
+    [CommandInfo("Camera",
+                 "Stop Swipe",
                  "Deactivates swipe panning mode.")]
     [AddComponentMenu("")]
-    public class StopSwipe : Command 
+    public class StopSwipe : Command
     {
         #region Public members
 

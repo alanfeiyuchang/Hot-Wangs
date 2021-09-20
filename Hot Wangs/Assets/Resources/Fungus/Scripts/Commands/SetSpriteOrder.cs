@@ -1,19 +1,19 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Fungus
 {
     /// <summary>
     /// Controls the render order of sprites by setting the Order In Layer property of a list of sprites.
     /// </summary>
-    [CommandInfo("Sprite", 
-                 "Set Sprite Order", 
+    [CommandInfo("Sprite",
+                 "Set Sprite Order",
                  "Controls the render order of sprites by setting the Order In Layer property of a list of sprites.")]
     [AddComponentMenu("")]
-    public class SetSpriteOrder : Command 
+    public class SetSpriteOrder : Command
     {
         [Tooltip("List of sprites to set the order in layer property on")]
         [SerializeField] protected List<SpriteRenderer> targetSprites = new List<SpriteRenderer>();
@@ -33,7 +33,7 @@ namespace Fungus
 
             Continue();
         }
-        
+
         public override string GetSummary()
         {
             string summary = "";
@@ -58,7 +58,7 @@ namespace Fungus
 
             return summary + " = " + orderInLayer.Value;
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(235, 191, 217, 255);

@@ -1,8 +1,8 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Fungus
@@ -10,11 +10,11 @@ namespace Fungus
     /// <summary>
     /// Changes the Image property on a UI element.
     /// </summary>
-    [CommandInfo("UI", 
-                 "Set UI Image", 
+    [CommandInfo("UI",
+                 "Set UI Image",
                  "Changes the Image property of a list of UI Images.")]
     [AddComponentMenu("")]
-    public class SetUIImage : Command 
+    public class SetUIImage : Command
     {
         [Tooltip("List of UI Images to set the source image property on")]
         [SerializeField] protected List<Image> images = new List<Image>();
@@ -34,7 +34,7 @@ namespace Fungus
 
             Continue();
         }
-        
+
         public override string GetSummary()
         {
             string summary = "";
@@ -59,7 +59,7 @@ namespace Fungus
 
             return summary + " = " + sprite;
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(235, 191, 217, 255);

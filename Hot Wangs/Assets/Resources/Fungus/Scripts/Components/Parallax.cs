@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -11,7 +11,7 @@ namespace Fungus
     /// The scale parallax is calculated based on the ratio of the camera size to the size of the background sprite. This gives a 'dolly zoom' effect.
     /// Accelerometer based parallax is also applied on devices that support it.
     /// </summary>
-    public class Parallax : MonoBehaviour 
+    public class Parallax : MonoBehaviour
     {
         /// <summary>
         /// The background sprite which this sprite is layered on top of.
@@ -34,7 +34,7 @@ namespace Fungus
         protected Vector3 acceleration;
         protected Vector3 velocity;
 
-        protected virtual void Start () 
+        protected virtual void Start()
         {
             // Store the starting position and scale of the sprite object
             startPosition = transform.position;
@@ -46,7 +46,7 @@ namespace Fungus
             }
         }
 
-        protected virtual void Update () 
+        protected virtual void Update()
         {
             if (backgroundSprite == null)
             {
@@ -70,7 +70,7 @@ namespace Fungus
             // Apply parallax translation based on device accelerometer
             if (SystemInfo.supportsAccelerometer)
             {
-                float maxParallaxScale = Mathf.Max(parallaxScale.x, parallaxScale.y); 
+                float maxParallaxScale = Mathf.Max(parallaxScale.x, parallaxScale.y);
                 // The accelerometer data is quite noisy, so we apply smoothing to even it out.
                 acceleration = Vector3.SmoothDamp(acceleration, Input.acceleration, ref velocity, 0.1f);
                 // Assuming a 45 degree "neutral position" when holding a mobile device

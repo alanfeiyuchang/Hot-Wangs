@@ -1,17 +1,17 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
-using System.Collections;
 
 namespace Fungus
 {
     /// <summary>
     /// Rotates a game object by the specified angles over time.
     /// </summary>
-    [CommandInfo("iTween", 
-                 "Rotate Add", 
+    [CommandInfo("iTween",
+                 "Rotate Add",
                  "Rotates a game object by the specified angles over time.")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]

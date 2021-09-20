@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace Fungus.EditorUtils
 {
-    public class SpriteMenuItems 
+    public class SpriteMenuItems
     {
         [MenuItem("Tools/Fungus/Create/Clickable Sprite", false, 150)]
         static void CreateClickableSprite()

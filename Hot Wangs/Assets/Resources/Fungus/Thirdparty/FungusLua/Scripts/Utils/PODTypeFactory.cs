@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -11,7 +11,7 @@ namespace Fungus
     /// MoonSharp doesn't work well with these types due to internal interop issues with c#. 
     /// Use these factory methods to constuct these types instead of using the __new function call in Lua.
     /// </summary>
-    public static class PODTypeFactory  
+    public static class PODTypeFactory
     {
         /// <summary>
         /// Returns a new Color object.
@@ -22,7 +22,7 @@ namespace Fungus
         /// <param name="a">The alpha component.</param>
         public static Color color(float r, float g, float b, float a)
         {
-            return new Color(r,g,b,a);
+            return new Color(r, g, b, a);
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Fungus
         /// <param name="y">The y coordinate.</param>
         public static Vector2 vector2(float x, float y)
         {
-            return new Vector2(x,y);
+            return new Vector2(x, y);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Fungus
         /// <param name="z">The z coordinate.</param>
         public static Vector3 vector3(float x, float y, float z)
         {
-            return new Vector3(x,y,z);
+            return new Vector3(x, y, z);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Fungus
         /// <param name="w">The w coordinate.</param>
         public static Vector4 vector4(float x, float y, float z, float w)
         {
-            return new Vector4(x,y,z,w);
+            return new Vector4(x, y, z, w);
         }
 
         /// <summary>
@@ -66,9 +66,9 @@ namespace Fungus
         /// <param name="z">The z rotation in degrees.</param>
         public static Quaternion quaternion(float x, float y, float z)
         {
-            return UnityEngine.Quaternion.Euler(x,y,z);
+            return UnityEngine.Quaternion.Euler(x, y, z);
         }
-            
+
         /// <summary>
         /// Returns a new Rect object.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Fungus
         /// <param name="height">The rectangle height.</param>
         public static Rect rect(float x, float y, float width, float height)
         {
-            return new Rect(x,y,width, height);
+            return new Rect(x, y, width, height);
         }
     }
 }

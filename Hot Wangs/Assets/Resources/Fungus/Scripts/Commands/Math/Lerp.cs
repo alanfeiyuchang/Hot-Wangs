@@ -20,7 +20,7 @@ namespace Fungus
             LerpUnclamped,
             LerpAngle
         }
-        
+
         [SerializeField]
         protected Mode mode = Mode.Lerp;
 

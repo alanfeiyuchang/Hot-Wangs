@@ -9,8 +9,8 @@ namespace Fungus
     /// <summary>
     /// Sets a trigger parameter on an Animator component to control a Unity animation.
     /// </summary>
-    [CommandInfo("Animation", 
-                 "Set Anim Trigger", 
+    [CommandInfo("Animation",
+                 "Set Anim Trigger",
                  "Sets a trigger parameter on an Animator component to control a Unity animation")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]

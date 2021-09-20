@@ -13,23 +13,23 @@ namespace Fungus
     [AddComponentMenu("")]
     public class ControllerColliderHitProperty : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            Collider, 
-            Rigidbody, 
-            GameObject, 
-            Transform, 
-            Point, 
-            Normal, 
-            MoveDirection, 
-            MoveLength, 
+        //generated property
+        public enum Property
+        {
+            Collider,
+            Rigidbody,
+            GameObject,
+            Transform,
+            Point,
+            Normal,
+            MoveDirection,
+            MoveLength,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         [VariableProperty(typeof(ControllerColliderHitVariable))]
         protected ControllerColliderHitVariable controllerColliderHitVar;

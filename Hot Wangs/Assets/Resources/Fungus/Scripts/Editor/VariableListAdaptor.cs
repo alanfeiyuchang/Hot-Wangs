@@ -1,12 +1,12 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEngine;
-using UnityEditor;
 using System;
-using UnityEditorInternal;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
+using UnityEditorInternal;
+using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
@@ -163,7 +163,7 @@ namespace Fungus.EditorUtils
                 return;
             }
 
-            if(Event.current.type == EventType.ContextClick && position.Contains(Event.current.mousePosition))
+            if (Event.current.type == EventType.ContextClick && position.Contains(Event.current.mousePosition))
             {
                 DoRightClickMenu(index);
             }
@@ -277,7 +277,7 @@ namespace Fungus.EditorUtils
 
             GUI.backgroundColor = Color.white;
         }
-        
+
         public static void VariableDrawProperty(Variable variable, Rect rect, SerializedProperty valueProp, VariableInfoAttribute info)
         {
             if (valueProp == null)
@@ -288,7 +288,7 @@ namespace Fungus.EditorUtils
             {
                 EditorGUI.LabelField(rect, variable.ToString());
             }
-            else 
+            else
             {
                 CustomVariableDrawerLookup.DrawCustomOrPropertyField(variable.GetType(), rect, valueProp, GUIContent.none);
             }
@@ -299,11 +299,11 @@ namespace Fungus.EditorUtils
             var v = GetVarAt(index);
 
             GenericMenu commandMenu = new GenericMenu();
-            commandMenu.AddItem(new GUIContent("Remove"), false, () => {list.index = index; RemoveItem(list); });
+            commandMenu.AddItem(new GUIContent("Remove"), false, () => { list.index = index; RemoveItem(list); });
             commandMenu.AddItem(new GUIContent("Duplicate"), false, () => VariableSelectPopupWindowContent.AddVariable(v.GetType(), v.Key));
             commandMenu.AddItem(new GUIContent("Find References"), false, () => FindUsage(GetVarAt(index)));
             commandMenu.AddSeparator("");
-            commandMenu.AddItem(new GUIContent("Sort by Name"), false, () => SortBy(x =>  x.Key));
+            commandMenu.AddItem(new GUIContent("Sort by Name"), false, () => SortBy(x => x.Key));
             commandMenu.AddItem(new GUIContent("Sort by Type"), false, () => SortBy(x => x.GetType().Name));
             commandMenu.AddItem(new GUIContent("Sort by Value"), false, () => SortBy(x => x.GetValue()));
             commandMenu.ShowAsContext();
@@ -328,7 +328,7 @@ namespace Fungus.EditorUtils
         }
 
         private void FindUsage(Variable variable)
-        {                
+        {
             var varRefs = EditorExtensions.FindObjectsOfInterface<IVariableReference>()
                 .Where(x => x.HasReference(variable))
                 .Select(x => x.GetLocationIdentifier()).ToArray(); ;

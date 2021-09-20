@@ -23,7 +23,7 @@ namespace Fungus
     [CommandInfo("UI",
                  "Fade UI",
                  "Fades a UI object")]
-    public class FadeUI : TweenUI 
+    public class FadeUI : TweenUI
     {
         [SerializeField] protected FadeMode fadeMode = FadeMode.Alpha;
 
@@ -133,44 +133,44 @@ namespace Fungus
             var tmpros = go.GetComponentsInChildren<TMPro.TMP_Text>();
             for (int i = 0; i < tmpros.Length; i++)
             {
-            
+
                 var tmpro = tmpros[i];
                 if (Mathf.Approximately(duration, 0f))
                 {
                     switch (fadeMode)
                     {
-                    case FadeMode.Alpha:
-                        Color tempColor = tmpro.color;
-                        tempColor.a = targetAlpha;
-                        tmpro.color = tempColor;
-                        break;
-                    case FadeMode.Color:
-                        tmpro.color = targetColor;
-                        break;
+                        case FadeMode.Alpha:
+                            Color tempColor = tmpro.color;
+                            tempColor.a = targetAlpha;
+                            tmpro.color = tempColor;
+                            break;
+                        case FadeMode.Color:
+                            tmpro.color = targetColor;
+                            break;
                     }
                 }
                 else
                 {
                     switch (fadeMode)
                     {
-                    case FadeMode.Alpha:
-                        LeanTween.value(tmpro.gameObject, tmpro.color.a, targetAlpha.Value, duration)
-                                 .setEase(tweenType)
-                                 .setOnUpdate((float alphaValue) =>
-                                 {
-                                     Color tempColor = tmpro.color;
-                                     tempColor.a = alphaValue;
-                                     tmpro.color = tempColor;
-                                 });
-                        break;
-                    case FadeMode.Color:
-                        LeanTween.value(tmpro.gameObject, tmpro.color, targetColor.Value, duration)
-                                 .setEase(tweenType)
-                                 .setOnUpdate((Color colorValue) =>
-                                 {
-                                     tmpro.color = colorValue;
-                                 });
-                        break;
+                        case FadeMode.Alpha:
+                            LeanTween.value(tmpro.gameObject, tmpro.color.a, targetAlpha.Value, duration)
+                                     .setEase(tweenType)
+                                     .setOnUpdate((float alphaValue) =>
+                                     {
+                                         Color tempColor = tmpro.color;
+                                         tempColor.a = alphaValue;
+                                         tmpro.color = tempColor;
+                                     });
+                            break;
+                        case FadeMode.Color:
+                            LeanTween.value(tmpro.gameObject, tmpro.color, targetColor.Value, duration)
+                                     .setEase(tweenType)
+                                     .setOnUpdate((Color colorValue) =>
+                                     {
+                                         tmpro.color = colorValue;
+                                     });
+                            break;
                     }
                 }
             }
@@ -189,7 +189,7 @@ namespace Fungus
                             break;
                         case FadeMode.Color:
                             canvasGroup.alpha = targetColor.Value.a;
-                        break;
+                            break;
                     }
                 }
                 else
@@ -201,7 +201,7 @@ namespace Fungus
                             break;
                         case FadeMode.Color:
                             LeanTween.alphaCanvas(canvasGroup, targetColor.Value.a, duration).setEase(tweenType);
-                        break;
+                            break;
                     }
                 }
             }
@@ -215,7 +215,7 @@ namespace Fungus
             }
             else if (fadeMode == FadeMode.Color)
             {
-                return targetColor.Value.ToString()  + " color";
+                return targetColor.Value.ToString() + " color";
             }
 
             return "";

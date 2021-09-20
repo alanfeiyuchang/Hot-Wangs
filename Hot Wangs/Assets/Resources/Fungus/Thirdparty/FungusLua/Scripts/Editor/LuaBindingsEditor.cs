@@ -1,19 +1,19 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEditor;
-using UnityEditorInternal;
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using UnityEditor;
 using UnityEditor.Callbacks;
+using UnityEditorInternal;
+using UnityEngine;
 
 namespace Fungus
 {
-    [CustomEditor (typeof(LuaBindings))]
-    public class LuaBindingsEditor : Editor 
+    [CustomEditor(typeof(LuaBindings))]
+    public class LuaBindingsEditor : Editor
     {
         protected ReorderableList boundObjectsList;
 
@@ -24,7 +24,7 @@ namespace Fungus
         protected SerializedProperty boundObjectsProp;
         protected SerializedProperty showInheritedProp;
 
-        protected string bindingHelpItem = ""; 
+        protected string bindingHelpItem = "";
         protected string bindingHelpDetail = "";
 
         protected virtual void OnEnable()
@@ -42,128 +42,131 @@ namespace Fungus
         {
             boundObjectsList = new ReorderableList(serializedObject, boundObjectsProp, true, true, true, true);
 
-            boundObjectsList.drawElementCallback =  
-                (Rect rect, int index, bool isActive, bool isFocused) => {
-                var element = boundObjectsList.serializedProperty.GetArrayElementAtIndex(index);
-                rect.y += 2;
-
-                float widthA = rect.width * 0.25f;
-                float widthB = rect.width * 0.75f * 0.5f;
-                float widthC = rect.width * 0.75f * 0.5f;
-
-                SerializedProperty keyProp = element.FindPropertyRelative("key");
-                SerializedProperty objectProp = element.FindPropertyRelative("obj");
-
-                EditorGUI.BeginChangeCheck();
-
-                EditorGUI.PropertyField(
-                    new Rect(rect.x, rect.y, widthA - 5, EditorGUIUtility.singleLineHeight),
-                    keyProp, GUIContent.none);
-
-                if (EditorGUI.EndChangeCheck())
+            boundObjectsList.drawElementCallback =
+                (Rect rect, int index, bool isActive, bool isFocused) =>
                 {
-                    // Force the key to be a valid Lua variable name
-                    var luaBindings = target as LuaBindings;
-                    keyProp.stringValue = GetUniqueKey(luaBindings, keyProp.stringValue, index);
-                }
+                    var element = boundObjectsList.serializedProperty.GetArrayElementAtIndex(index);
+                    rect.y += 2;
 
-                EditorGUI.BeginChangeCheck();
+                    float widthA = rect.width * 0.25f;
+                    float widthB = rect.width * 0.75f * 0.5f;
+                    float widthC = rect.width * 0.75f * 0.5f;
 
-                EditorGUI.PropertyField(
-                    new Rect(rect.x + widthA, rect.y, widthB - 5, EditorGUIUtility.singleLineHeight),
-                    objectProp, GUIContent.none);
+                    SerializedProperty keyProp = element.FindPropertyRelative("key");
+                    SerializedProperty objectProp = element.FindPropertyRelative("obj");
 
-                if (EditorGUI.EndChangeCheck())
-                {
-                    // Use the object name as the key
-                    string keyName = objectProp.objectReferenceValue.name;
-                    var luaBindings = target as LuaBindings;
-                    element.FindPropertyRelative("key").stringValue = GetUniqueKey(luaBindings, keyName.ToLower(), index);
+                    EditorGUI.BeginChangeCheck();
 
-                    // Auto select any Flowchart component in the object
-                    GameObject go = objectProp.objectReferenceValue as GameObject;
-                    if (go != null)
+                    EditorGUI.PropertyField(
+                        new Rect(rect.x, rect.y, widthA - 5, EditorGUIUtility.singleLineHeight),
+                        keyProp, GUIContent.none);
+
+                    if (EditorGUI.EndChangeCheck())
                     {
-                        Component flowchart = go.GetComponent("Fungus.Flowchart");
-                        if (flowchart != null)
+                        // Force the key to be a valid Lua variable name
+                        var luaBindings = target as LuaBindings;
+                        keyProp.stringValue = GetUniqueKey(luaBindings, keyProp.stringValue, index);
+                    }
+
+                    EditorGUI.BeginChangeCheck();
+
+                    EditorGUI.PropertyField(
+                        new Rect(rect.x + widthA, rect.y, widthB - 5, EditorGUIUtility.singleLineHeight),
+                        objectProp, GUIContent.none);
+
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        // Use the object name as the key
+                        string keyName = objectProp.objectReferenceValue.name;
+                        var luaBindings = target as LuaBindings;
+                        element.FindPropertyRelative("key").stringValue = GetUniqueKey(luaBindings, keyName.ToLower(), index);
+
+                        // Auto select any Flowchart component in the object
+                        GameObject go = objectProp.objectReferenceValue as GameObject;
+                        if (go != null)
                         {
-                            SerializedProperty componentProp = element.FindPropertyRelative("component");
-                            componentProp.objectReferenceValue = flowchart;
+                            Component flowchart = go.GetComponent("Fungus.Flowchart");
+                            if (flowchart != null)
+                            {
+                                SerializedProperty componentProp = element.FindPropertyRelative("component");
+                                componentProp.objectReferenceValue = flowchart;
+                            }
                         }
                     }
-                }
 
-                if (objectProp.objectReferenceValue != null)
-                {         
-                    GameObject go = objectProp.objectReferenceValue as GameObject;
-                    if (go != null)
+                    if (objectProp.objectReferenceValue != null)
                     {
-                        SerializedProperty componentProp = element.FindPropertyRelative("component");
-
-                        int selected = 0;
-                        List<string> options = new List<string>();
-                        options.Add("<GameObject>");
-
-                        int count = 1;
-                        Component[] componentList = go.GetComponents<Component>();
-                        foreach (Component component in componentList)
+                        GameObject go = objectProp.objectReferenceValue as GameObject;
+                        if (go != null)
                         {
-                            if (componentProp.objectReferenceValue == component)
+                            SerializedProperty componentProp = element.FindPropertyRelative("component");
+
+                            int selected = 0;
+                            List<string> options = new List<string>();
+                            options.Add("<GameObject>");
+
+                            int count = 1;
+                            Component[] componentList = go.GetComponents<Component>();
+                            foreach (Component component in componentList)
                             {
-                                selected = count;
+                                if (componentProp.objectReferenceValue == component)
+                                {
+                                    selected = count;
+                                }
+
+                                if (component == null ||
+                                    component.GetType() == null)
+                                {
+                                    // Missing script?
+                                    continue;
+                                }
+
+                                string componentName = component.GetType().ToString().Replace("UnityEngine.", "");
+                                options.Add(componentName);
+
+                                count++;
                             }
 
-                            if (component == null ||
-                                component.GetType() == null)
+                            int i = EditorGUI.Popup(
+                                new Rect(rect.x + widthA + widthB, rect.y, widthC, EditorGUIUtility.singleLineHeight),
+                                selected,
+                                options.ToArray());
+                            if (i == 0)
                             {
-                                // Missing script?
-                                continue;
+                                componentProp.objectReferenceValue = null;
                             }
-
-                            string componentName = component.GetType().ToString().Replace("UnityEngine.", "");
-                            options.Add(componentName);
-
-                            count++;
+                            else
+                            {
+                                componentProp.objectReferenceValue = componentList[i - 1];
+                            }
                         }
+                    }
 
-                        int i = EditorGUI.Popup(
-                            new Rect(rect.x + widthA + widthB, rect.y, widthC, EditorGUIUtility.singleLineHeight),
-                            selected,
-                            options.ToArray());
-                        if (i == 0)
-                        {
-                            componentProp.objectReferenceValue = null;
-                        }
-                        else
-                        {
-                            componentProp.objectReferenceValue = componentList[i - 1];
-                        }
-                    }                            
-                }
-
-                boundObjectsList.onAddCallback = (ReorderableList l) => {  
-                    // Add a new item. This copies last item in the list, so clear new items values.
-                    boundObjectsProp.InsertArrayElementAtIndex(boundObjectsProp.arraySize);
-                    SerializedProperty newItem = boundObjectsProp.GetArrayElementAtIndex(boundObjectsProp.arraySize - 1);
-                    newItem.FindPropertyRelative("key").stringValue = "";
-                    newItem.FindPropertyRelative("obj").objectReferenceValue = null;
-                    newItem.FindPropertyRelative("component").objectReferenceValue = null;
+                    boundObjectsList.onAddCallback = (ReorderableList l) =>
+                    {
+                        // Add a new item. This copies last item in the list, so clear new items values.
+                        boundObjectsProp.InsertArrayElementAtIndex(boundObjectsProp.arraySize);
+                        SerializedProperty newItem = boundObjectsProp.GetArrayElementAtIndex(boundObjectsProp.arraySize - 1);
+                        newItem.FindPropertyRelative("key").stringValue = "";
+                        newItem.FindPropertyRelative("obj").objectReferenceValue = null;
+                        newItem.FindPropertyRelative("component").objectReferenceValue = null;
+                    };
                 };
-            };
 
-            boundObjectsList.drawHeaderCallback = (Rect rect) => {
+            boundObjectsList.drawHeaderCallback = (Rect rect) =>
+            {
 
                 float widthA = rect.width * 0.25f;
                 float widthB = rect.width * 0.75f * 0.5f;
                 float widthC = rect.width * 0.75f * 0.5f;
 
-                EditorGUI.LabelField(new Rect(rect.x+ 12, rect.y, widthA, EditorGUIUtility.singleLineHeight), "Key");
+                EditorGUI.LabelField(new Rect(rect.x + 12, rect.y, widthA, EditorGUIUtility.singleLineHeight), "Key");
                 EditorGUI.LabelField(new Rect(rect.x + widthA + 12, rect.y, widthB, EditorGUIUtility.singleLineHeight), "Object");
                 EditorGUI.LabelField(new Rect(rect.x + widthA + widthB + 6, rect.y, widthC, EditorGUIUtility.singleLineHeight), "Component");
             };
         }
 
-        public override void OnInspectorGUI() 
+        public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
@@ -216,7 +219,7 @@ namespace Fungus
                     continue;
                 }
 
-                BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public; 
+                BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public;
                 if (!showInheritedProp.boolValue)
                 {
                     flags |= BindingFlags.DeclaredOnly;
@@ -273,7 +276,7 @@ namespace Fungus
 
                     // Build list of parameters
                     string param = "";
-                    foreach (ParameterInfo pi in methodInfo.GetParameters() )
+                    foreach (ParameterInfo pi in methodInfo.GetParameters())
                     {
                         if (param == "")
                         {
@@ -298,12 +301,12 @@ namespace Fungus
                     }
 
                     detail += "Method Name: " + methodInfo.Name + "\n";
-                    foreach (ParameterInfo pi in methodInfo.GetParameters() )
+                    foreach (ParameterInfo pi in methodInfo.GetParameters())
                     {
                         detail += "Parameter: " + pi.Name + " (" + pi.ParameterType.ToString() + ")\n";
                     }
                     detail += "Return Type : " + methodInfo.ReturnType.ToString();
- 
+
                     details.Add(detail);
                 }
             }
@@ -321,7 +324,7 @@ namespace Fungus
                 bindingHelpItem = items[selectedIndex].Replace("/", ".");
                 bindingHelpDetail = details[selectedIndex];
             }
-                
+
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.PropertyField(showInheritedProp);
@@ -349,11 +352,11 @@ namespace Fungus
             string baseKey = originalKey;
 
             // Only letters and digits allowed
-            char[] arr = baseKey.Where(c => (char.IsLetterOrDigit(c) || c == '_')).ToArray(); 
+            char[] arr = baseKey.Where(c => (char.IsLetterOrDigit(c) || c == '_')).ToArray();
             baseKey = new string(arr);
 
             // No leading digits allowed
-            baseKey = baseKey.TrimStart('0','1','2','3','4','5','6','7','8','9');
+            baseKey = baseKey.TrimStart('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
 
             // No empty keys allowed
             if (baseKey.Length == 0)
@@ -422,7 +425,7 @@ namespace Fungus
                     AddAllSubTypes(typeSet, boundObject.component.GetType());
                 }
             }
-                
+
             // Store the final list of types in the luaBindings object 
             SerializedProperty boundTypesProp = so.FindProperty("boundTypes");
             boundTypesProp.ClearArray();
@@ -470,7 +473,7 @@ namespace Fungus
                         AddSubType(typeSet, methodInfo.ReturnType);
                     }
 
-                    foreach (ParameterInfo pi in methodInfo.GetParameters() )
+                    foreach (ParameterInfo pi in methodInfo.GetParameters())
                     {
                         AddSubType(typeSet, pi.ParameterType);
                     }
@@ -506,6 +509,6 @@ namespace Fungus
             }
         }
 
-   }
+    }
 
 }

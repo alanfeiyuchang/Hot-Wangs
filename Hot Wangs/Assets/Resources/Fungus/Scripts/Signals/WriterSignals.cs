@@ -16,7 +16,7 @@ namespace Fungus
         /// </summary>
         public static event TextTagTokenHandler OnTextTagToken;
         public delegate void TextTagTokenHandler(Writer writer, TextTagToken token, int index, int maxIndex);
-        public static void DoTextTagToken(Writer writer, TextTagToken token, int index, int maxIndex) { if(OnTextTagToken != null) OnTextTagToken(writer, token, index, maxIndex); }
+        public static void DoTextTagToken(Writer writer, TextTagToken token, int index, int maxIndex) { if (OnTextTagToken != null) OnTextTagToken(writer, token, index, maxIndex); }
 
         /// <summary>
         /// WriterState signal. Sent when the writer changes state.

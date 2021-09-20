@@ -1,13 +1,13 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEngine;
-using UnityEditor;
-using UnityEditor.Callbacks;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.Callbacks;
+using UnityEngine;
 #if UNITY_5_0 || UNITY_5_1
 using System.Reflection;
 #endif
@@ -36,9 +36,9 @@ namespace Fungus.EditorUtils
     }
 
     // Handle reimporting all assets
-    public class EditorResourcesPostProcessor : AssetPostprocessor 
+    public class EditorResourcesPostProcessor : AssetPostprocessor
     {
-        private static void OnPostprocessAllAssets(string[] importedAssets, string[] _, string[] __, string[] ___) 
+        private static void OnPostprocessAllAssets(string[] importedAssets, string[] _, string[] __, string[] ___)
         {
             foreach (var path in importedAssets)
             {
@@ -94,7 +94,7 @@ namespace Fungus.EditorUtils
                         instance = ScriptableObject.CreateInstance(typeof(FungusEditorResources)) as FungusEditorResources;
                         AssetDatabase.CreateAsset(instance, GetRootFolder() + "/FungusEditorResources.asset");
                     }
-                    else 
+                    else
                     {
                         if (guids.Length > 1)
                         {
@@ -129,9 +129,9 @@ namespace Fungus.EditorUtils
         {
             // Get all unique filenames
             var textureNames = new HashSet<string>();
-            var guids = AssetDatabase.FindAssets("t:Texture2D", new [] { GetRootFolder() });
+            var guids = AssetDatabase.FindAssets("t:Texture2D", new[] { GetRootFolder() });
             var paths = guids.Select(guid => AssetDatabase.GUIDToAssetPath(guid));
-            
+
             foreach (var path in paths)
             {
                 textureNames.Add(Path.GetFileNameWithoutExtension(path));
@@ -140,12 +140,12 @@ namespace Fungus.EditorUtils
             var scriptGuid = AssetDatabase.FindAssets("FungusEditorResources t:MonoScript")[0];
             var relativePath = AssetDatabase.GUIDToAssetPath(scriptGuid).Replace("FungusEditorResources.cs", "FungusEditorResourcesGenerated.cs");
             var absolutePath = Application.dataPath + relativePath.Substring("Assets".Length);
-            
+
             using (var writer = new StreamWriter(absolutePath))
             {
                 writer.WriteLine("// This code is part of the Fungus library (https://github.com/snozbot/fungus)");
                 writer.WriteLine("// It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)");
-                writer.WriteLine("");				
+                writer.WriteLine("");
                 writer.WriteLine("#pragma warning disable 0649");
                 writer.WriteLine("");
                 writer.WriteLine("using UnityEngine;");
@@ -154,7 +154,7 @@ namespace Fungus.EditorUtils
                 writer.WriteLine("{");
                 writer.WriteLine("    public partial class FungusEditorResources : ScriptableObject");
                 writer.WriteLine("    {");
-                
+
                 foreach (var name in textureNames)
                 {
                     writer.WriteLine("        [SerializeField] private EditorTexture " + name + ";");
@@ -164,7 +164,7 @@ namespace Fungus.EditorUtils
 
                 foreach (var name in textureNames)
                 {
-                    var pascalCase = string.Join("", name.Split(new [] { '_' }, StringSplitOptions.RemoveEmptyEntries).Select(
+                    var pascalCase = string.Join("", name.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries).Select(
                         s => s.Substring(0, 1).ToUpper() + s.Substring(1)).ToArray()
                     );
                     writer.WriteLine("        public static Texture2D " + pascalCase + " { get { return Instance." + name + ".Texture2D; } }");
@@ -182,7 +182,7 @@ namespace Fungus.EditorUtils
         private static void OnDidReloadScripts()
         {
             if (Instance.updateOnReloadScripts)
-            {                
+            {
                 UpdateTextureReferences(Instance);
             }
         }
@@ -192,7 +192,7 @@ namespace Fungus.EditorUtils
             // Iterate through all fields in instance and set texture references
             var serializedObject = new SerializedObject(instance);
             var prop = serializedObject.GetIterator();
-            var rootFolder = new [] { GetRootFolder() };
+            var rootFolder = new[] { GetRootFolder() };
 
             prop.NextVisible(true);
             while (prop.NextVisible(false))
@@ -215,7 +215,7 @@ namespace Fungus.EditorUtils
                         {
                             prop.FindPropertyRelative("free").objectReferenceValue = texture;
                         }
-                    }       
+                    }
                 }
             }
 

@@ -1,8 +1,8 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
 using MoonSharp.Interpreter;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -12,7 +12,7 @@ namespace Fungus
     [CommandInfo("Scripting",
                  "Execute Lua",
                  "Executes a Lua code chunk using a Lua Environment.")]
-    public class ExecuteLua : Command 
+    public class ExecuteLua : Command
     {
         [Tooltip("Lua Environment to use to execute this Lua script")]
         [SerializeField] protected LuaEnvironment luaEnvironment;
@@ -20,7 +20,7 @@ namespace Fungus
         [Tooltip("A text file containing Lua script to execute.")]
         [SerializeField] protected TextAsset luaFile;
 
-        [TextArea(10,100)]
+        [TextArea(10, 100)]
         [Tooltip("Lua script to execute. This text is appended to the contents of Lua file (if one is specified).")]
         [SerializeField] protected string luaScript;
 
@@ -40,7 +40,7 @@ namespace Fungus
 
         // Stores the compiled Lua code for fast execution later.
         protected Closure luaFunction;
- 
+
         protected virtual void Start()
         {
             InitExecuteLua();
@@ -88,7 +88,7 @@ namespace Fungus
 
             // Always initialise when playing in the editor.
             // Allows the user to edit the Lua script while the game is playing.
-            if ( !(Application.isPlaying && Application.isEditor) )
+            if (!(Application.isPlaying && Application.isEditor))
             {
                 initialised = true;
             }
@@ -179,7 +179,8 @@ namespace Fungus
                 Continue();
             }
 
-            luaEnvironment.RunLuaFunction(luaFunction, runAsCoroutine, (returnValue) => {
+            luaEnvironment.RunLuaFunction(luaFunction, runAsCoroutine, (returnValue) =>
+            {
                 StoreReturnVariable(returnValue);
                 if (waitUntilFinished)
                 {

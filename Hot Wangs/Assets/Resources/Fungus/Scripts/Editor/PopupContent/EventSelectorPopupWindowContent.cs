@@ -1,11 +1,11 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEditor;
-using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
+using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
@@ -45,7 +45,7 @@ namespace Fungus.EditorUtils
 
         protected Block block;
         public EventSelectorPopupWindowContent(string currentHandlerName, Block block, int width, int height)
-            :base(currentHandlerName, width, height, true)
+            : base(currentHandlerName, width, height, true)
         {
             this.block = block;
         }
@@ -68,7 +68,7 @@ namespace Fungus.EditorUtils
                 i++;
             }
         }
-        
+
         override protected void SelectByOrigIndex(int index)
         {
             SetEventHandlerOperation operation = new SetEventHandlerOperation();

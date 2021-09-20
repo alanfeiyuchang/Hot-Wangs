@@ -3,7 +3,6 @@
 
 using System.Collections.Generic;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Fungus
 {
@@ -146,7 +145,7 @@ namespace Fungus
                             }
 
                             //if has control var, clean first element
-                            if(curSection.type != Section.VaryType.Sequence)
+                            if (curSection.type != Section.VaryType.Sequence)
                             {
                                 curSection.elements[0] = curSection.elements[0].Substring(1);
                             }
@@ -198,7 +197,7 @@ namespace Fungus
 
                 //fetched hashed value
                 int index = -1;
-                
+
                 //as input and entire can be the same thing we need to shuffle these bits
                 //we use some xorshift style mixing
                 int inputHash = input.GetHashCode();

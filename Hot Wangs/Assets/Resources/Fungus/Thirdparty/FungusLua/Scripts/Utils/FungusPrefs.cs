@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -38,7 +38,7 @@ namespace Fungus
             string slotKey = GetSlotKey(slot, key);
             return PlayerPrefs.GetFloat(slotKey, defaultValue);
         }
-     
+
         /// <summary>
         /// Returns the int value associated with this key in this save slot, it it exists.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Fungus
         /// </summary>
         public static void Save()
         {
-            PlayerPrefs.Save();        
+            PlayerPrefs.Save();
         }
 
         /// <summary>

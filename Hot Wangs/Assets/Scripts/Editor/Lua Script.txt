@@ -1,0 +1,8 @@
+stage.show(jason, "Jason", "offscreen left", "middle")
+setcharacter(jason)
+say("Hello there")
+setcharacter(jason)
+say("Something")
+setcharacter(jason)
+say("Bye")
+stage.hide(jason, "middle")

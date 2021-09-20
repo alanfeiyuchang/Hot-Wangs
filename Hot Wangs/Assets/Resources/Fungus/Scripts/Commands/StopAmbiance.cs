@@ -8,8 +8,8 @@ namespace Fungus
     /// <summary>
     /// Stops the currently playing game music.
     /// </summary>
-    [CommandInfo("Audio", 
-                 "Stop Ambiance", 
+    [CommandInfo("Audio",
+                 "Stop Ambiance",
                  "Stops the currently playing game ambiance.")]
     [AddComponentMenu("")]
     public class StopAmbiance : Command

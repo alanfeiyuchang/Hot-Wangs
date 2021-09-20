@@ -1,10 +1,10 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
-namespace Fungus 
+namespace Fungus
 {
     /// <summary>
     /// The block will execute when the user clicks or taps on the clickable object.
@@ -14,7 +14,7 @@ namespace Fungus
                       "The block will execute when the user clicks or taps on the clickable object.")]
     [AddComponentMenu("")]
     public class ObjectClicked : EventHandler
-    {   
+    {
         public class ObjectClickedEvent
         {
             public Clickable2D ClickableObject;

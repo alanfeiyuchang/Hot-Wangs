@@ -8,11 +8,11 @@ namespace Fungus
     /// <summary>
     /// Quits the application. Does not work in Editor or Webplayer builds. Shouldn't generally be used on iOS.
     /// </summary>
-    [CommandInfo("Flow", 
-                 "Quit", 
+    [CommandInfo("Flow",
+                 "Quit",
                  "Quits the application. Does not work in Editor or Webplayer builds. Shouldn't generally be used on iOS.")]
     [AddComponentMenu("")]
-    public class Quit : Command 
+    public class Quit : Command
     {
         #region Public members
 

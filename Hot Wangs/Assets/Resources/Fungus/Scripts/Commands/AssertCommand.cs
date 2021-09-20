@@ -44,7 +44,7 @@ namespace Fungus
                     break;
 
                 default:
-                break;
+                    break;
             }
 
             Continue();

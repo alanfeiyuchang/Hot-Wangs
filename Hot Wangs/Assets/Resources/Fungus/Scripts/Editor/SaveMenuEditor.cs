@@ -3,13 +3,13 @@
 
 #if UNITY_5_3_OR_NEWER
 
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(SaveMenu), true)]
-    public class SaveMenuEditor : Editor 
+    [CustomEditor(typeof(SaveMenu), true)]
+    public class SaveMenuEditor : Editor
     {
         public override void OnInspectorGUI()
         {

@@ -63,15 +63,16 @@ namespace Fungus
             {
                 return "Error: No sound clip selected";
             }
-            
+
             string sounds = "[";
-            foreach (AudioClip ac in soundClip) {
-				if(ac!=null)
-					sounds+=ac.name+" ,";
+            foreach (AudioClip ac in soundClip)
+            {
+                if (ac != null)
+                    sounds += ac.name + " ,";
             }
             sounds = sounds.TrimEnd(' ', ',');
             sounds += "]";
-            return "Random sounds "+sounds;
+            return "Random sounds " + sounds;
         }
 
         public override Color GetButtonColor()

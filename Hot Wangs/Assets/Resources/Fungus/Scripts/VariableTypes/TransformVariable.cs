@@ -2,7 +2,6 @@
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 using UnityEngine;
-using System.Collections;
 
 namespace Fungus
 {
@@ -25,7 +24,7 @@ namespace Fungus
         [SerializeField]
         [VariableProperty("<Value>", typeof(TransformVariable))]
         public TransformVariable transformRef;
-        
+
         [SerializeField]
         public Transform transformVal;
 
@@ -34,7 +33,7 @@ namespace Fungus
             transformVal = v;
             transformRef = null;
         }
-        
+
         public static implicit operator Transform(TransformData vector3Data)
         {
             return vector3Data.Value;

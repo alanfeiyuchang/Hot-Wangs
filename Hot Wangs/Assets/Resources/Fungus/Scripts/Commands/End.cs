@@ -8,8 +8,8 @@ namespace Fungus
     /// <summary>
     /// Marks the end of a conditional block.
     /// </summary>
-    [CommandInfo("Flow", 
-                 "End", 
+    [CommandInfo("Flow",
+                 "End",
                  "Marks the end of a conditional block.")]
     [AddComponentMenu("")]
     public class End : Command

@@ -8,12 +8,12 @@ namespace Fungus
     /// <summary>
     /// Resets the state of all commands and variables in the Flowchart.
     /// </summary>
-    [CommandInfo("Variable", 
-                 "Reset", 
+    [CommandInfo("Variable",
+                 "Reset",
                  "Resets the state of all commands and variables in the Flowchart.")]
     [AddComponentMenu("")]
     public class Reset : Command
-    {   
+    {
         [Tooltip("Reset state of all commands in the script")]
         [SerializeField] protected bool resetCommands = true;
 

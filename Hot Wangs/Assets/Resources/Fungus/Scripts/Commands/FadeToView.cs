@@ -8,11 +8,11 @@ namespace Fungus
     /// <summary>
     /// Fades the camera out and in again at a position specified by a View object.
     /// </summary>
-    [CommandInfo("Camera", 
-                 "Fade To View", 
+    [CommandInfo("Camera",
+                 "Fade To View",
                  "Fades the camera out and in again at a position specified by a View object.")]
     [AddComponentMenu("")]
-    public class FadeToView : Command 
+    public class FadeToView : Command
     {
         [Tooltip("Time for fade effect to complete")]
         [SerializeField] protected float duration = 1f;
@@ -87,7 +87,8 @@ namespace Fungus
                 cameraManager.ScreenFadeTexture = CameraManager.CreateColorTexture(fadeColor, 32, 32);
             }
 
-            cameraManager.FadeToView(targetCamera, targetView, duration, fadeOut, delegate { 
+            cameraManager.FadeToView(targetCamera, targetView, duration, fadeOut, delegate
+            {
                 if (waitUntilFinished)
                 {
                     Continue();

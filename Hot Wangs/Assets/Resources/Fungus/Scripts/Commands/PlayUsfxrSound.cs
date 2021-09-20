@@ -5,13 +5,13 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-﻿namespace Fungus 
+namespace Fungus
 {
     /// <summary>
     /// Plays a usfxr synth sound. Use the usfxr editor [Tools > Fungus > Utilities > Generate usfxr Sound Effects] to create the SettingsString. Set a ParentTransform if using positional sound. See https://github.com/zeh/usfxr for more information about usfxr.
     /// </summary>
-    [CommandInfo("Audio", 
-                 "Play Usfxr Sound", 
+    [CommandInfo("Audio",
+                 "Play Usfxr Sound",
                  "Plays a usfxr synth sound. Use the usfxr editor [Tools > Fungus > Utilities > Generate usfxr Sound Effects] to create the SettingsString. Set a ParentTransform if using positional sound. See https://github.com/zeh/usfxr for more information about usfxr.")]
     [AddComponentMenu("")]
     //[ExecuteInEditMode]
@@ -29,16 +29,16 @@ using UnityEngine.Serialization;
         protected SfxrSynth _synth = new SfxrSynth();
 
         //Call this if the settings have changed
-        protected virtual void UpdateCache()  
+        protected virtual void UpdateCache()
         {
-            if (!string.IsNullOrEmpty(_SettingsString.Value)) 
+            if (!string.IsNullOrEmpty(_SettingsString.Value))
             {
                 _synth.parameters.SetSettingsString(_SettingsString.Value);
                 _synth.CacheSound();
             }
         }
 
-        protected virtual void Awake() 
+        protected virtual void Awake()
         {
             //Always build the cache on awake
             UpdateCache();
@@ -51,7 +51,7 @@ using UnityEngine.Serialization;
 
         #region Public members
 
-        public override void OnEnter() 
+        public override void OnEnter()
         {
             _synth.SetParentTransform(ParentTransform);
             _synth.Play();
@@ -61,24 +61,24 @@ using UnityEngine.Serialization;
             }
             else
             {
-                Invoke ("DoWait", waitDuration);
+                Invoke("DoWait", waitDuration);
             }
         }
 
-        public override string GetSummary() 
+        public override string GetSummary()
         {
-            if (String.IsNullOrEmpty(_SettingsString.Value)) 
+            if (String.IsNullOrEmpty(_SettingsString.Value))
             {
                 return "Settings String hasn't been set!";
             }
-            if (ParentTransform != null) 
+            if (ParentTransform != null)
             {
                 return "" + ParentTransform.name + ": " + _SettingsString.Value;
             }
             return "Camera.main: " + _SettingsString.Value;
         }
 
-        public override Color GetButtonColor() 
+        public override Color GetButtonColor()
         {
             return new Color32(128, 200, 200, 255);
         }

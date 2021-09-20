@@ -13,21 +13,21 @@ namespace Fungus
     [AddComponentMenu("")]
     public class QuaternionProperty : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            X, 
-            Y, 
-            Z, 
-            W, 
-            EulerAngles, 
-            Normalized, 
+        //generated property
+        public enum Property
+        {
+            X,
+            Y,
+            Z,
+            W,
+            EulerAngles,
+            Normalized,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         protected QuaternionData quaternionData;
 

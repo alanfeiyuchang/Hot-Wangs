@@ -1,20 +1,20 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Fungus
 {
     /// <summary>
     /// Sets all collider (2d or 3d) components on the target objects to be active / inactive.
     /// </summary>
-    [CommandInfo("Sprite", 
-                 "Set Collider", 
+    [CommandInfo("Sprite",
+                 "Set Collider",
                  "Sets all collider (2d or 3d) components on the target objects to be active / inactive")]
     [AddComponentMenu("")]
     public class SetCollider : Command
-    {       
+    {
         [Tooltip("A list of gameobjects containing collider components to be set active / inactive")]
         [SerializeField] protected List<GameObject> targetObjects = new List<GameObject>();
 
@@ -26,7 +26,7 @@ namespace Fungus
 
         protected virtual void SetColliderActive(GameObject go)
         {
-            if (go != null)     
+            if (go != null)
             {
                 // 3D objects
                 var colliders = go.GetComponentsInChildren<Collider>();
@@ -48,7 +48,7 @@ namespace Fungus
 
         #region Public members
 
-        public override void OnEnter()  
+        public override void OnEnter()
         {
             for (int i = 0; i < targetObjects.Count; i++)
             {
@@ -91,10 +91,10 @@ namespace Fungus
                 return "Disable " + count + " collider objects.";
             }
         }
-        
+
         public override Color GetButtonColor()
         {
-            return new Color32(235, 191, 217, 255); 
+            return new Color32(235, 191, 217, 255);
         }
 
         public override bool IsReorderableArray(string propertyName)
@@ -109,5 +109,5 @@ namespace Fungus
 
         #endregion
     }
-        
+
 }

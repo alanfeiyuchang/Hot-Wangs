@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Globalization;
 
 namespace MarkerMetro.Unity.WinLegacy.Reflection
 {
@@ -71,7 +70,7 @@ namespace MarkerMetro.Unity.WinLegacy.Reflection
 #if NETFX_CORE
             return type.GetTypeInfo().IsValueType;
 #else
-            return type.IsValueType;   
+            return type.IsValueType;
 #endif
         }
 
@@ -108,7 +107,7 @@ namespace MarkerMetro.Unity.WinLegacy.Reflection
 
         public static object[] GetCustomAttributes(this Type type, Type attrType, bool inherit)
         {
-            
+
 #if NETFX_CORE
             var customAttributes = type.GetTypeInfo().GetCustomAttributes(attrType, inherit);
             if (customAttributes == null) return null;

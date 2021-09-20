@@ -13,21 +13,21 @@ namespace Fungus
     [AddComponentMenu("")]
     public class CollectionProperty : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            Capacity, 
-            Count, 
-            IsFixedSize, 
-            IsReadOnly, 
-            IsSynchronized, 
-            Name, 
+        //generated property
+        public enum Property
+        {
+            Capacity,
+            Count,
+            IsFixedSize,
+            IsReadOnly,
+            IsSynchronized,
+            Name,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         protected CollectionData collectionData;
 

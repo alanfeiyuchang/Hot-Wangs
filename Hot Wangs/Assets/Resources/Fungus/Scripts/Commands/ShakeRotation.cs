@@ -1,17 +1,17 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
-using System.Collections;
 
 namespace Fungus
 {
     /// <summary>
     /// Randomly shakes a GameObject's rotation by a diminishing amount over time.
     /// </summary>
-    [CommandInfo("iTween", 
-                 "Shake Rotation", 
+    [CommandInfo("iTween",
+                 "Shake Rotation",
                  "Randomly shakes a GameObject's rotation by a diminishing amount over time.")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]
@@ -63,5 +63,5 @@ namespace Fungus
         }
 
         #endregion
-    }    
+    }
 }

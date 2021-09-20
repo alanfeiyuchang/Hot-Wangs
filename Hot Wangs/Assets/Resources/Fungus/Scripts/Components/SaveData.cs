@@ -3,8 +3,8 @@
 
 #if UNITY_5_3_OR_NEWER
 
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Fungus
 {

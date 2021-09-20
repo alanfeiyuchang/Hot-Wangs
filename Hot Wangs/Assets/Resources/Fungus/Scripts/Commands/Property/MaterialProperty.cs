@@ -13,23 +13,23 @@ namespace Fungus
     [AddComponentMenu("")]
     public class MaterialProperty : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            Color, 
-            MainTexture, 
-            MainTextureOffset, 
-            MainTextureScale, 
-            RenderQueue, 
-            DoubleSidedGI, 
-            EnableInstancing, 
-            PassCount, 
+        //generated property
+        public enum Property
+        {
+            Color,
+            MainTexture,
+            MainTextureOffset,
+            MainTextureScale,
+            RenderQueue,
+            DoubleSidedGI,
+            EnableInstancing,
+            PassCount,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         [VariableProperty(typeof(MaterialVariable))]
         protected MaterialVariable materialVar;

@@ -1,10 +1,10 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
-using System.Collections.Generic;
 using MoonSharp.Interpreter;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -41,7 +41,7 @@ namespace Fungus
     /// Component which manages a list of bound objects to be accessed in Lua scripts.
     /// </summary>
     [ExecuteInEditMode]
-    public class LuaBindings : LuaBindingsBase 
+    public class LuaBindings : LuaBindingsBase
     {
         [Tooltip("Add bindings to every Lua Environment in the scene. If false, only add bindings to a specific Lua Environment.")]
         [SerializeField] protected bool allEnvironments = true;
@@ -64,7 +64,7 @@ namespace Fungus
         [Tooltip("Show inherited public members.")]
         [SerializeField] protected bool showInherited;
 
-        protected virtual void Update() 
+        protected virtual void Update()
         {
             // Add in a single empty line at start
             if (boundObjects.Count == 0)
@@ -80,7 +80,7 @@ namespace Fungus
         /// </summary>
         public override void AddBindings(LuaEnvironment luaEnv)
         {
-            if (!allEnvironments && 
+            if (!allEnvironments &&
                 (luaEnvironment != null && !luaEnvironment.Equals(luaEnv)))
             {
                 // Don't add bindings to this environment
@@ -108,7 +108,7 @@ namespace Fungus
                 {
                     // Create a new table
                     bindingsTable = new Table(globals.OwnerScript);
-                    globals[tableName] = bindingsTable; 
+                    globals[tableName] = bindingsTable;
                 }
             }
 

@@ -1,11 +1,10 @@
 ﻿// This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
 using System.Linq;
+using UnityEditor;
+using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
@@ -102,7 +101,7 @@ namespace Fungus.EditorUtils
                 {
                     continue;
                 }
-                
+
                 GUIContent typeName = new GUIContent(variableInfo.Category + CATEGORY_CHAR + variableInfo.VariableType);
 
                 menu.AddItem(typeName, false, AddVariable, type);
@@ -140,7 +139,7 @@ namespace Fungus.EditorUtils
             var existingVariable = flowchart.GetVariable(suggestedName);
             if (existingVariable != null)
             {
-                flowchart.Variables.Insert(flowchart.Variables.IndexOf(existingVariable)+1, newVariable);
+                flowchart.Variables.Insert(flowchart.Variables.IndexOf(existingVariable) + 1, newVariable);
             }
             else
             {

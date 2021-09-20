@@ -9,7 +9,7 @@ namespace Fungus
     /// Temporary buffer object used when copying and pasting commands.
     /// </summary>
     [AddComponentMenu("")]
-    public class CommandCopyBuffer : Block 
+    public class CommandCopyBuffer : Block
     {
         protected static CommandCopyBuffer instance;
 

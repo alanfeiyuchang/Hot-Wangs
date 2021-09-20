@@ -9,8 +9,8 @@ namespace Fungus
     /// <summary>
     /// Waits for period of time before executing the next command in the block.
     /// </summary>
-    [CommandInfo("Flow", 
-                 "Wait", 
+    [CommandInfo("Flow",
+                 "Wait",
                  "Waits for period of time before executing the next command in the block.")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]
@@ -28,7 +28,7 @@ namespace Fungus
 
         public override void OnEnter()
         {
-            Invoke ("OnWaitComplete", _duration.Value);
+            Invoke("OnWaitComplete", _duration.Value);
         }
 
         public override string GetSummary()

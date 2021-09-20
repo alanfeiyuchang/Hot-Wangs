@@ -8,8 +8,8 @@ namespace Fungus
     /// <summary>
     /// Marks a position in the command list for execution to jump to.
     /// </summary>
-    [CommandInfo("Flow", 
-                 "Label", 
+    [CommandInfo("Flow",
+                 "Label",
                  "Marks a position in the command list for execution to jump to.")]
     [AddComponentMenu("")]
     public class Label : Command

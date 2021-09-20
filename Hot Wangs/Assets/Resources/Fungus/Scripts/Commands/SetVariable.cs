@@ -2,7 +2,6 @@
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace Fungus
 {
@@ -16,10 +15,10 @@ namespace Fungus
     public class SetVariable : Command, ISerializationCallbackReceiver
     {
         [SerializeField] protected AnyVariableAndDataPair anyVar = new AnyVariableAndDataPair();
-        
+
         [Tooltip("The type of math operation to be performed")]
         [SerializeField] protected SetOperator setOperator;
-               
+
         protected virtual void DoSetOperation()
         {
             if (anyVar.variable == null)
@@ -79,7 +78,7 @@ namespace Fungus
         {
             base.RefreshVariableCache();
 
-            if(anyVar != null)
+            if (anyVar != null)
                 anyVar.RefreshVariableCacheHelper(GetFlowchart(), ref referencedVariables);
         }
 #endif

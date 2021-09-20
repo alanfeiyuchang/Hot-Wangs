@@ -1,15 +1,15 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEditor;
-using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
+using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(Variable), true)]
+    [CustomEditor(typeof(Variable), true)]
     public class VariableEditor : CommandEditor
     {
         public override void OnEnable()
@@ -31,23 +31,23 @@ namespace Fungus.EditorUtils
                     return variableInfoAttr;
                 }
             }
-            
+
             return null;
         }
 
-        public static void VariableField(SerializedProperty property, 
-                                         GUIContent label, 
+        public static void VariableField(SerializedProperty property,
+                                         GUIContent label,
                                          Flowchart flowchart,
                                          string defaultText,
-                                         Func<Variable, bool> filter, 
+                                         Func<Variable, bool> filter,
                                          Func<string, int, string[], int> drawer = null)
         {
             List<string> variableKeys = new List<string>();
             List<Variable> variableObjects = new List<Variable>();
-            
+
             variableKeys.Add(defaultText);
             variableObjects.Add(null);
-            
+
             List<Variable> variables = flowchart.Variables;
             int index = 0;
             int selectedIndex = 0;
@@ -76,12 +76,12 @@ namespace Fungus.EditorUtils
                         continue;
                     }
                 }
-                
+
                 variableKeys.Add(v.Key);
                 variableObjects.Add(v);
-                
+
                 index++;
-                
+
                 if (v == selectedVariable)
                 {
                     selectedIndex = index;
@@ -134,9 +134,9 @@ namespace Fungus.EditorUtils
 
     [CustomPropertyDrawer(typeof(VariablePropertyAttribute))]
     public class VariableDrawer : PropertyDrawer
-    {   
-        
-        public override void OnGUI (Rect position, SerializedProperty property, GUIContent label) 
+    {
+
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             VariablePropertyAttribute variableProperty = attribute as VariablePropertyAttribute;
             if (variableProperty == null)
@@ -147,7 +147,7 @@ namespace Fungus.EditorUtils
             EditorGUI.BeginProperty(position, label, property);
 
             // Filter the variables by the types listed in the VariableProperty attribute
-            Func<Variable, bool> compare = v => 
+            Func<Variable, bool> compare = v =>
             {
                 if (v == null)
                 {
@@ -170,21 +170,21 @@ namespace Fungus.EditorUtils
                 return variableProperty.VariableTypes.Contains<System.Type>(v.GetType());
             };
 
-            VariableEditor.VariableField(property, 
+            VariableEditor.VariableField(property,
                                          label,
                                          FlowchartWindow.GetFlowchart(),
                                          variableProperty.defaultText,
                                          compare,
-                                         (s,t,u) => (EditorGUI.Popup(position, s, t, u)));
+                                         (s, t, u) => (EditorGUI.Popup(position, s, t, u)));
 
             EditorGUI.EndProperty();
         }
     }
-    
-    public class VariableDataDrawer<T> : PropertyDrawer where T : Variable
-    {   
 
-        public override void OnGUI (Rect position, SerializedProperty property, GUIContent label) 
+    public class VariableDataDrawer<T> : PropertyDrawer where T : Variable
+    {
+
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUI.BeginProperty(position, label, property);
 
@@ -223,7 +223,7 @@ namespace Fungus.EditorUtils
 
             var itemH = EditorGUI.GetPropertyHeight(valueProp, label);
 
-            if (itemH <= EditorGUIUtility.singleLineHeight*2)
+            if (itemH <= EditorGUIUtility.singleLineHeight * 2)
             {
                 DrawSingleLineProperty(position, origLabel, referenceProp, valueProp, flowchart, typeInfo);
             }
@@ -266,13 +266,13 @@ namespace Fungus.EditorUtils
             VariableInfoAttribute typeInfo)
         {
             const int popupWidth = 100;
-            
+
             Rect controlRect = rect;
             Rect valueRect = controlRect;
             //valueRect.width = controlRect.width - 5;
             Rect popupRect = controlRect;
             popupRect.height = EditorGUIUtility.singleLineHeight;
-            
+
             if (referenceProp.objectReferenceValue == null)
             {
                 //EditorGUI.PropertyField(valueRect, valueProp, label);
@@ -295,7 +295,7 @@ namespace Fungus.EditorUtils
             {
                 return EditorGUIUtility.singleLineHeight;
             }
-            
+
             string propNameBase = typeInfo.VariableType;
             propNameBase = Char.ToLowerInvariant(propNameBase[0]) + propNameBase.Substring(1);
 
@@ -311,23 +311,23 @@ namespace Fungus.EditorUtils
         }
     }
 
-    [CustomPropertyDrawer (typeof(BooleanData))]
+    [CustomPropertyDrawer(typeof(BooleanData))]
     public class BooleanDataDrawer : VariableDataDrawer<BooleanVariable>
-    {}
+    { }
 
-    [CustomPropertyDrawer (typeof(IntegerData))]
+    [CustomPropertyDrawer(typeof(IntegerData))]
     public class IntegerDataDrawer : VariableDataDrawer<IntegerVariable>
-    {}
+    { }
 
-    [CustomPropertyDrawer (typeof(FloatData))]
+    [CustomPropertyDrawer(typeof(FloatData))]
     public class FloatDataDrawer : VariableDataDrawer<FloatVariable>
-    {}
+    { }
 
-    [CustomPropertyDrawer (typeof(StringData))]
+    [CustomPropertyDrawer(typeof(StringData))]
     public class StringDataDrawer : VariableDataDrawer<StringVariable>
-    {}
+    { }
 
-    [CustomPropertyDrawer (typeof(StringDataMulti))]
+    [CustomPropertyDrawer(typeof(StringDataMulti))]
     public class StringDataMultiDrawer : VariableDataDrawer<StringVariable>
-    {}
+    { }
 }

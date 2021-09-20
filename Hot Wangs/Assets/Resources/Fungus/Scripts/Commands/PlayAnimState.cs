@@ -1,18 +1,18 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Fungus
 {
     /// <summary>
     /// Plays a state of an animator according to the state name.
     /// </summary>
-    [CommandInfo("Animation", 
-                 "Play Anim State", 
+    [CommandInfo("Animation",
+                 "Play Anim State",
                  "Plays a state of an animator according to the state name")]
     [AddComponentMenu("")]
-    public class PlayAnimState : Command 
+    public class PlayAnimState : Command
     {
         [Tooltip("Reference to an Animator component in a game object")]
         [SerializeField] protected AnimatorData animator = new AnimatorData();
@@ -55,12 +55,12 @@ namespace Fungus
 
         public override bool HasReference(Variable variable)
         {
-            return animator.animatorRef == variable || stateName.stringRef == variable || 
-                layer.integerRef == variable || time.floatRef == variable || 
+            return animator.animatorRef == variable || stateName.stringRef == variable ||
+                layer.integerRef == variable || time.floatRef == variable ||
                 base.HasReference(variable);
         }
 
         #endregion
-    }    
+    }
 }
 

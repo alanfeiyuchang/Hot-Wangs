@@ -1,17 +1,17 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
-using System.Collections.Generic;
 
 namespace Fungus
 {
     /// <summary>
     /// Displays a timer bar and executes a target block if the player fails to select a menu option in time.
     /// </summary>
-    [CommandInfo("Narrative", 
-                 "Menu Timer", 
+    [CommandInfo("Narrative",
+                 "Menu Timer",
                  "Displays a timer bar and executes a target block if the player fails to select a menu option in time.")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]
@@ -44,7 +44,7 @@ namespace Fungus
             if (targetBlock != null)
             {
                 connectedBlocks.Add(targetBlock);
-            }       
+            }
         }
 
         public override string GetSummary()
@@ -72,7 +72,7 @@ namespace Fungus
         {
             return block == targetBlock;
         }
-        
+
         #endregion
 
         #region Backwards compatibility

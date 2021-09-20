@@ -8,11 +8,11 @@ namespace Fungus
     /// <summary>
     /// Sets a custom say dialog to use when displaying story text.
     /// </summary>
-    [CommandInfo("Narrative", 
-                 "Set Say Dialog", 
+    [CommandInfo("Narrative",
+                 "Set Say Dialog",
                  "Sets a custom say dialog to use when displaying story text")]
     [AddComponentMenu("")]
-    public class SetSayDialog : Command 
+    public class SetSayDialog : Command
     {
         [Tooltip("The Say Dialog to use for displaying Say story text")]
         [SerializeField] protected SayDialog sayDialog;

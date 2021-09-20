@@ -1,19 +1,19 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Fungus
 {
     /// <summary>
     /// Set the interactable state of selectable objects.
     /// </summary>
-    [CommandInfo("UI", 
-                 "Set Interactable", 
+    [CommandInfo("UI",
+                 "Set Interactable",
                  "Set the interactable state of selectable objects.")]
-    public class SetInteractable : Command 
+    public class SetInteractable : Command
     {
         [Tooltip("List of objects to be affected by the command")]
         [SerializeField] protected List<GameObject> targetObjects = new List<GameObject>();
@@ -41,7 +41,7 @@ namespace Fungus
                     selectable.interactable = interactableState.Value;
                 }
             }
-                
+
             Continue();
         }
 
@@ -59,7 +59,7 @@ namespace Fungus
                 }
                 return targetObjects[0].name + " = " + interactableState.Value;
             }
-            
+
             string objectList = "";
             for (int i = 0; i < targetObjects.Count; i++)
             {
@@ -77,10 +77,10 @@ namespace Fungus
                     objectList += ", " + go.name;
                 }
             }
-            
+
             return objectList + " = " + interactableState.Value;
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(180, 250, 250, 255);

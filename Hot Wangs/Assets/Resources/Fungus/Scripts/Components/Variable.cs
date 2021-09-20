@@ -69,7 +69,7 @@ namespace Fungus
             this.Order = order;
             this.IsPreviewedOnly = isPreviewedOnly;
         }
-        
+
         public string Category { get; set; }
         public string VariableType { get; set; }
         public int Order { get; set; }
@@ -79,9 +79,9 @@ namespace Fungus
     /// <summary>
     /// Attribute class for variable properties.
     /// </summary>
-    public sealed class VariablePropertyAttribute : PropertyAttribute 
+    public sealed class VariablePropertyAttribute : PropertyAttribute
     {
-        public VariablePropertyAttribute (params System.Type[] variableTypes) 
+        public VariablePropertyAttribute(params System.Type[] variableTypes)
         {
             this.VariableTypes = variableTypes;
         }
@@ -91,7 +91,7 @@ namespace Fungus
             VariableTypes = AllVariableTypes.AllFungusVarTypes;
         }
 
-        public VariablePropertyAttribute (string defaultText, params System.Type[] variableTypes) 
+        public VariablePropertyAttribute(string defaultText, params System.Type[] variableTypes)
         {
             this.defaultText = defaultText;
             this.VariableTypes = variableTypes;
@@ -155,7 +155,7 @@ namespace Fungus
         /// Does the underlying type provide support for < <= > >=
         /// </summary>
         public virtual bool IsComparisonSupported() { return false; }
-        
+
         /// <summary>
         /// Boxed or referenced value of type defined within inherited types.
         /// Not recommended for direct use, primarily intended for use in editor code.
@@ -185,7 +185,7 @@ namespace Fungus
                 {
                     return _globalStaicRef;
                 }
-                else if(Application.isPlaying)
+                else if (Application.isPlaying)
                 {
                     return _globalStaicRef = FungusManager.Instance.GlobalVariables.GetOrAddVariable(Key, value, this.GetType());
                 }
@@ -206,7 +206,7 @@ namespace Fungus
                     return this.value;
                 }
                 else
-                { 
+                {
                     return globalStaicRef.value;
                 }
             }
@@ -234,7 +234,7 @@ namespace Fungus
         {
             Value = startValue;
         }
-        
+
         public override string ToString()
         {
             if (Value != null)
@@ -242,7 +242,7 @@ namespace Fungus
             else
                 return "Null";
         }
-        
+
         protected virtual void Start()
         {
             // Remember the initial value so we can reset later on
@@ -252,11 +252,11 @@ namespace Fungus
         //Apply to get from base system.object to T
         public override void Apply(SetOperator op, object value)
         {
-            if(value is T || value == null)
+            if (value is T || value == null)
             {
                 Apply(op, (T)value);
             }
-            else if(value is VariableBase<T>)
+            else if (value is VariableBase<T>)
             {
                 var vbg = value as VariableBase<T>;
                 Apply(op, vbg.Value);
@@ -271,12 +271,12 @@ namespace Fungus
         {
             switch (setOperator)
             {
-            case SetOperator.Assign:
-                Value = value;
-                break;
-            default:
-                Debug.LogError("The " + setOperator.ToString() + " set operator is not valid.");
-                break;
+                case SetOperator.Assign:
+                    Value = value;
+                    break;
+                default:
+                    Debug.LogError("The " + setOperator.ToString() + " set operator is not valid.");
+                    break;
             }
         }
 
@@ -306,15 +306,15 @@ namespace Fungus
 
             switch (compareOperator)
             {
-            case CompareOperator.Equals:
-                condition = Equals(Value, value);// Value.Equals(value);
-                break;
-            case CompareOperator.NotEquals:
-                condition = !Equals(Value, value);
-                break;
-            default:
-                Debug.LogError("The " + compareOperator.ToString() + " comparison operator is not valid.");
-                break;
+                case CompareOperator.Equals:
+                    condition = Equals(Value, value);// Value.Equals(value);
+                    break;
+                case CompareOperator.NotEquals:
+                    condition = !Equals(Value, value);
+                    break;
+                default:
+                    Debug.LogError("The " + compareOperator.ToString() + " comparison operator is not valid.");
+                    break;
             }
 
             return condition;

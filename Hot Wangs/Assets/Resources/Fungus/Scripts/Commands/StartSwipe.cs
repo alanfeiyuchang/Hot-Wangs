@@ -8,11 +8,11 @@ namespace Fungus
     /// <summary>
     /// Activates swipe panning mode where the player can pan the camera within the area between viewA & viewB.
     /// </summary>
-    [CommandInfo("Camera", 
-                 "Start Swipe", 
+    [CommandInfo("Camera",
+                 "Start Swipe",
                  "Activates swipe panning mode where the player can pan the camera within the area between viewA & viewB.")]
     [AddComponentMenu("")]
-    public class StartSwipe : Command 
+    public class StartSwipe : Command
     {
         [Tooltip("Defines one extreme of the scrollable area that the player can pan around")]
         [SerializeField] protected View viewA;
@@ -55,7 +55,7 @@ namespace Fungus
 
             var cameraManager = FungusManager.Instance.CameraManager;
 
-            cameraManager.StartSwipePan(targetCamera, viewA, viewB, duration, speedMultiplier, () => Continue() );
+            cameraManager.StartSwipePan(targetCamera, viewA, viewB, duration, speedMultiplier, () => Continue());
         }
 
         public override string GetSummary()

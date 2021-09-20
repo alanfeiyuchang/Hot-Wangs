@@ -1,10 +1,10 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace Fungus 
+namespace Fungus
 {
     /// <summary>
     /// The block will execute when the user toggles on the target UI toggle object.
@@ -14,7 +14,7 @@ namespace Fungus
                       "The block will execute when the state of the target UI toggle object changes. The state of the toggle is stored in the Toggle State boolean variable.")]
     [AddComponentMenu("")]
     public class ToggleChanged : EventHandler
-    {   
+    {
         [Tooltip("The block will execute when the state of the target UI toggle object changes.")]
         [SerializeField] protected Toggle targetToggle;
 
@@ -31,7 +31,7 @@ namespace Fungus
                 targetToggle.onValueChanged.AddListener(OnToggleChanged);
             }
         }
-        
+
         protected virtual void OnToggleChanged(bool state)
         {
             if (toggleState != null)

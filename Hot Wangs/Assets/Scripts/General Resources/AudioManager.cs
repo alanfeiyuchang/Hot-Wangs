@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using UnityEngine.Serialization;
 
 public class AudioManager : MonoBehaviour
 {
@@ -43,7 +40,8 @@ public class AudioManager : MonoBehaviour
 
         sliderVal = 0.25f;
 
-        foreach (SoundData s in soundDatas) {
+        foreach (SoundData s in soundDatas)
+        {
             sounds.Add(s.soundName, s);
         }
 

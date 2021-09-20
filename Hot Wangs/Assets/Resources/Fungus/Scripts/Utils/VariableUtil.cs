@@ -31,8 +31,8 @@ namespace Fungus
                     break;
 
                 case CompareOperator.GreaterThanOrEquals:
-                return ">=";
-                break;
+                    return ">=";
+                    break;
             }
 #pragma warning restore CS0162 // Unreachable code detected
             return string.Empty;

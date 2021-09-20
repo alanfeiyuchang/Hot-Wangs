@@ -1,16 +1,16 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEditor;
-using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using UnityEditor;
+using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(Flowchart))]
-    public class FlowchartEditor : Editor 
+    [CustomEditor(typeof(Flowchart))]
+    public class FlowchartEditor : Editor
     {
         protected SerializedProperty descriptionProp;
         protected SerializedProperty colorCommandsProp;
@@ -53,7 +53,7 @@ namespace Fungus.EditorUtils
             variableListAdaptor = new VariableListAdaptor(variablesProp, target as Flowchart);
         }
 
-        public override void OnInspectorGUI() 
+        public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
@@ -78,7 +78,7 @@ namespace Fungus.EditorUtils
             //ReorderableListGUI.ListField(hideCommandsProp);
             EditorGUILayout.PropertyField(hideCommandsProp, new GUIContent(hideCommandsProp.displayName, hideCommandsProp.tooltip), true);
 
-            if(EditorGUI.EndChangeCheck())
+            if (EditorGUI.EndChangeCheck())
             {
                 FlowchartDataStale = true;
             }
@@ -108,7 +108,7 @@ namespace Fungus.EditorUtils
         {
             var t = target as Flowchart;
 
-            if(t == null)
+            if (t == null)
             {
                 return;
             }
@@ -124,7 +124,7 @@ namespace Fungus.EditorUtils
 
             if (showVariableToggleButton && !t.VariablesExpanded)
             {
-                if (GUILayout.Button ("Variables (" + t.Variables.Count + ")", GUILayout.Height(24)))
+                if (GUILayout.Button("Variables (" + t.Variables.Count + ")", GUILayout.Height(24)))
                 {
                     t.VariablesExpanded = true;
                 }
@@ -157,7 +157,7 @@ namespace Fungus.EditorUtils
         {
             return FindAllDerivedTypes<T>(Assembly.GetAssembly(typeof(T)));
         }
-        
+
         public static List<System.Type> FindAllDerivedTypes<T>(Assembly assembly)
         {
             var derivedType = typeof(T);
@@ -167,7 +167,7 @@ namespace Fungus.EditorUtils
                            t != derivedType &&
                            derivedType.IsAssignableFrom(t)
                            ).ToList();
-            
+
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Fungus.EditorUtils
             {
                 // The serializedObject accessor creates a new SerializedObject if needed.
                 // However, this will fail with a null exception if the target object no longer exists.
-                #pragma warning disable 0219
+#pragma warning disable 0219
                 SerializedObject so = serializedObject;
             }
             catch (System.NullReferenceException)
@@ -190,7 +190,7 @@ namespace Fungus.EditorUtils
                 DestroyImmediate(this);
                 return true;
             }
-            
+
             return false;
         }
     }

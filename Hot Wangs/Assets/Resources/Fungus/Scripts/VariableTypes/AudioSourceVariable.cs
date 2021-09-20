@@ -24,7 +24,7 @@ namespace Fungus
         [SerializeField]
         [VariableProperty("<Value>", typeof(AudioSourceVariable))]
         public AudioSourceVariable audioSourceRef;
-        
+
         [SerializeField]
         public AudioSource audioSourceVal;
 

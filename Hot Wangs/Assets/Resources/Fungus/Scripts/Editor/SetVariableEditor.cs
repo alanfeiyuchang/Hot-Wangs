@@ -1,19 +1,19 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace Fungus.EditorUtils
 {
 
-    [CustomEditor (typeof(SetVariable))]
+    [CustomEditor(typeof(SetVariable))]
     public class SetVariableEditor : CommandEditor
     {
         protected SerializedProperty anyVarProp;
         protected SerializedProperty setOperatorProp;
-        
+
         public override void OnEnable()
         {
             base.OnEnable();
@@ -45,7 +45,7 @@ namespace Fungus.EditorUtils
             List<GUIContent> operatorsList = new List<GUIContent>();
             if (selectedVariable != null)
             {
-                if(selectedVariable.IsArithmeticSupported(SetOperator.Assign))
+                if (selectedVariable.IsArithmeticSupported(SetOperator.Assign))
                     operatorsList.Add(new GUIContent(VariableUtil.GetSetOperatorDescription(SetOperator.Assign)));
                 if (selectedVariable.IsArithmeticSupported(SetOperator.Negate))
                     operatorsList.Add(new GUIContent(VariableUtil.GetSetOperatorDescription(SetOperator.Negate)));
@@ -64,7 +64,7 @@ namespace Fungus.EditorUtils
             }
 
             // Get previously selected operator
-            int selectedIndex = (int) t._SetOperator;
+            int selectedIndex = (int)t._SetOperator;
             if (selectedIndex < 0)
             {
                 // Default to first index if the operator is not found in the available operators list

@@ -1,8 +1,6 @@
 ﻿// This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Fungus
@@ -20,9 +18,9 @@ namespace Fungus
         [System.Flags]
         public enum ApplicationMessageFlags
         {
-            OnApplicationGetFocus  = 1 << 0,
+            OnApplicationGetFocus = 1 << 0,
             OnApplicationLoseFocus = 1 << 1,
-            OnApplicationPause    = 1 << 2,
+            OnApplicationPause = 1 << 2,
             OnApplicationResume = 1 << 3,
             OnApplicationQuit = 1 << 4,
         }
@@ -46,8 +44,8 @@ namespace Fungus
 
         private void OnApplicationPause(bool pause)
         {
-            if ( 
-                (pause && (( FireOn & ApplicationMessageFlags.OnApplicationPause) != 0))
+            if (
+                (pause && ((FireOn & ApplicationMessageFlags.OnApplicationPause) != 0))
                 ||
                 (!pause && ((FireOn & ApplicationMessageFlags.OnApplicationResume) != 0))
                 )
@@ -58,7 +56,7 @@ namespace Fungus
 
         private void OnApplicationQuit()
         {
-            if((FireOn & ApplicationMessageFlags.OnApplicationQuit) != 0)
+            if ((FireOn & ApplicationMessageFlags.OnApplicationQuit) != 0)
             {
                 ExecuteBlock();
             }

@@ -13,21 +13,21 @@ namespace Fungus
     [AddComponentMenu("")]
     public class CollisionProperty : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            RelativeVelocity, 
-            Rigidbody, 
-            Collider, 
-            Transform, 
-            GameObject, 
-            Impulse, 
+        //generated property
+        public enum Property
+        {
+            RelativeVelocity,
+            Rigidbody,
+            Collider,
+            Transform,
+            GameObject,
+            Impulse,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         [VariableProperty(typeof(CollisionVariable))]
         protected CollisionVariable collisionVar;

@@ -1,18 +1,18 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Fungus
 {
     /// <summary>
     /// Sets the mouse cursor sprite.
     /// </summary>
-    [CommandInfo("Sprite", 
-                 "Set Mouse Cursor", 
+    [CommandInfo("Sprite",
+                 "Set Mouse Cursor",
                  "Sets the mouse cursor sprite.")]
     [AddComponentMenu("")]
-    public class SetMouseCursor : Command 
+    public class SetMouseCursor : Command
     {
         [Tooltip("Texture to use for cursor. Will use default mouse cursor if no sprite is specified")]
         [SerializeField] protected Texture2D cursorTexture;

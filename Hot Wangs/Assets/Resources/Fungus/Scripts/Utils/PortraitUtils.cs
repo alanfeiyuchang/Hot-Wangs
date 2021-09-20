@@ -1,10 +1,10 @@
 ﻿// This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEngine;
-using UnityEngine.UI;
 using MoonSharp.Interpreter;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Fungus
 {
@@ -76,7 +76,7 @@ namespace Fungus
     /// <summary>
     /// Util functions for working with portraits.
     /// </summary>
-    public static class PortraitUtil 
+    public static class PortraitUtil
     {
         #region Public members
 
@@ -92,7 +92,7 @@ namespace Fungus
             PortraitOptions options = new PortraitOptions(true);
 
             // If the table supplies a nil, keep the default
-            options.character = table.Get("character").ToObject<Character>() 
+            options.character = table.Get("character").ToObject<Character>()
                 ?? options.character;
 
             options.replacedCharacter = table.Get("replacedCharacter").ToObject<Character>()

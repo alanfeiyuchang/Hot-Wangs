@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(Portrait))]
+    [CustomEditor(typeof(Portrait))]
     public class PortraitEditor : CommandEditor
     {
         protected SerializedProperty stageProp;
@@ -47,17 +47,17 @@ namespace Fungus.EditorUtils
             moveProp = serializedObject.FindProperty("move");
             shiftIntoPlaceProp = serializedObject.FindProperty("shiftIntoPlace");
         }
-        
-        public override void DrawCommandGUI() 
+
+        public override void DrawCommandGUI()
         {
             serializedObject.Update();
-            
+
             Portrait t = target as Portrait;
 
             if (Stage.ActiveStages.Count > 1)
             {
-                CommandEditor.ObjectField<Stage>(stageProp, 
-                                                         new GUIContent("Portrait Stage", "Stage to display the character portraits on"), 
+                CommandEditor.ObjectField<Stage>(stageProp,
+                                                         new GUIContent("Portrait Stage", "Stage to display the character portraits on"),
                                                          new GUIContent("<Default>"),
                                                          Stage.ActiveStages);
             }
@@ -66,21 +66,21 @@ namespace Fungus.EditorUtils
                 t._Stage = null;
             }
             // Format Enum names
-            string[] displayLabels = StringFormatter.FormatEnumNames(t.Display,"<None>");
+            string[] displayLabels = StringFormatter.FormatEnumNames(t.Display, "<None>");
             displayProp.enumValueIndex = EditorGUILayout.Popup("Display", (int)displayProp.enumValueIndex, displayLabels);
 
             string characterLabel = "Character";
             if (t.Display == DisplayType.Replace)
             {
-                CommandEditor.ObjectField<Character>(replacedCharacterProp, 
-                                                     new GUIContent("Replace", "Character to replace"), 
+                CommandEditor.ObjectField<Character>(replacedCharacterProp,
+                                                     new GUIContent("Replace", "Character to replace"),
                                                      new GUIContent("<None>"),
                                                      Character.ActiveCharacters);
                 characterLabel = "With";
             }
-            
-            CommandEditor.ObjectField<Character>(characterProp, 
-                                                 new GUIContent(characterLabel, "Character to display"), 
+
+            CommandEditor.ObjectField<Character>(characterProp,
+                                                 new GUIContent(characterLabel, "Character to display"),
                                                  new GUIContent("<None>"),
                                                  Character.ActiveCharacters);
 
@@ -90,10 +90,10 @@ namespace Fungus.EditorUtils
             if (t._Character != null)                // Character is selected
             {
                 if (t._Character.Portraits == null ||    // Character has a portraits field
-                    t._Character.Portraits.Count <= 0 )   // Character has at least one portrait
+                    t._Character.Portraits.Count <= 0)   // Character has at least one portrait
                 {
                     EditorGUILayout.HelpBox("This character has no portraits. Please add portraits to the character's prefab before using this command.", MessageType.Error);
-                    showOptionalFields = false; 
+                    showOptionalFields = false;
                 }
                 if (t._Stage == null)            // If default portrait stage selected
                 {
@@ -105,16 +105,16 @@ namespace Fungus.EditorUtils
                 if (s == null)
                 {
                     EditorGUILayout.HelpBox("No portrait stage has been set.", MessageType.Error);
-                    showOptionalFields = false; 
+                    showOptionalFields = false;
                 }
             }
-            if (t.Display != DisplayType.None && t._Character != null && showOptionalFields) 
+            if (t.Display != DisplayType.None && t._Character != null && showOptionalFields)
             {
-                if (t.Display != DisplayType.Hide && t.Display != DisplayType.MoveToFront) 
+                if (t.Display != DisplayType.Hide && t.Display != DisplayType.MoveToFront)
                 {
                     // PORTRAIT
-                    CommandEditor.ObjectField<Sprite>(portraitProp, 
-                                                      new GUIContent("Portrait", "Portrait representing character"), 
+                    CommandEditor.ObjectField<Sprite>(portraitProp,
+                                                      new GUIContent("Portrait", "Portrait representing character"),
                                                       new GUIContent("<Previous>"),
                                                       t._Character.Portraits);
                     if (t._Character.PortraitsFace != FacingDirection.None)
@@ -147,7 +147,7 @@ namespace Fungus.EditorUtils
                 }
                 if (t.Move)
                 {
-                    if (t.Display != DisplayType.Hide) 
+                    if (t.Display != DisplayType.Hide)
                     {
                         // START FROM OFFSET
                         EditorGUILayout.PropertyField(shiftIntoPlaceProp);
@@ -155,22 +155,22 @@ namespace Fungus.EditorUtils
                 }
                 if (t.Move)
                 {
-                    if (t.Display != DisplayType.Hide) 
+                    if (t.Display != DisplayType.Hide)
                     {
                         if (t.ShiftIntoPlace)
                         {
                             t.FromPosition = null;
                             // OFFSET
                             // Format Enum names
-                            string[] offsetLabels = StringFormatter.FormatEnumNames(t.Offset,"<Previous>");
+                            string[] offsetLabels = StringFormatter.FormatEnumNames(t.Offset, "<Previous>");
                             offsetProp.enumValueIndex = EditorGUILayout.Popup("From Offset", (int)offsetProp.enumValueIndex, offsetLabels);
                         }
                         else
                         {
                             t.Offset = PositionOffset.None;
                             // FROM POSITION
-                            CommandEditor.ObjectField<RectTransform>(fromPositionProp, 
-                                                                     new GUIContent("From Position", "Move the portrait to this position"), 
+                            CommandEditor.ObjectField<RectTransform>(fromPositionProp,
+                                                                     new GUIContent("From Position", "Move the portrait to this position"),
                                                                      new GUIContent("<Previous>"),
                                                                      s.Positions);
                         }
@@ -183,11 +183,11 @@ namespace Fungus.EditorUtils
                     t.FromPosition = null;
                     toPositionPrefix = "At ";
                 }
-                if (t.Display == DisplayType.Show || (t.Display == DisplayType.Hide && t.Move) )
+                if (t.Display == DisplayType.Show || (t.Display == DisplayType.Hide && t.Move))
                 {
                     // TO POSITION
-                    CommandEditor.ObjectField<RectTransform>(toPositionProp, 
-                                                             new GUIContent(toPositionPrefix+"Position", "Move the portrait to this position"), 
+                    CommandEditor.ObjectField<RectTransform>(toPositionProp,
+                                                             new GUIContent(toPositionPrefix + "Position", "Move the portrait to this position"),
                                                              new GUIContent("<Previous>"),
                                                              s.Positions);
                 }
@@ -202,12 +202,13 @@ namespace Fungus.EditorUtils
                 }
                 if (t.Display != DisplayType.MoveToFront)
                 {
-                
+
                     EditorGUILayout.Separator();
 
                     // USE DEFAULT SETTINGS
                     EditorGUILayout.PropertyField(useDefaultSettingsProp);
-                    if (!t.UseDefaultSettings) {
+                    if (!t.UseDefaultSettings)
+                    {
                         // FADE DURATION
                         EditorGUILayout.PropertyField(fadeDurationProp);
                         if (t.Move)
@@ -241,7 +242,7 @@ namespace Fungus.EditorUtils
 
                     if (characterTexture != null)
                     {
-                        GUI.DrawTexture(previewRect,characterTexture,ScaleMode.ScaleToFit,true,aspect);
+                        GUI.DrawTexture(previewRect, characterTexture, ScaleMode.ScaleToFit, true, aspect);
                     }
                 }
 
@@ -254,14 +255,15 @@ namespace Fungus.EditorUtils
                     }
                     string portraitSummary = " " + portraitName;
                     int toolbarInt = 1;
-                    string[] toolbarStrings = {"<--",  portraitSummary, "-->"};
-                    toolbarInt = GUILayout.Toolbar (toolbarInt, toolbarStrings, GUILayout.MinHeight(20));
+                    string[] toolbarStrings = { "<--", portraitSummary, "-->" };
+                    toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarStrings, GUILayout.MinHeight(20));
                     int portraitIndex = -1;
 
                     if (toolbarInt != 1)
                     {
-                        for(int i=0; i<t._Character.Portraits.Count; i++){
-                            if(portraitName == t._Character.Portraits[i].name) 
+                        for (int i = 0; i < t._Character.Portraits.Count; i++)
+                        {
+                            if (portraitName == t._Character.Portraits[i].name)
                             {
                                 portraitIndex = i;
                             }
@@ -270,7 +272,7 @@ namespace Fungus.EditorUtils
 
                     if (toolbarInt == 0)
                     {
-                        if(portraitIndex > 0)
+                        if (portraitIndex > 0)
                         {
                             t._Portrait = t._Character.Portraits[--portraitIndex];
                         }
@@ -281,7 +283,7 @@ namespace Fungus.EditorUtils
                     }
                     if (toolbarInt == 2)
                     {
-                        if(portraitIndex < t._Character.Portraits.Count-1)
+                        if (portraitIndex < t._Character.Portraits.Count - 1)
                         {
                             t._Portrait = t._Character.Portraits[++portraitIndex];
                         }

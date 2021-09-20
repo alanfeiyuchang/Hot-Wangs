@@ -13,7 +13,7 @@ namespace Fungus.EditorUtils
         public static string[] OnWillSaveAssets(string[] paths)
         {
             string sceneName = "";
-            
+
             foreach (string path in paths)
             {
                 if (path.Contains(".unity"))
@@ -21,7 +21,7 @@ namespace Fungus.EditorUtils
                     sceneName = Path.GetFileNameWithoutExtension(path);
                 }
             }
-            
+
             if (sceneName.Length == 0)
             {
                 return paths;

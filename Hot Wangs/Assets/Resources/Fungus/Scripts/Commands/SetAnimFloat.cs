@@ -9,8 +9,8 @@ namespace Fungus
     /// <summary>
     /// Sets a float parameter on an Animator component to control a Unity animation.
     /// </summary>
-    [CommandInfo("Animation", 
-                 "Set Anim Float", 
+    [CommandInfo("Animation",
+                 "Set Anim Float",
                  "Sets a float parameter on an Animator component to control a Unity animation")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]

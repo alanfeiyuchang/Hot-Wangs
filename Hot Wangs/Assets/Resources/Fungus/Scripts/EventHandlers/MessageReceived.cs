@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -12,7 +12,7 @@ namespace Fungus
                       "Message Received",
                       "The block will execute when the specified message is received from a Send Message command.")]
     [AddComponentMenu("")]
-    public class MessageReceived : EventHandler 
+    public class MessageReceived : EventHandler
     {
         [Tooltip("Fungus message to listen for")]
         [SerializeField] protected string message = "";

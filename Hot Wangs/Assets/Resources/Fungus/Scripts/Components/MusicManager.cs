@@ -64,10 +64,12 @@ namespace Fungus
                 float startVolume = audioSourceMusic.volume;
 
                 LeanTween.value(gameObject, startVolume, 0f, fadeDuration)
-                    .setOnUpdate((v) => {
+                    .setOnUpdate((v) =>
+                    {
                         // Fade out current music
                         audioSourceMusic.volume = v;
-                    }).setOnComplete(() => {
+                    }).setOnComplete(() =>
+                    {
                         // Play new music
                         audioSourceMusic.volume = startVolume;
                         audioSourceMusic.clip = musicClip;
@@ -159,10 +161,12 @@ namespace Fungus
             LeanTween.value(gameObject,
                 audioSourceMusic.volume,
                 volume,
-                duration).setOnUpdate((v) => {
+                duration).setOnUpdate((v) =>
+                {
                     audioSourceMusic.volume = v;
                     audioSourceAmbiance.volume = v;
-                }).setOnComplete(() => {
+                }).setOnComplete(() =>
+                {
                     if (onComplete != null)
                     {
                         onComplete();

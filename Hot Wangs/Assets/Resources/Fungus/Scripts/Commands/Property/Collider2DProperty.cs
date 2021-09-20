@@ -13,24 +13,24 @@ namespace Fungus
     [AddComponentMenu("")]
     public class Collider2DProperty : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            Density, 
-            IsTrigger, 
-            UsedByEffector, 
-            UsedByComposite, 
-            Offset, 
-            AttachedRigidbody, 
-            ShapeCount, 
-            Friction, 
-            Bounciness, 
+        //generated property
+        public enum Property
+        {
+            Density,
+            IsTrigger,
+            UsedByEffector,
+            UsedByComposite,
+            Offset,
+            AttachedRigidbody,
+            ShapeCount,
+            Friction,
+            Bounciness,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         protected Collider2DData collider2DData;
 

@@ -1,26 +1,25 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
 using System.Collections.Generic;
-using Fungus;
+using UnityEngine;
 
 namespace Fungus
 {
     /// <summary>
     /// Abstract base class for TweenUI commands.
     /// </summary>
-    public abstract class TweenUI : Command 
+    public abstract class TweenUI : Command
     {
         [Tooltip("List of objects to be affected by the tween")]
         [SerializeField] protected List<GameObject> targetObjects = new List<GameObject>();
-        
+
         [Tooltip("Type of tween easing to apply")]
         [SerializeField] protected LeanTweenType tweenType = LeanTweenType.easeOutQuad;
-        
+
         [Tooltip("Wait until this command completes before continuing execution")]
         [SerializeField] protected BooleanData waitUntilFinished = new BooleanData(true);
-        
+
         [Tooltip("Time for the tween to complete")]
         [SerializeField] protected FloatData duration = new FloatData(1f);
 
@@ -63,7 +62,7 @@ namespace Fungus
                 Continue();
                 return;
             }
-            
+
             ApplyTween();
 
             if (!waitUntilFinished)
@@ -95,7 +94,7 @@ namespace Fungus
                 }
                 return targetObjects[0].name + " = " + GetSummaryValue();
             }
-            
+
             string objectList = "";
             for (int i = 0; i < targetObjects.Count; i++)
             {
@@ -113,10 +112,10 @@ namespace Fungus
                     objectList += ", " + go.name;
                 }
             }
-            
+
             return objectList + " = " + GetSummaryValue();
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(180, 250, 250, 255);

@@ -43,8 +43,8 @@ namespace Fungus
                     break;
 
                 default:
-                base.Apply(setOperator, value);
-                break;
+                    base.Apply(setOperator, value);
+                    break;
             }
         }
     }

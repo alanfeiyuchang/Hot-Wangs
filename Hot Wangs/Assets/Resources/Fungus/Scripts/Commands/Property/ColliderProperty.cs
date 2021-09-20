@@ -13,19 +13,19 @@ namespace Fungus
     [AddComponentMenu("")]
     public class ColliderProperty : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            Enabled, 
-            AttachedRigidbody, 
-            IsTrigger, 
-            ContactOffset, 
+        //generated property
+        public enum Property
+        {
+            Enabled,
+            AttachedRigidbody,
+            IsTrigger,
+            ContactOffset,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         protected ColliderData colliderData;
 

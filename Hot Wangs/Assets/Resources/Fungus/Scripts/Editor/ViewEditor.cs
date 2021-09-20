@@ -7,8 +7,8 @@ using UnityEngine;
 namespace Fungus.EditorUtils
 {
     [CanEditMultipleObjects]
-    [CustomEditor (typeof(View))]
-    public class ViewEditor : Editor 
+    [CustomEditor(typeof(View))]
+    public class ViewEditor : Editor
     {
         static Color viewColor = Color.yellow;
 
@@ -31,38 +31,38 @@ namespace Fungus.EditorUtils
         {
             switch (index)
             {
-            default:
-            case 1:
-                return new Vector2(4, 3);
-            case 2:
-                return new Vector2(3, 2);
-            case 3:
-                return new Vector2(16, 10);
-            case 4:
-                return new Vector2(17, 10);
-            case 5:
-                return new Vector2(16, 9);
-            case 6:
-                return new Vector2(2, 1);
-            case 7:
-                return new Vector2(3, 4);
-            case 8:
-                return new Vector2(2, 3);
-            case 9:
-                return new Vector2(10, 16);
-            case 10:
-                return new Vector2(10, 17);
-            case 11:
-                return new Vector2(9, 16);
-            case 12:
-                return new Vector2(1, 2);
+                default:
+                case 1:
+                    return new Vector2(4, 3);
+                case 2:
+                    return new Vector2(3, 2);
+                case 3:
+                    return new Vector2(16, 10);
+                case 4:
+                    return new Vector2(17, 10);
+                case 5:
+                    return new Vector2(16, 9);
+                case 6:
+                    return new Vector2(2, 1);
+                case 7:
+                    return new Vector2(3, 4);
+                case 8:
+                    return new Vector2(2, 3);
+                case 9:
+                    return new Vector2(10, 16);
+                case 10:
+                    return new Vector2(10, 17);
+                case 11:
+                    return new Vector2(9, 16);
+                case 12:
+                    return new Vector2(1, 2);
             }
         }
 
         protected virtual void OnEnable()
         {
-            primaryAspectRatioProp = serializedObject.FindProperty ("primaryAspectRatio");
-            secondaryAspectRatioProp = serializedObject.FindProperty ("secondaryAspectRatio");
+            primaryAspectRatioProp = serializedObject.FindProperty("primaryAspectRatio");
+            secondaryAspectRatioProp = serializedObject.FindProperty("secondaryAspectRatio");
             viewSizeProp = serializedObject.FindProperty("viewSize");
         }
 
@@ -109,8 +109,8 @@ namespace Fungus.EditorUtils
 
             serializedObject.ApplyModifiedProperties();
         }
-        
-        protected virtual void OnSceneGUI () 
+
+        protected virtual void OnSceneGUI()
         {
             View t = target as View;
             if (t.enabled)
@@ -118,7 +118,7 @@ namespace Fungus.EditorUtils
                 EditViewBounds();
             }
         }
-        
+
         protected virtual void EditViewBounds()
         {
             View view = target as View;
@@ -158,12 +158,12 @@ namespace Fungus.EditorUtils
         }
 
         public static void DrawView(View view, bool drawInterior)
-        {   
+        {
             float height = CalculateLocalViewSize(view);
             float widthA = height * (view.PrimaryAspectRatio.x / view.PrimaryAspectRatio.y);
             float widthB = height * (view.SecondaryAspectRatio.x / view.SecondaryAspectRatio.y);
 
-            Color transparent = new Color(1,1,1,0f);
+            Color transparent = new Color(1, 1, 1, 0f);
             Color fill = viewColor;
             Color outline = viewColor;
 
@@ -225,7 +225,7 @@ namespace Fungus.EditorUtils
                     verts[1] = view.transform.TransformPoint(new Vector3(widthA, height, 0));
                     verts[2] = view.transform.TransformPoint(new Vector3(widthB, height, 0));
                     verts[3] = view.transform.TransformPoint(new Vector3(widthB, -height, 0));
-                    
+
                     Handles.DrawSolidRectangleWithOutline(verts, fill, transparent);
                 }
 
@@ -236,8 +236,8 @@ namespace Fungus.EditorUtils
                     verts[1] = view.transform.TransformPoint(new Vector3(-widthA, height, 0));
                     verts[2] = view.transform.TransformPoint(new Vector3(widthA, height, 0));
                     verts[3] = view.transform.TransformPoint(new Vector3(widthA, -height, 0));
-                    
-                    Handles.DrawSolidRectangleWithOutline(verts, transparent, outline );
+
+                    Handles.DrawSolidRectangleWithOutline(verts, transparent, outline);
                 }
             }
 
@@ -248,8 +248,8 @@ namespace Fungus.EditorUtils
                 verts[1] = view.transform.TransformPoint(new Vector3(-widthB, height, 0));
                 verts[2] = view.transform.TransformPoint(new Vector3(widthB, height, 0));
                 verts[3] = view.transform.TransformPoint(new Vector3(widthB, -height, 0));
-                
-                Handles.DrawSolidRectangleWithOutline(verts, transparent, outline );
+
+                Handles.DrawSolidRectangleWithOutline(verts, transparent, outline);
             }
         }
 

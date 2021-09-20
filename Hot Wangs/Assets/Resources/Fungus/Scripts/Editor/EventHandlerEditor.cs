@@ -6,8 +6,8 @@ using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(EventHandler), true)]
-    public class EventHandlerEditor : Editor 
+    [CustomEditor(typeof(EventHandler), true)]
+    public class EventHandlerEditor : Editor
     {
         protected virtual void DrawProperties()
         {
@@ -39,7 +39,7 @@ namespace Fungus.EditorUtils
                 EditorGUILayout.HelpBox(info.HelpText, MessageType.Info);
             }
         }
-        
+
         #region Public members
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Fungus.EditorUtils
                     return eventHandlerInfoAttr;
                 }
             }
-            
+
             return null;
         }
 

@@ -23,8 +23,8 @@ namespace Fungus
     /// <summary>
     /// Writes content to a UI Text or Text Mesh object.
     /// </summary>
-    [CommandInfo("UI", 
-                 "Write", 
+    [CommandInfo("UI",
+                 "Write",
                  "Writes content to a UI Text or Text Mesh object.")]
     [AddComponentMenu("")]
     public class Write : Command, ILocalizable
@@ -60,7 +60,7 @@ namespace Fungus
             {
                 writer = textObject.AddComponent<Writer>();
             }
-            
+
             return writer;
         }
 
@@ -73,7 +73,7 @@ namespace Fungus
                 Continue();
                 return;
             }
-        
+
             var writer = GetWriter();
             if (writer == null)
             {
@@ -83,15 +83,15 @@ namespace Fungus
 
             switch (textColor)
             {
-            case TextColor.SetAlpha:
-                writer.SetTextAlpha(setAlpha);
-                break;
-            case TextColor.SetColor:
-                writer.SetTextColor(setColor);
-                break;
-            case TextColor.SetVisible:
-                writer.SetTextAlpha(1f);
-                break;
+                case TextColor.SetAlpha:
+                    writer.SetTextAlpha(setAlpha);
+                    break;
+                case TextColor.SetColor:
+                    writer.SetTextColor(setColor);
+                    break;
+                case TextColor.SetVisible:
+                    writer.SetTextAlpha(1f);
+                    break;
             }
 
             var flowchart = GetFlowchart();
@@ -105,7 +105,7 @@ namespace Fungus
             else
             {
                 StartCoroutine(writer.Write(newText, clearText, false, true, false, null,
-                             () => { Continue (); }
+                             () => { Continue(); }
                 ));
             }
         }
@@ -148,7 +148,7 @@ namespace Fungus
         {
             return description;
         }
-        
+
         public virtual string GetStringId()
         {
             // String id for Write commands is WRITE.<Localization Id>.<Command id>

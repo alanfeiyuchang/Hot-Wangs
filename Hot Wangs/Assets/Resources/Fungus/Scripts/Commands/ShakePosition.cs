@@ -1,17 +1,17 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
-using System.Collections;
 
 namespace Fungus
 {
     /// <summary>
     /// Randomly shakes a GameObject's position by a diminishing amount over time.
     /// </summary>
-    [CommandInfo("iTween", 
-                 "Shake Position", 
+    [CommandInfo("iTween",
+                 "Shake Position",
                  "Randomly shakes a GameObject's position by a diminishing amount over time.")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]
@@ -35,15 +35,15 @@ namespace Fungus
             tweenParams.Add("amount", _amount.Value);
             switch (axis)
             {
-            case iTweenAxis.X:
-                tweenParams.Add("axis", "x");
-                break;
-            case iTweenAxis.Y:
-                tweenParams.Add("axis", "y");
-                break;
-            case iTweenAxis.Z:
-                tweenParams.Add("axis", "z");
-                break;
+                case iTweenAxis.X:
+                    tweenParams.Add("axis", "x");
+                    break;
+                case iTweenAxis.Y:
+                    tweenParams.Add("axis", "y");
+                    break;
+                case iTweenAxis.Z:
+                    tweenParams.Add("axis", "z");
+                    break;
             }
             tweenParams.Add("time", _duration.Value);
             tweenParams.Add("easetype", easeType);
@@ -78,5 +78,5 @@ namespace Fungus
         }
 
         #endregion
-    }    
+    }
 }

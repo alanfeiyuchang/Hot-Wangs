@@ -21,11 +21,11 @@ namespace Fungus
     /// <summary>
     /// Sets the application to fullscreen, windowed or toggles the current state.
     /// </summary>
-    [CommandInfo("Camera", 
-                 "Fullscreen", 
+    [CommandInfo("Camera",
+                 "Fullscreen",
                  "Sets the application to fullscreen, windowed or toggles the current state.")]
     [AddComponentMenu("")]
-    public class Fullscreen : Command 
+    public class Fullscreen : Command
     {
         [SerializeField] protected FullscreenMode fullscreenMode;
 
@@ -35,15 +35,15 @@ namespace Fungus
         {
             switch (fullscreenMode)
             {
-            case FullscreenMode.Toggle:
-                Screen.fullScreen = !Screen.fullScreen;
-                break;
-            case FullscreenMode.Fullscreen:
-                Screen.fullScreen = true;
-                break;
-            case FullscreenMode.Windowed:
-                Screen.fullScreen = false;
-                break;
+                case FullscreenMode.Toggle:
+                    Screen.fullScreen = !Screen.fullScreen;
+                    break;
+                case FullscreenMode.Fullscreen:
+                    Screen.fullScreen = true;
+                    break;
+                case FullscreenMode.Windowed:
+                    Screen.fullScreen = false;
+                    break;
             }
 
             Continue();

@@ -2,9 +2,6 @@
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 using UnityEngine;
-using UnityEngine.Serialization;
-using System.Collections;
-using System;
 
 namespace Fungus
 {
@@ -29,18 +26,18 @@ namespace Fungus
         [Tooltip("Whether to animate in world space or relative to the parent. False by default.")]
         [SerializeField]
         protected bool isLocal;
-        
+
 
         public override LTDescr ExecuteTween()
         {
             var loc = _toTransform.Value == null ? _toPosition.Value : _toTransform.Value.position;
 
-            if(IsInAddativeMode)
+            if (IsInAddativeMode)
             {
                 loc += _targetObject.Value.transform.position;
             }
 
-            if(IsInFromMode)
+            if (IsInFromMode)
             {
                 var cur = _targetObject.Value.transform.position;
                 _targetObject.Value.transform.position = loc;

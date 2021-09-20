@@ -3,8 +3,8 @@
 
 #if UNITY_5_3_OR_NEWER
 
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Fungus
 {
@@ -15,7 +15,7 @@ namespace Fungus
     /// -webgl would require additional js to force a sync of FS.syncfs
     /// -webplayer does not implement system io
     /// </summary>
-    public class SaveManager : MonoBehaviour 
+    public class SaveManager : MonoBehaviour
     {
         protected static SaveHistory saveHistory = new SaveHistory();
 
@@ -61,11 +61,11 @@ namespace Fungus
                 PlayerPrefs.Save();
 #else
                 var fileLoc = GetFullFilePath(saveDataKey);
-                
+
                 //make sure the dir exists
                 System.IO.FileInfo file = new System.IO.FileInfo(fileLoc);
                 file.Directory.Create();
-                
+
                 System.IO.File.WriteAllText(fileLoc, historyData);
 #endif//UNITY_WEBPLAYER
                 return true;
@@ -260,7 +260,7 @@ namespace Fungus
             var fullFilePath = GetFullFilePath(saveDataKey);
             return System.IO.File.Exists(fullFilePath);
 #endif//UNITY_WEBPLAYER
-            }
+        }
 
         /// <summary>
         /// Creates a new Save Point using a key and description, and adds it to the Save History.
@@ -318,7 +318,7 @@ namespace Fungus
             return saveHistory.GetDebugInfo();
         }
 
-#endregion
+        #endregion
     }
 }
 

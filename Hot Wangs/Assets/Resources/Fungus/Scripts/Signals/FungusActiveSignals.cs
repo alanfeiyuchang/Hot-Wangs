@@ -25,7 +25,7 @@ namespace Fungus
             get
             {
                 return activeDepth;
-            } 
+            }
         }
 
         public static event FungusPriorityStartHandler OnFungusPriorityStart;
@@ -37,20 +37,20 @@ namespace Fungus
 
         public static event FungusPriorityChangeHandler OnFungusPriorityChange;
         public delegate void FungusPriorityChangeHandler(int previousActiveDepth, int newActiveDepth);
-        
+
         /// <summary>
         /// Adds 1 to the theactiveDepth. If it was zero causes the OnFungusPriorityStart
         /// </summary>
         public static void DoIncreasePriorityDepth()
         {
-            if(activeDepth == 0)
+            if (activeDepth == 0)
             {
                 if (OnFungusPriorityStart != null)
                 {
                     OnFungusPriorityStart();
                 }
             }
-            if(OnFungusPriorityChange != null)
+            if (OnFungusPriorityChange != null)
             {
                 OnFungusPriorityChange(activeDepth, activeDepth + 1);
             }
@@ -66,9 +66,9 @@ namespace Fungus
             {
                 OnFungusPriorityChange(activeDepth, activeDepth - 1);
             }
-            if(activeDepth == 1)
+            if (activeDepth == 1)
             {
-                if(OnFungusPriorityEnd != null)
+                if (OnFungusPriorityEnd != null)
                 {
                     OnFungusPriorityEnd();
                 }

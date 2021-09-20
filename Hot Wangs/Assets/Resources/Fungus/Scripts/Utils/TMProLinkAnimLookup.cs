@@ -82,7 +82,7 @@ namespace Fungus
         static public void AddHelper(string linkIdText, TMProAnimFunc func)
         {
             var hashCode = TMPro.TMP_TextUtilities.GetSimpleHashCode(linkIdText);
-            if(!LinkHashToEffect.ContainsKey(hashCode))
+            if (!LinkHashToEffect.ContainsKey(hashCode))
                 LinkHashToEffect.Add(hashCode, func);
         }
 

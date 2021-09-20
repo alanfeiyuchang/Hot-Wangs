@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(Write))]
+    [CustomEditor(typeof(Write))]
     public class WriteEditor : CommandEditor
     {
         public static bool showTagHelp;
@@ -43,8 +43,8 @@ namespace Fungus.EditorUtils
             setColorProp = serializedObject.FindProperty("setColor");
             waitUntilFinishedProp = serializedObject.FindProperty("waitUntilFinished");
         }
-        
-        public override void DrawCommandGUI() 
+
+        public override void DrawCommandGUI()
         {
             serializedObject.Update();
 
@@ -70,21 +70,21 @@ namespace Fungus.EditorUtils
             EditorGUILayout.PropertyField(textColorProp);
             switch ((TextColor)textColorProp.enumValueIndex)
             {
-            case TextColor.Default:
-                break;
-            case TextColor.SetVisible:
-                break;
-            case TextColor.SetAlpha:
-                EditorGUILayout.PropertyField(setAlphaProp);
-                break;
-            case TextColor.SetColor:
-                EditorGUILayout.PropertyField(setColorProp);
-                break;
+                case TextColor.Default:
+                    break;
+                case TextColor.SetVisible:
+                    break;
+                case TextColor.SetAlpha:
+                    EditorGUILayout.PropertyField(setAlphaProp);
+                    break;
+                case TextColor.SetColor:
+                    EditorGUILayout.PropertyField(setColorProp);
+                    break;
             }
 
             EditorGUILayout.PropertyField(waitUntilFinishedProp);
 
             serializedObject.ApplyModifiedProperties();
         }
-    }    
+    }
 }

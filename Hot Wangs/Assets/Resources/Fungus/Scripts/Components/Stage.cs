@@ -1,10 +1,10 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEngine;
-using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Fungus
 {
@@ -21,7 +21,7 @@ namespace Fungus
         [SerializeField] protected bool dimPortraits;
 
         [Tooltip("Choose a dimColor")]
-        [SerializeField] protected Color dimColor =new Color(0.5f, 0.5f, 0.5f, 1f);
+        [SerializeField] protected Color dimColor = new Color(0.5f, 0.5f, 0.5f, 1f);
 
         [Tooltip("Duration for fading character portraits in / out.")]
         [SerializeField] protected float fadeDuration = 0.5f;
@@ -152,7 +152,7 @@ namespace Fungus
 
             for (int i = 0; i < positions.Count; i++)
             {
-                if ( String.Compare(positions[i].name, positionString, true) == 0 )
+                if (String.Compare(positions[i].name, positionString, true) == 0)
                 {
                     return positions[i];
                 }

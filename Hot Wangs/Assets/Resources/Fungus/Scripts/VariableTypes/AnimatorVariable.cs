@@ -24,7 +24,7 @@ namespace Fungus
         [SerializeField]
         [VariableProperty("<Value>", typeof(AnimatorVariable))]
         public AnimatorVariable animatorRef;
-        
+
         [SerializeField]
         public Animator animatorVal;
 
@@ -38,7 +38,7 @@ namespace Fungus
             animatorVal = v;
             animatorRef = null;
         }
-            
+
         public Animator Value
         {
             get { return (animatorRef == null) ? animatorVal : animatorRef.Value; }

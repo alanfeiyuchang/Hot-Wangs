@@ -5,14 +5,13 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 namespace Fungus
 {
     /// <summary>
     /// A singleton game object which displays a simple UI for the Narrative Log.
     /// </summary>
-    public class NarrativeLogMenu : MonoBehaviour 
+    public class NarrativeLogMenu : MonoBehaviour
     {
         [Tooltip("Contains the overall aesthetic of each entry.")]
         [SerializeField] protected NarrativeLogEntryDisplay entryDisplayPrefab;
@@ -27,12 +26,12 @@ namespace Fungus
         [SerializeField] protected ScrollRect narrativeLogView;
 
         protected TextAdapter narLogViewtextAdapter = new TextAdapter();
-        
+
         [Tooltip("The CanvasGroup containing the save menu buttons")]
         [SerializeField] protected CanvasGroup narrativeLogMenuGroup;
 
         protected static bool narrativeLogActive = false;
-        
+
         protected AudioSource clickAudioSource;
 
         protected LTDescr fadeTween;
@@ -85,7 +84,7 @@ namespace Fungus
             BlockSignals.OnBlockEnd += OnBlockEnd;
             NarrativeLog.OnNarrativeAdded += OnNarrativeAdded;
         }
-                
+
         protected virtual void OnDisable()
         {
             WriterSignals.OnWriterState -= OnWriterState;
@@ -119,7 +118,7 @@ namespace Fungus
             UpdateNarrativeLogText();
         }
 
-        protected virtual void OnBlockEnd (Block block)
+        protected virtual void OnBlockEnd(Block block)
         {
             // At block end update to get the last line of the block
             bool defaultPreviousLines = previousLines;
@@ -133,7 +132,7 @@ namespace Fungus
             if (narrativeLogView.enabled)
             {
                 narLogViewtextAdapter.Text = FungusManager.Instance.NarrativeLog.GetPrettyHistory();
-                
+
                 Canvas.ForceUpdateCanvases();
                 narrativeLogView.verticalNormalizedPosition = 0f;
                 Canvas.ForceUpdateCanvases();
@@ -163,29 +162,33 @@ namespace Fungus
                 // Switch menu off
                 LeanTween.value(narrativeLogMenuGroup.gameObject, narrativeLogMenuGroup.alpha, 0f, .2f)
                     .setEase(LeanTweenType.easeOutQuint)
-                    .setOnUpdate((t) => {
-                    narrativeLogMenuGroup.alpha = t;
-                }).setOnComplete(() => {
-                    narrativeLogMenuGroup.alpha = 0f;
-                });
-                
+                    .setOnUpdate((t) =>
+                    {
+                        narrativeLogMenuGroup.alpha = t;
+                    }).setOnComplete(() =>
+                    {
+                        narrativeLogMenuGroup.alpha = 0f;
+                    });
+
             }
             else
             {
                 // Switch menu on
                 LeanTween.value(narrativeLogMenuGroup.gameObject, narrativeLogMenuGroup.alpha, 1f, .2f)
                     .setEase(LeanTweenType.easeOutQuint)
-                    .setOnUpdate((t) => {
-                    narrativeLogMenuGroup.alpha = t;
-                }).setOnComplete(() => {
-                    narrativeLogMenuGroup.alpha = 1f;
-                });
-                
+                    .setOnUpdate((t) =>
+                    {
+                        narrativeLogMenuGroup.alpha = t;
+                    }).setOnComplete(() =>
+                    {
+                        narrativeLogMenuGroup.alpha = 1f;
+                    });
+
             }
 
             narrativeLogActive = !narrativeLogActive;
         }
-    
+
         #endregion
     }
 }

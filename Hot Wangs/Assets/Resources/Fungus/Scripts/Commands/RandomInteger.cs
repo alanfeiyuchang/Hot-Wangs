@@ -8,11 +8,11 @@ namespace Fungus
     /// <summary>
     /// Sets an integer variable to a random value in the defined range.
     /// </summary>
-    [CommandInfo("Variable", 
-                 "Random Integer", 
+    [CommandInfo("Variable",
+                 "Random Integer",
                  "Sets an integer variable to a random value in the defined range.")]
     [AddComponentMenu("")]
-    public class RandomInteger : Command 
+    public class RandomInteger : Command
     {
         [Tooltip("The variable whos value will be set")]
         [VariableProperty(typeof(IntegerVariable))]

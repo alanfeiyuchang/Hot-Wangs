@@ -1,9 +1,9 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
-using System.Collections;
 
 namespace Fungus
 {
@@ -27,7 +27,7 @@ namespace Fungus
     /// <summary>
     /// Plays, loops, or stops an audiosource. Any AudioSources with the same tag as the target Audio Source will automatically be stoped.
     /// </summary>
-    [CommandInfo("Audio", 
+    [CommandInfo("Audio",
                  "Control Audio",
                  "Plays, loops, or stops an audiosource. Any AudioSources with the same tag as the target Audio Source will automatically be stoped.")]
     [ExecuteInEditMode]
@@ -40,16 +40,16 @@ namespace Fungus
         [Tooltip("Audio clip to play")]
         [SerializeField] protected AudioSourceData _audioSource;
 
-        [Range(0,1)]
+        [Range(0, 1)]
         [Tooltip("Start audio at this volume")]
         [SerializeField] protected float startVolume = 1;
 
-        [Range(0,1)]
+        [Range(0, 1)]
         [Tooltip("End audio at this volume")]
         [SerializeField] protected float endVolume = 1;
-        
+
         [Tooltip("Time to fade between current volume level and target volume level.")]
-        [SerializeField] protected float fadeDuration; 
+        [SerializeField] protected float fadeDuration;
 
         [Tooltip("Wait until this command has finished before executing the next command.")]
         [SerializeField] protected bool waitUntilFinished = false;
@@ -76,19 +76,20 @@ namespace Fungus
             }
         }
 
-        protected virtual void PlayOnce() 
+        protected virtual void PlayOnce()
         {
             if (fadeDuration > 0)
             {
                 // Fade volume in
-                LeanTween.value(_audioSource.Value.gameObject, 
-                    _audioSource.Value.volume, 
+                LeanTween.value(_audioSource.Value.gameObject,
+                    _audioSource.Value.volume,
                     endVolume,
                     fadeDuration
                 ).setOnUpdate(
-                    (float updateVolume)=>{
-                    _audioSource.Value.volume = updateVolume;
-                });
+                    (float updateVolume) =>
+                    {
+                        _audioSource.Value.volume = updateVolume;
+                    });
             }
 
             _audioSource.Value.PlayOneShot(_audioSource.Value.clip);
@@ -118,18 +119,20 @@ namespace Fungus
                 _audioSource.Value.volume = 0;
                 _audioSource.Value.loop = true;
                 _audioSource.Value.GetComponent<AudioSource>().Play();
-                LeanTween.value(_audioSource.Value.gameObject,0,endVolume,fadeDuration
+                LeanTween.value(_audioSource.Value.gameObject, 0, endVolume, fadeDuration
                 ).setOnUpdate(
-                    (float updateVolume)=>{
-                    _audioSource.Value.volume = updateVolume;
-                }
-                ).setOnComplete(
-                    ()=>{
-                    if (waitUntilFinished)
+                    (float updateVolume) =>
                     {
-                        Continue();
+                        _audioSource.Value.volume = updateVolume;
                     }
-                }
+                ).setOnComplete(
+                    () =>
+                    {
+                        if (waitUntilFinished)
+                        {
+                            Continue();
+                        }
+                    }
                 );
             }
             else
@@ -144,20 +147,22 @@ namespace Fungus
         {
             if (fadeDuration > 0)
             {
-                LeanTween.value(_audioSource.Value.gameObject,_audioSource.Value.volume,0,fadeDuration
+                LeanTween.value(_audioSource.Value.gameObject, _audioSource.Value.volume, 0, fadeDuration
                 ).setOnUpdate(
-                    (float updateVolume)=>{
-                    _audioSource.Value.volume = updateVolume;
-                }
-                ).setOnComplete(
-                    ()=>{
-
-                    _audioSource.Value.GetComponent<AudioSource>().Pause();
-                    if (waitUntilFinished)
+                    (float updateVolume) =>
                     {
-                        Continue();
+                        _audioSource.Value.volume = updateVolume;
                     }
-                }
+                ).setOnComplete(
+                    () =>
+                    {
+
+                        _audioSource.Value.GetComponent<AudioSource>().Pause();
+                        if (waitUntilFinished)
+                        {
+                            Continue();
+                        }
+                    }
                 );
             }
             else
@@ -170,20 +175,22 @@ namespace Fungus
         {
             if (fadeDuration > 0)
             {
-                LeanTween.value(source.gameObject,_audioSource.Value.volume,0,fadeDuration
+                LeanTween.value(source.gameObject, _audioSource.Value.volume, 0, fadeDuration
                 ).setOnUpdate(
-                    (float updateVolume)=>{
-                    source.volume = updateVolume;
-                }
-                ).setOnComplete(
-                    ()=>{
-
-                    source.GetComponent<AudioSource>().Stop();
-                    if (waitUntilFinished)
+                    (float updateVolume) =>
                     {
-                        Continue();
+                        source.volume = updateVolume;
                     }
-                }
+                ).setOnComplete(
+                    () =>
+                    {
+
+                        source.GetComponent<AudioSource>().Stop();
+                        if (waitUntilFinished)
+                        {
+                            Continue();
+                        }
+                    }
                 );
             }
             else
@@ -194,17 +201,19 @@ namespace Fungus
 
         protected virtual void ChangeVolume()
         {
-            LeanTween.value(_audioSource.Value.gameObject,_audioSource.Value.volume,endVolume,fadeDuration
+            LeanTween.value(_audioSource.Value.gameObject, _audioSource.Value.volume, endVolume, fadeDuration
             ).setOnUpdate(
-                (float updateVolume)=>{
-                _audioSource.Value.volume = updateVolume;
-            }).setOnComplete(
-                ()=>{
-                if (waitUntilFinished)
+                (float updateVolume) =>
                 {
-                    Continue();
-                }
-            });
+                    _audioSource.Value.volume = updateVolume;
+                }).setOnComplete(
+                () =>
+                {
+                    if (waitUntilFinished)
+                    {
+                        Continue();
+                    }
+                });
         }
 
         protected virtual void AudioFinished()
@@ -230,7 +239,7 @@ namespace Fungus
                 _audioSource.Value.volume = endVolume;
             }
 
-            switch(control)
+            switch (control)
             {
                 case ControlAudioType.PlayOnce:
                     StopAudioWithSameTag();
@@ -247,7 +256,7 @@ namespace Fungus
                     StopLoop(_audioSource.Value);
                     break;
                 case ControlAudioType.ChangeVolume:
-                    ChangeVolume(); 
+                    ChangeVolume();
                     break;
             }
             if (!waitUntilFinished)
@@ -278,7 +287,7 @@ namespace Fungus
             }
             return control.ToString() + " \"" + _audioSource.Value.name + "\"" + fadeType;
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(242, 209, 176, 255);
@@ -305,5 +314,5 @@ namespace Fungus
         }
 
         #endregion
-    }    
+    }
 }

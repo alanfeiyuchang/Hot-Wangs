@@ -8,8 +8,8 @@ namespace Fungus
     /// <summary>
     /// Deletes a saved value from permanent storage.
     /// </summary>
-    [CommandInfo("Variable", 
-                 "Delete Save Key", 
+    [CommandInfo("Variable",
+                 "Delete Save Key",
                  "Deletes a saved value from permanent storage.")]
     [AddComponentMenu("")]
     public class DeleteSaveKey : Command
@@ -26,17 +26,17 @@ namespace Fungus
                 Continue();
                 return;
             }
-            
+
             var flowchart = GetFlowchart();
-            
+
             // Prepend the current save profile (if any)
             string prefsKey = SetSaveProfile.SaveProfile + "_" + flowchart.SubstituteVariables(key);
-            
+
             PlayerPrefs.DeleteKey(prefsKey);
 
             Continue();
         }
-        
+
         public override string GetSummary()
         {
             if (key.Length == 0)
@@ -46,7 +46,7 @@ namespace Fungus
 
             return key;
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(235, 191, 217, 255);

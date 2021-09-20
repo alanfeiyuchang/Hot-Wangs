@@ -13,22 +13,22 @@ namespace Fungus
     [AddComponentMenu("")]
     public class Vector4Property : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            X, 
-            Y, 
-            Z, 
-            W, 
-            Magnitude, 
-            SqrMagnitude, 
-            Normalized, 
+        //generated property
+        public enum Property
+        {
+            X,
+            Y,
+            Z,
+            W,
+            Magnitude,
+            SqrMagnitude,
+            Normalized,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         protected Vector4Data vector4Data;
 

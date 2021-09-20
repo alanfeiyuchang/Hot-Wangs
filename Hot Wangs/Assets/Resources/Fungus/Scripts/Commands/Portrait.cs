@@ -8,8 +8,8 @@ namespace Fungus
     /// <summary>
     /// Controls a character portrait.
     /// </summary>
-    [CommandInfo("Narrative", 
-                 "Portrait", 
+    [CommandInfo("Narrative",
+                 "Portrait",
                  "Controls a character portrait.")]
     public class Portrait : ControlWithDisplay<DisplayType>
     {
@@ -83,12 +83,12 @@ namespace Fungus
         /// <summary>
         /// Move the portrait from this position.
         /// </summary>
-        public virtual RectTransform FromPosition { get { return fromPosition; } set { fromPosition = value;} }
+        public virtual RectTransform FromPosition { get { return fromPosition; } set { fromPosition = value; } }
 
         /// <summary>
         /// Move the portrait to this position.
         /// </summary>
-        public virtual RectTransform ToPosition { get { return toPosition; } set { toPosition = value;} }
+        public virtual RectTransform ToPosition { get { return toPosition; } set { toPosition = value; } }
 
         /// <summary>
         /// Direction character is facing.
@@ -134,7 +134,7 @@ namespace Fungus
             }
 
             PortraitOptions options = new PortraitOptions();
-            
+
             options.character = character;
             options.replacedCharacter = replacedCharacter;
             options.portrait = portrait;
@@ -152,9 +152,9 @@ namespace Fungus
             options.waitUntilFinished = waitUntilFinished;
 
             stage.RunPortraitCommand(options, Continue);
-            
+
         }
-        
+
         public override string GetSummary()
         {
             if (display == DisplayType.None && character == null)
@@ -177,7 +177,7 @@ namespace Fungus
             string stageSummary = "";
             string portraitSummary = "";
             string facingSummary = "";
-            
+
             displaySummary = StringFormatter.SplitCamelCase(display.ToString());
 
             if (display == DisplayType.Replace)
@@ -193,7 +193,7 @@ namespace Fungus
             {
                 stageSummary = " on \"" + stage.name + "\"";
             }
-            
+
             if (portrait != null)
             {
                 portraitSummary = " " + portrait.name;
@@ -243,12 +243,12 @@ namespace Fungus
 
             return displaySummary + " \"" + characterSummary + portraitSummary + "\"" + stageSummary + facingSummary + fromPositionSummary + toPositionSummary;
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(230, 200, 250, 255);
         }
-        
+
         public override void OnCommandAdded(Block parentBlock)
         {
             //Default to display type: show

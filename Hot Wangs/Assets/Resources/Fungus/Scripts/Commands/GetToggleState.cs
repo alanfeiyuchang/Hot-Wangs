@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Fungus
@@ -12,7 +12,7 @@ namespace Fungus
     [CommandInfo("UI",
                  "Get Toggle State",
                  "Gets the state of a toggle UI object and stores it in a boolean variable.")]
-    public class GetToggleState : Command 
+    public class GetToggleState : Command
     {
         [Tooltip("Target toggle object to get the value from")]
         [SerializeField] protected Toggle toggle;
@@ -23,7 +23,7 @@ namespace Fungus
 
         #region Public members
 
-        public override void OnEnter() 
+        public override void OnEnter()
         {
             if (toggle != null &&
                 toggleState != null)
@@ -56,7 +56,7 @@ namespace Fungus
 
         public override bool HasReference(Variable variable)
         {
-            return toggleState == variable || 
+            return toggleState == variable ||
                 base.HasReference(variable);
         }
 

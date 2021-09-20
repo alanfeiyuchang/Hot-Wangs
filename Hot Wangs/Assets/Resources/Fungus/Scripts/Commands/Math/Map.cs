@@ -17,10 +17,10 @@ namespace Fungus
         //[Tooltip("LHS Value ")]
         [SerializeField]
         protected FloatData initialRangeLower = new FloatData(0), initialRangeUpper = new FloatData(1), value;
-        
+
         [SerializeField]
         protected FloatData newRangeLower = new FloatData(0), newRangeUpper = new FloatData(1);
-        
+
         [SerializeField]
         protected FloatData outValue;
 

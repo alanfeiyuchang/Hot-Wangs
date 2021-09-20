@@ -13,20 +13,20 @@ namespace Fungus
     [AddComponentMenu("")]
     public class SpriteProperty : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            Border, 
-            PixelsPerUnit, 
-            Pivot, 
-            Packed, 
-            TextureRectOffset, 
+        //generated property
+        public enum Property
+        {
+            Border,
+            PixelsPerUnit,
+            Pivot,
+            Packed,
+            TextureRectOffset,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         [VariableProperty(typeof(SpriteVariable))]
         protected SpriteVariable spriteVar;

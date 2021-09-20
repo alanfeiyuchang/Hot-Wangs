@@ -2,7 +2,6 @@
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Fungus
 {
@@ -36,7 +35,7 @@ namespace Fungus
         [Tooltip("The shape of the easing curve applied to the animation")]
         [SerializeField]
         protected LeanTweenType easeType = LeanTweenType.easeInOutQuad;
-        
+
         [Tooltip("The type of loop to apply once the animation has completed")]
         [SerializeField]
         protected LeanTweenType loopType = LeanTweenType.once;
@@ -85,7 +84,7 @@ namespace Fungus
 
             if (waitUntilFinished)
             {
-                if(ourTween != null)
+                if (ourTween != null)
                 {
                     ourTween.setOnComplete(OnTweenComplete);
                 }

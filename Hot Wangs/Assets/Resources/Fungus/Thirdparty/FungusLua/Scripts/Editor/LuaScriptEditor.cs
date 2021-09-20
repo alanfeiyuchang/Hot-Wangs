@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace Fungus
 {
-    [CustomEditor (typeof(LuaScript))]
+    [CustomEditor(typeof(LuaScript))]
     public class LuaScriptEditor : Editor
     {
         protected SerializedProperty luaEnvironmentProp;
@@ -20,8 +20,8 @@ namespace Fungus
             luaScriptProp = serializedObject.FindProperty("luaScript");
             runAsCoroutineProp = serializedObject.FindProperty("runAsCoroutine");
         }
-        
-        public override void OnInspectorGUI() 
+
+        public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
@@ -44,5 +44,5 @@ namespace Fungus
 
             serializedObject.ApplyModifiedProperties();
         }
-    }    
+    }
 }

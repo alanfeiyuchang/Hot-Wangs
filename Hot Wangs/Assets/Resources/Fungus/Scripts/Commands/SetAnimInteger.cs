@@ -9,8 +9,8 @@ namespace Fungus
     /// <summary>
     /// Sets an integer parameter on an Animator component to control a Unity animation.
     /// </summary>
-    [CommandInfo("Animation", 
-                 "Set Anim Integer", 
+    [CommandInfo("Animation",
+                 "Set Anim Integer",
                  "Sets an integer parameter on an Animator component to control a Unity animation")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]
@@ -54,7 +54,7 @@ namespace Fungus
 
         public override bool HasReference(Variable variable)
         {
-            return _animator.animatorRef == variable || _parameterName.stringRef == variable || value.integerRef == variable || 
+            return _animator.animatorRef == variable || _parameterName.stringRef == variable || value.integerRef == variable ||
                 base.HasReference(variable);
         }
 

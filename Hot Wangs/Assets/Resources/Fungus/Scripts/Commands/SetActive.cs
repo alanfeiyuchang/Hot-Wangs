@@ -9,8 +9,8 @@ namespace Fungus
     /// <summary>
     /// Sets a game object in the scene to be active / inactive.
     /// </summary>
-    [CommandInfo("Scripting", 
-                 "Set Active", 
+    [CommandInfo("Scripting",
+                 "Set Active",
                  "Sets a game object in the scene to be active / inactive.")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]
@@ -21,7 +21,7 @@ namespace Fungus
 
         [Tooltip("Set to true to enable the game object")]
         [SerializeField] protected BooleanData activeState;
-    
+
         #region Public members
 
         public override void OnEnter()
@@ -51,7 +51,7 @@ namespace Fungus
 
         public override bool HasReference(Variable variable)
         {
-            return _targetGameObject.gameObjectRef == variable || activeState.booleanRef == variable || 
+            return _targetGameObject.gameObjectRef == variable || activeState.booleanRef == variable ||
                 base.HasReference(variable);
         }
 

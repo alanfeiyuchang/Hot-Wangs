@@ -3,19 +3,19 @@
 
 // Snippet added by ducksonthewater, 2019-01-03 - www.ducks-on-the-water.com
 
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Fungus
 {
     /// <summary>
     /// Changes the sprite on a SpriteRenderer.
     /// </summary>
-    [CommandInfo("Sprite", 
-                 "Set Sprite", 
+    [CommandInfo("Sprite",
+                 "Set Sprite",
                  "Changes the sprite property of a list of Sprite Renderers.")]
     [AddComponentMenu("")]
-    public class SetSprite : Command 
+    public class SetSprite : Command
     {
         [Tooltip("List of sprites to set the sprite property on")]
         [SerializeField] protected List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
@@ -35,7 +35,7 @@ namespace Fungus
 
             Continue();
         }
-        
+
         public override string GetSummary()
         {
             string summary = "";
@@ -60,7 +60,7 @@ namespace Fungus
 
             return summary + " = " + sprite;
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(235, 191, 217, 255);

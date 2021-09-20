@@ -1,8 +1,8 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
@@ -39,7 +39,7 @@ namespace Fungus.EditorUtils
         [MenuItem("Tools/Fungus/Utilities/Export Fungus Package")]
         static void ExportFungusPackageFull()
         {
-            ExportFungusPackage( new string[] {"Assets/Fungus", "Assets/FungusExamples" });
+            ExportFungusPackage(new string[] { "Assets/Fungus", "Assets/FungusExamples" });
         }
 
         [MenuItem("Tools/Fungus/Utilities/Export Fungus Package - Lite")]
@@ -80,7 +80,7 @@ namespace Fungus.EditorUtils
             }
 
             Selection.activeGameObject = go;
-            
+
             Undo.RegisterCreatedObjectUndo(go, "Create Object");
 
             return go;

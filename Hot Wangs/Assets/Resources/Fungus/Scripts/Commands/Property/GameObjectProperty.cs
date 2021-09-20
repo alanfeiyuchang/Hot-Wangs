@@ -13,22 +13,22 @@ namespace Fungus
     [AddComponentMenu("")]
     public class GameObjectProperty : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            Transform, 
-            Layer, 
-            ActiveSelf, 
-            ActiveInHierarchy, 
-            IsStatic, 
-            Tag, 
-            GameObject, 
+        //generated property
+        public enum Property
+        {
+            Transform,
+            Layer,
+            ActiveSelf,
+            ActiveInHierarchy,
+            IsStatic,
+            Tag,
+            GameObject,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         [VariableProperty(typeof(GameObjectVariable))]
         protected GameObjectVariable gameObjectVar;

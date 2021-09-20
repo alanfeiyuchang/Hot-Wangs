@@ -2,7 +2,6 @@
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 using UnityEngine;
-using System.Collections;
 
 namespace Fungus
 {
@@ -25,7 +24,7 @@ namespace Fungus
         [SerializeField]
         [VariableProperty("<Value>", typeof(GameObjectVariable))]
         public GameObjectVariable gameObjectRef;
-        
+
         [SerializeField]
         public GameObject gameObjectVal;
 
@@ -34,7 +33,7 @@ namespace Fungus
             gameObjectVal = v;
             gameObjectRef = null;
         }
-        
+
         public static implicit operator GameObject(GameObjectData gameObjectData)
         {
             return gameObjectData.Value;

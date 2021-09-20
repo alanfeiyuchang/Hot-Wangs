@@ -1,17 +1,17 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
-using System.Collections;
 
 namespace Fungus
 {
     /// <summary>
     /// Rotates a game object from the specified angles back to its starting orientation over time.
     /// </summary>
-    [CommandInfo("iTween", 
-                 "Rotate From", 
+    [CommandInfo("iTween",
+                 "Rotate From",
                  "Rotates a game object from the specified angles back to its starting orientation over time.")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]

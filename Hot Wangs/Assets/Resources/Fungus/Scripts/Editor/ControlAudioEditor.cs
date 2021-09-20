@@ -6,17 +6,17 @@ using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    
-    [CustomEditor (typeof(ControlAudio))]
+
+    [CustomEditor(typeof(ControlAudio))]
     public class ControlAudioEditor : CommandEditor
     {
         protected SerializedProperty controlProp;
         protected SerializedProperty audioSourceProp;
-        protected SerializedProperty startVolumeProp; 
-        protected SerializedProperty endVolumeProp; 
-        protected SerializedProperty fadeDurationProp; 
+        protected SerializedProperty startVolumeProp;
+        protected SerializedProperty endVolumeProp;
+        protected SerializedProperty fadeDurationProp;
         protected SerializedProperty waitUntilFinishedProp;
-        
+
         public override void OnEnable()
         {
             base.OnEnable();
@@ -28,8 +28,8 @@ namespace Fungus.EditorUtils
             fadeDurationProp = serializedObject.FindProperty("fadeDuration");
             waitUntilFinishedProp = serializedObject.FindProperty("waitUntilFinished");
         }
-        
-        public override void DrawCommandGUI() 
+
+        public override void DrawCommandGUI()
         {
             serializedObject.Update();
 
@@ -47,9 +47,9 @@ namespace Fungus.EditorUtils
                     fadeLabel = "Fade Duration";
                     volumeLabel = "New Volume";
                 }
-                EditorGUILayout.PropertyField(endVolumeProp,new GUIContent(volumeLabel));
+                EditorGUILayout.PropertyField(endVolumeProp, new GUIContent(volumeLabel));
             }
-            EditorGUILayout.PropertyField(fadeDurationProp,new GUIContent(fadeLabel));
+            EditorGUILayout.PropertyField(fadeDurationProp, new GUIContent(fadeLabel));
             EditorGUILayout.PropertyField(waitUntilFinishedProp);
             serializedObject.ApplyModifiedProperties();
         }

@@ -1,15 +1,15 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEditor;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEditorInternal;
+using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(Command), true)]
-    public class CommandEditor : Editor 
+    [CustomEditor(typeof(Command), true)]
+    public class CommandEditor : Editor
     {
         #region statics
         public static Command selectedCommand;
@@ -31,7 +31,7 @@ namespace Fungus.EditorUtils
                         retval = commandInfoAttr;
                 }
             }
-            
+
             return retval;
         }
 
@@ -112,7 +112,7 @@ namespace Fungus.EditorUtils
 
             EditorGUI.BeginChangeCheck();
             DrawCommandGUI();
-            if(EditorGUI.EndChangeCheck())
+            if (EditorGUI.EndChangeCheck())
             {
                 SelectedCommandDataStale = true;
             }
@@ -122,7 +122,7 @@ namespace Fungus.EditorUtils
             if (t.ErrorMessage.Length > 0)
             {
                 GUIStyle style = new GUIStyle(GUI.skin.label);
-                style.normal.textColor = new Color(1,0,0);
+                style.normal.textColor = new Color(1, 0, 0);
                 EditorGUILayout.LabelField(new GUIContent("Error: " + t.ErrorMessage), style);
             }
 
@@ -139,7 +139,7 @@ namespace Fungus.EditorUtils
         public virtual void DrawCommandGUI()
         {
             Command t = target as Command;
-            
+
             // Code below was copied from here
             // http://answers.unity3d.com/questions/550829/how-to-add-a-script-field-in-custom-inspector.html
 
@@ -168,7 +168,7 @@ namespace Fungus.EditorUtils
                 {
                     ReorderableList reordList = null;
                     reorderableLists.TryGetValue(iterator.displayName, out reordList);
-                    if(reordList == null)
+                    if (reordList == null)
                     {
                         var locSerProp = iterator.Copy();
                         //create and insert
@@ -186,7 +186,7 @@ namespace Fungus.EditorUtils
                             {
                                 return EditorGUI.GetPropertyHeight(locSerProp.GetArrayElementAtIndex(index), null, true);// + EditorGUIUtility.singleLineHeight;
                             }
-                    };
+                        };
 
                         reorderableLists.Add(iterator.displayName, reordList);
                     }
@@ -202,8 +202,8 @@ namespace Fungus.EditorUtils
             serializedObject.ApplyModifiedProperties();
         }
 
-        
-        public static void ObjectField<T>(SerializedProperty property, GUIContent label, GUIContent nullLabel, List<T> objectList) where T : Object 
+
+        public static void ObjectField<T>(SerializedProperty property, GUIContent label, GUIContent nullLabel, List<T> objectList) where T : Object
         {
             if (property == null)
             {
@@ -235,7 +235,7 @@ namespace Fungus.EditorUtils
             }
 
             T result;
-            
+
             selectedIndex = EditorGUILayout.Popup(label, selectedIndex, objectNames.ToArray());
 
             if (selectedIndex == -1)
@@ -267,7 +267,7 @@ namespace Fungus.EditorUtils
             {
                 // The serializedObject accessor create a new SerializedObject if needed.
                 // However, this will fail with a null exception if the target object no longer exists.
-                #pragma warning disable 0219
+#pragma warning disable 0219
                 SerializedObject so = serializedObject;
             }
             catch (System.NullReferenceException)

@@ -85,7 +85,7 @@ namespace Fungus
                         break;
 
                     default:
-                    break;
+                        break;
                 }
 
                 PutCollidersIntoGameObjectCollection(resHits);

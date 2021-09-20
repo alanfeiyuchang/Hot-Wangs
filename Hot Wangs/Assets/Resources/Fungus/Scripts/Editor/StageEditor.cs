@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(ControlStage))]
+    [CustomEditor(typeof(ControlStage))]
     public class StageEditor : CommandEditor
     {
         protected SerializedProperty displayProp;
@@ -27,22 +27,22 @@ namespace Fungus.EditorUtils
             fadeDurationProp = serializedObject.FindProperty("fadeDuration");
             waitUntilFinishedProp = serializedObject.FindProperty("waitUntilFinished");
         }
-        
-        public override void DrawCommandGUI() 
+
+        public override void DrawCommandGUI()
         {
             serializedObject.Update();
-            
+
             ControlStage t = target as ControlStage;
 
             // Format Enum names
-            string[] displayLabels = StringFormatter.FormatEnumNames(t.Display,"<None>");
+            string[] displayLabels = StringFormatter.FormatEnumNames(t.Display, "<None>");
             displayProp.enumValueIndex = EditorGUILayout.Popup("Display", (int)displayProp.enumValueIndex, displayLabels);
 
             string replaceLabel = "Portrait Stage";
             if (t.Display == StageDisplayType.Swap)
             {
-                CommandEditor.ObjectField<Stage>(replacedStageProp, 
-                                                 new GUIContent("Replace", "Character to swap with"), 
+                CommandEditor.ObjectField<Stage>(replacedStageProp,
+                                                 new GUIContent("Replace", "Character to swap with"),
                                                  new GUIContent("<Default>"),
                                                  Stage.ActiveStages);
                 replaceLabel = "With";
@@ -50,8 +50,8 @@ namespace Fungus.EditorUtils
 
             if (Stage.ActiveStages.Count > 0)
             {
-                CommandEditor.ObjectField<Stage>(stageProp, 
-                                                 new GUIContent(replaceLabel, "Stage to display the character portraits on"), 
+                CommandEditor.ObjectField<Stage>(stageProp,
+                                                 new GUIContent(replaceLabel, "Stage to display the character portraits on"),
                                                  new GUIContent("<Default>"),
                                                  Stage.ActiveStages);
             }
@@ -68,10 +68,10 @@ namespace Fungus.EditorUtils
                 if (s == null)
                 {
                     EditorGUILayout.HelpBox("No portrait stage has been set.", MessageType.Error);
-                    showOptionalFields = false; 
+                    showOptionalFields = false;
                 }
             }
-            if (t.Display != StageDisplayType.None && showOptionalFields) 
+            if (t.Display != StageDisplayType.None && showOptionalFields)
             {
                 EditorGUILayout.PropertyField(useDefaultSettingsProp);
                 if (!t.UseDefaultSettings)

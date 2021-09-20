@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(WriterAudio))]
+    [CustomEditor(typeof(WriterAudio))]
     public class WriterAudioEditor : Editor
     {
         protected SerializedProperty volumeProp;
@@ -28,7 +28,7 @@ namespace Fungus.EditorUtils
             soundEffectProp = serializedObject.FindProperty("soundEffect");
         }
 
-        public override void OnInspectorGUI() 
+        public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
@@ -40,7 +40,7 @@ namespace Fungus.EditorUtils
             EditorGUILayout.PropertyField(audioModeProp);
             if ((AudioMode)audioModeProp.enumValueIndex == AudioMode.Beeps)
             {
-                EditorGUILayout.PropertyField(beepSoundsProp, new GUIContent("Beep Sounds", "A list of beep sounds to play at random"),true);
+                EditorGUILayout.PropertyField(beepSoundsProp, new GUIContent("Beep Sounds", "A list of beep sounds to play at random"), true);
             }
             else
             {
@@ -49,5 +49,5 @@ namespace Fungus.EditorUtils
 
             serializedObject.ApplyModifiedProperties();
         }
-    }    
+    }
 }

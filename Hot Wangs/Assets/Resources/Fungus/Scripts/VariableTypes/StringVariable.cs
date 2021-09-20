@@ -35,7 +35,7 @@ namespace Fungus
             stringVal = v;
             stringRef = null;
         }
-        
+
         public static implicit operator string(StringData spriteData)
         {
             return spriteData.Value;
@@ -43,10 +43,10 @@ namespace Fungus
 
         public string Value
         {
-            get 
-            { 
+            get
+            {
                 if (stringVal == null) stringVal = "";
-                return (stringRef == null) ? stringVal : stringRef.Value; 
+                return (stringRef == null) ? stringVal : stringRef.Value;
             }
             set { if (stringRef == null) { stringVal = value; } else { stringRef.Value = value; } }
         }
@@ -76,7 +76,7 @@ namespace Fungus
         [VariableProperty("<Value>", typeof(StringVariable))]
         public StringVariable stringRef;
 
-        [TextArea(1,15)]
+        [TextArea(1, 15)]
         [SerializeField]
         public string stringVal;
 
@@ -93,10 +93,10 @@ namespace Fungus
 
         public string Value
         {
-            get 
+            get
             {
                 if (stringVal == null) stringVal = "";
-                return (stringRef == null) ? stringVal : stringRef.Value; 
+                return (stringRef == null) ? stringVal : stringRef.Value;
             }
             set { if (stringRef == null) { stringVal = value; } else { stringRef.Value = value; } }
         }
@@ -113,5 +113,5 @@ namespace Fungus
             }
         }
     }
-        
+
 }

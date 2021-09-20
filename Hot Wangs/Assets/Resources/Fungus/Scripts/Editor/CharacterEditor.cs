@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(Character))]
+    [CustomEditor(typeof(Character))]
     public class CharacterEditor : Editor
     {
         protected SerializedProperty nameTextProp;
@@ -19,16 +19,16 @@ namespace Fungus.EditorUtils
 
         protected virtual void OnEnable()
         {
-            nameTextProp = serializedObject.FindProperty ("nameText");
-            nameColorProp = serializedObject.FindProperty ("nameColor");
-            soundEffectProp = serializedObject.FindProperty ("soundEffect");
-            portraitsProp = serializedObject.FindProperty ("portraits");
-            portraitsFaceProp = serializedObject.FindProperty ("portraitsFace");
-            descriptionProp = serializedObject.FindProperty ("description");
+            nameTextProp = serializedObject.FindProperty("nameText");
+            nameColorProp = serializedObject.FindProperty("nameColor");
+            soundEffectProp = serializedObject.FindProperty("soundEffect");
+            portraitsProp = serializedObject.FindProperty("portraits");
+            portraitsFaceProp = serializedObject.FindProperty("portraitsFace");
+            descriptionProp = serializedObject.FindProperty("description");
             setSayDialogProp = serializedObject.FindProperty("setSayDialog");
         }
 
-        public override void OnInspectorGUI() 
+        public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
@@ -50,14 +50,14 @@ namespace Fungus.EditorUtils
             {
                 t.ProfileSprite = null;
             }
-            
+
             if (t.ProfileSprite != null)
             {
                 Texture2D characterTexture = t.ProfileSprite.texture;
                 float aspect = (float)characterTexture.width / (float)characterTexture.height;
                 Rect previewRect = GUILayoutUtility.GetAspectRect(aspect, GUILayout.Width(100), GUILayout.ExpandWidth(true));
                 if (characterTexture != null)
-                    GUI.DrawTexture(previewRect,characterTexture,ScaleMode.ScaleToFit,true,aspect);
+                    GUI.DrawTexture(previewRect, characterTexture, ScaleMode.ScaleToFit, true, aspect);
             }
 
             EditorGUILayout.PropertyField(portraitsProp, new GUIContent("Portraits", "Character image sprites to display in the dialog"), true);
@@ -76,7 +76,7 @@ namespace Fungus.EditorUtils
 
             EditorGUILayout.Separator();
 
-            if(EditorGUI.EndChangeCheck())
+            if (EditorGUI.EndChangeCheck())
                 EditorUtility.SetDirty(t);
 
             serializedObject.ApplyModifiedProperties();

@@ -3,9 +3,10 @@ using System.Collections;
 using UnityEngine;
 
 [AddComponentMenu("")]
-public class SfxrCacheSurrogate : MonoBehaviour {
+public class SfxrCacheSurrogate : MonoBehaviour
+{
 
-	/**
+    /**
 	 * usfxr
 	 *
 	 * Copyright 2013 Zeh Fernando
@@ -24,35 +25,39 @@ public class SfxrCacheSurrogate : MonoBehaviour {
 	 *
 	 */
 
-	/**
+    /**
 	 * SfxrCacheSurrogate
 	 * This is the (internal) behavior script responsible for calling Coroutines for asynchronous audio generation
 	 *
 	 * @author Zeh Fernando
 	 */
 
-	// ================================================================================================================
-	// PUBLIC INTERFACE -----------------------------------------------------------------------------------------------
+    // ================================================================================================================
+    // PUBLIC INTERFACE -----------------------------------------------------------------------------------------------
 
-	public void CacheSound(SfxrSynth __synth, Action __callback) {
-		StartCoroutine(CacheSoundAsynchronously(__synth, __callback));
-	}
+    public void CacheSound(SfxrSynth __synth, Action __callback)
+    {
+        StartCoroutine(CacheSoundAsynchronously(__synth, __callback));
+    }
 
-	private IEnumerator CacheSoundAsynchronously(SfxrSynth __synth, Action __callback) {
-		yield return null;
-		__synth.CacheSound(null, true);
-		__callback();
-		UnityEngine.Object.Destroy(gameObject);
-	}
+    private IEnumerator CacheSoundAsynchronously(SfxrSynth __synth, Action __callback)
+    {
+        yield return null;
+        __synth.CacheSound(null, true);
+        __callback();
+        UnityEngine.Object.Destroy(gameObject);
+    }
 
-	public void CacheMutations(SfxrSynth __synth, uint __mutationsNum, float __mutationAmount, Action __callback) {
-		StartCoroutine(CacheMutationsAsynchronously(__synth, __mutationsNum, __mutationAmount, __callback));
-	}
+    public void CacheMutations(SfxrSynth __synth, uint __mutationsNum, float __mutationAmount, Action __callback)
+    {
+        StartCoroutine(CacheMutationsAsynchronously(__synth, __mutationsNum, __mutationAmount, __callback));
+    }
 
-	private IEnumerator CacheMutationsAsynchronously(SfxrSynth __synth, uint __mutationsNum, float __mutationAmount, Action __callback) {
-		yield return null;
-		__synth.CacheMutations(__mutationsNum, __mutationAmount, null, true);
-		__callback();
-		UnityEngine.Object.Destroy(gameObject);
-	}
+    private IEnumerator CacheMutationsAsynchronously(SfxrSynth __synth, uint __mutationsNum, float __mutationAmount, Action __callback)
+    {
+        yield return null;
+        __synth.CacheMutations(__mutationsNum, __mutationAmount, null, true);
+        __callback();
+        UnityEngine.Object.Destroy(gameObject);
+    }
 }

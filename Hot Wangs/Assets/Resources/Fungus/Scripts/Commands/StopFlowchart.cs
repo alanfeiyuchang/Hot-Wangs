@@ -1,20 +1,20 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Fungus
 {
     /// <summary>
     /// Stops execution of all Blocks in a Flowchart.
     /// </summary>
-    [CommandInfo("Flow", 
-                 "Stop Flowchart", 
+    [CommandInfo("Flow",
+                 "Stop Flowchart",
                  "Stops execution of all Blocks in a Flowchart")]
     [AddComponentMenu("")]
     public class StopFlowchart : Command
-    {       
+    {
         [Tooltip("Stop all executing Blocks in the Flowchart that contains this command")]
         [SerializeField] protected bool stopParentFlowchart;
 

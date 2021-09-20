@@ -5,8 +5,8 @@ using UnityEditor;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(InvokeEvent))]
-    public class InvokeEventEditor : CommandEditor 
+    [CustomEditor(typeof(InvokeEvent))]
+    public class InvokeEventEditor : CommandEditor
     {
         protected SerializedProperty descriptionProp;
         protected SerializedProperty delayProp;
@@ -49,25 +49,25 @@ namespace Fungus.EditorUtils
 
             switch ((InvokeType)invokeTypeProp.enumValueIndex)
             {
-            case InvokeType.Static:
-                EditorGUILayout.PropertyField(staticEventProp);
-                break;
-            case InvokeType.DynamicBoolean:
-                EditorGUILayout.PropertyField(booleanEventProp);
-                EditorGUILayout.PropertyField(booleanParameterProp);
-                break;
-            case InvokeType.DynamicInteger:
-                EditorGUILayout.PropertyField(integerEventProp);
-                EditorGUILayout.PropertyField(integerParameterProp);
-                break;
-            case InvokeType.DynamicFloat:
-                EditorGUILayout.PropertyField(floatEventProp);
-                EditorGUILayout.PropertyField(floatParameterProp);
-                break;
-            case InvokeType.DynamicString:
-                EditorGUILayout.PropertyField(stringEventProp);
-                EditorGUILayout.PropertyField(stringParameterProp);
-                break;
+                case InvokeType.Static:
+                    EditorGUILayout.PropertyField(staticEventProp);
+                    break;
+                case InvokeType.DynamicBoolean:
+                    EditorGUILayout.PropertyField(booleanEventProp);
+                    EditorGUILayout.PropertyField(booleanParameterProp);
+                    break;
+                case InvokeType.DynamicInteger:
+                    EditorGUILayout.PropertyField(integerEventProp);
+                    EditorGUILayout.PropertyField(integerParameterProp);
+                    break;
+                case InvokeType.DynamicFloat:
+                    EditorGUILayout.PropertyField(floatEventProp);
+                    EditorGUILayout.PropertyField(floatParameterProp);
+                    break;
+                case InvokeType.DynamicString:
+                    EditorGUILayout.PropertyField(stringEventProp);
+                    EditorGUILayout.PropertyField(stringParameterProp);
+                    break;
             }
 
             serializedObject.ApplyModifiedProperties();

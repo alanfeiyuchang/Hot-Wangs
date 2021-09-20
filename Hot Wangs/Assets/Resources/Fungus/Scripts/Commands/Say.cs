@@ -8,14 +8,14 @@ namespace Fungus
     /// <summary>
     /// Writes text in a dialog box.
     /// </summary>
-    [CommandInfo("Narrative", 
-                 "Say", 
+    [CommandInfo("Narrative",
+                 "Say",
                  "Writes text in a dialog box.")]
     [AddComponentMenu("")]
     public class Say : Command, ILocalizable
     {
         // Removed this tooltip as users's reported it obscures the text box
-        [TextArea(5,10)]
+        [TextArea(5, 10)]
         [SerializeField] protected string storyText = "";
 
         [Tooltip("Notes about this story text for other authors, localization, etc.")]
@@ -102,7 +102,7 @@ namespace Fungus
                 Continue();
                 return;
             }
-    
+
             var flowchart = GetFlowchart();
 
             sayDialog.SetActive(true);
@@ -125,7 +125,8 @@ namespace Fungus
 
             string subbedText = flowchart.SubstituteVariables(displayText);
 
-            sayDialog.Say(subbedText, !extendPrevious, waitForClick, fadeWhenDone, stopVoiceover, waitForVO, voiceOverClip, delegate {
+            sayDialog.Say(subbedText, !extendPrevious, waitForClick, fadeWhenDone, stopVoiceover, waitForVO, voiceOverClip, delegate
+            {
                 Continue();
             });
         }
@@ -133,7 +134,7 @@ namespace Fungus
         public override string GetSummary()
         {
             string namePrefix = "";
-            if (character != null) 
+            if (character != null)
             {
                 namePrefix = character.NameText + ": ";
             }
@@ -183,7 +184,7 @@ namespace Fungus
         {
             return description;
         }
-        
+
         public virtual string GetStringId()
         {
             // String id for Say commands is SAY.<Localization Id>.<Command id>.[Character Name]

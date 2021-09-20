@@ -24,7 +24,7 @@ namespace Fungus
         protected virtual void Update()
         {
             // Disable scaling to avoid complicating the orthographic size calculations
-            transform.localScale = new Vector3(1,1,1);
+            transform.localScale = new Vector3(1, 1, 1);
         }
 
         #region Public members

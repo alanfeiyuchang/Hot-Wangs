@@ -1,12 +1,12 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEngine;
-using System.Collections;
-using System;
-using System.Linq;
 using MoonSharp.Interpreter;
 using MoonSharp.VsCodeDebugger;
+using System;
+using System.Collections;
+using System.Linq;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -32,7 +32,7 @@ namespace Fungus
         /// </summary>
         protected bool initialised = false;
 
-        protected virtual void Start() 
+        protected virtual void Start()
         {
             InitEnvironment();
         }
@@ -45,7 +45,7 @@ namespace Fungus
             if (DebugServer != null)
             {
                 DebugServer.Detach(interpreter);
-            }            
+            }
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Fungus
             while (co.Coroutine.State != CoroutineState.Dead)
             {
                 try
-                {                
+                {
                     returnValue = co.Coroutine.Resume();
                 }
                 catch (InterpreterException ex)
@@ -137,7 +137,7 @@ namespace Fungus
                 output += count.ToString() + ": " + line + "\n";
                 count++;
             }
-                
+
             UnityEngine.Debug.LogError(output);
         }
 
@@ -179,7 +179,7 @@ namespace Fungus
                 t = System.Type.GetType(typeName);
             }
             catch
-            {}
+            { }
 
             if (t == null)
             {
@@ -232,7 +232,7 @@ namespace Fungus
         /// Initialise the Lua interpreter so we can start running Lua code.
         /// </summary>
         public virtual void InitEnvironment()
-        {   
+        {
             if (initialised)
             {
                 return;
@@ -257,7 +257,7 @@ namespace Fungus
             //
             // Change this to #if UNITY_STANDALONE if you want to debug a standalone build.
             //
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             if (startDebugServer &&
                 DebugServer == null)
             {
@@ -271,7 +271,7 @@ namespace Fungus
                 DebugServer.AttachToScript(interpreter, gameObject.name);
             }
 
-            #endif
+#endif
 
             initialised = true;
         }
@@ -329,7 +329,7 @@ namespace Fungus
         /// <param name="onComplete">Method to callback when the Lua code finishes exection. Supports return parameters.</param>
         /// </summary>
         public virtual void RunLuaFunction(Closure fn, bool runAsCoroutine, Action<DynValue> onComplete = null)
-        {            
+        {
             if (fn == null)
             {
                 if (onComplete != null)
@@ -349,8 +349,8 @@ namespace Fungus
             {
                 DynValue returnValue = null;
                 try
-                {                
-                    returnValue = fn.Call();                
+                {
+                    returnValue = fn.Call();
                 }
                 catch (InterpreterException ex)
                 {

@@ -1,10 +1,10 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEngine;
-using UnityEditor;
 using System;
+using UnityEditor;
 using UnityEditorInternal;
+using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
@@ -164,7 +164,7 @@ namespace Fungus.EditorUtils
             }
 
             string commandName = commandInfoAttr.CommandName;
-            
+
             float indentSize = 20;
             for (int i = 0; i < command.IndentLevel; ++i)
             {
@@ -380,7 +380,7 @@ namespace Fungus.EditorUtils
             }
 
             GUI.Label(summaryRect, summary, summaryStyle);
-            
+
             GUI.backgroundColor = Color.white;
         }
     }

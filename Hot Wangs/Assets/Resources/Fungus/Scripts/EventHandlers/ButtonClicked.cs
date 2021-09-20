@@ -1,10 +1,10 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace Fungus 
+namespace Fungus
 {
     /// <summary>
     /// The block will execute when the user clicks on the target UI button object.
@@ -14,7 +14,7 @@ namespace Fungus
                       "The block will execute when the user clicks on the target UI button object.")]
     [AddComponentMenu("")]
     public class ButtonClicked : EventHandler
-    {   
+    {
         [Tooltip("The UI Button that the user can click on")]
         [SerializeField] protected Button targetButton;
 
@@ -27,7 +27,7 @@ namespace Fungus
                 targetButton.onClick.AddListener(OnButtonClick);
             }
         }
-        
+
         protected virtual void OnButtonClick()
         {
             ExecuteBlock();

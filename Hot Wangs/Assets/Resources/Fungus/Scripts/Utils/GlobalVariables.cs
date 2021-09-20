@@ -1,9 +1,9 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-using UnityEngine;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -22,12 +22,12 @@ namespace Fungus
             holder.transform.parent = transform;
         }
 
-		public Variable GetVariable(string variableKey)
-		{
-			Variable v = null;
-			variables.TryGetValue(variableKey, out v);
-			return v;
-		}
+        public Variable GetVariable(string variableKey)
+        {
+            Variable v = null;
+            variables.TryGetValue(variableKey, out v);
+            return v;
+        }
 
         public VariableBase<T> GetOrAddVariable<T>(string variableKey, T defaultvalue, Type type)
         {
@@ -35,7 +35,7 @@ namespace Fungus
             VariableBase<T> vAsT = null;
             var res = variables.TryGetValue(variableKey, out v);
 
-            if(res && v != null)
+            if (res && v != null)
             {
                 vAsT = v as VariableBase<T>;
 

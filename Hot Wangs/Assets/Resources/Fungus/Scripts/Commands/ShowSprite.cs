@@ -9,8 +9,8 @@ namespace Fungus
     /// <summary>
     /// Makes a sprite visible / invisible by setting the color alpha.
     /// </summary>
-    [CommandInfo("Sprite", 
-                 "Show Sprite", 
+    [CommandInfo("Sprite",
+                 "Show Sprite",
                  "Makes a sprite visible / invisible by setting the color alpha.")]
     [AddComponentMenu("")]
     [ExecuteInEditMode]

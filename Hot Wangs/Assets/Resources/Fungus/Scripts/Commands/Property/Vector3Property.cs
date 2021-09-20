@@ -13,21 +13,21 @@ namespace Fungus
     [AddComponentMenu("")]
     public class Vector3Property : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            X, 
-            Y, 
-            Z, 
-            Normalized, 
-            Magnitude, 
-            SqrMagnitude, 
+        //generated property
+        public enum Property
+        {
+            X,
+            Y,
+            Z,
+            Normalized,
+            Magnitude,
+            SqrMagnitude,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         [VariableProperty(typeof(Vector3Variable))]
         protected Vector3Variable vector3Var;

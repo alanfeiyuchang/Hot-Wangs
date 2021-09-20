@@ -12,7 +12,7 @@ namespace Fungus
     public abstract class Condition : Command
     {
         protected End endCommand;
-     
+
         public override void OnEnter()
         {
             if (ParentBlock == null)
@@ -21,14 +21,14 @@ namespace Fungus
             }
 
             //if looping we need the end command in order to work
-            if(IsLooping && !EnsureRequiredEnd())
+            if (IsLooping && !EnsureRequiredEnd())
             {
                 Debug.LogError(GetLocationIdentifier() + " is looping but has no matching End command");
                 Continue();
                 return;
             }
 
-            if ( !HasNeededProperties() )
+            if (!HasNeededProperties())
             {
                 Debug.LogError(GetLocationIdentifier() + " cannot run due to missing required properties");
                 Continue();
@@ -55,7 +55,7 @@ namespace Fungus
         {
             return new Color32(253, 253, 150, 255);
         }
-        
+
         public virtual bool IsLooping { get { return false; } }
 
 
@@ -65,7 +65,7 @@ namespace Fungus
         /// </summary>
         public virtual void MoveToEnd()
         {
-            if(endCommand == null)
+            if (endCommand == null)
             {
                 endCommand = FindOurEndCommand();
             }
@@ -86,7 +86,7 @@ namespace Fungus
             }
         }
 
-               
+
         protected End FindOurEndCommand()
         {
             return FindMatchingEndCommand(this);
@@ -138,7 +138,7 @@ namespace Fungus
 
                 if (endCommand == null)
                 {
-                    Debug.LogError( GetLocationIdentifier() + "', could not find closing End command and thus cannot loop.");
+                    Debug.LogError(GetLocationIdentifier() + "', could not find closing End command and thus cannot loop.");
                     //StopParentBlock();
                     return false;
                 }
@@ -185,7 +185,7 @@ namespace Fungus
         protected virtual void OnFalse()
         {
             //looping constructs only care about the end
-            if(IsLooping)
+            if (IsLooping)
             {
                 MoveToEnd();
                 return;
@@ -203,7 +203,7 @@ namespace Fungus
 
                 // Find next command at same indent level as this If command
                 // Skip disabled commands, comments & labels
-                if (!((Command)nextCommand).enabled || 
+                if (!((Command)nextCommand).enabled ||
                     nextCommand.GetType() == typeof(Comment) ||
                     nextCommand.GetType() == typeof(Label) ||
                     nextCommand.IndentLevel != indentLevel)

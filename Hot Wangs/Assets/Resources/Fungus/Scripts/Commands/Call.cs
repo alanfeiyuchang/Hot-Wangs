@@ -1,10 +1,10 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
-using System.Collections.Generic;
-using System;
 
 namespace Fungus
 {
@@ -26,8 +26,8 @@ namespace Fungus
     /// <summary>
     /// Execute another block in the same Flowchart as the command, or in a different Flowchart.
     /// </summary>
-    [CommandInfo("Flow", 
-                 "Call", 
+    [CommandInfo("Flow",
+                 "Call",
                  "Execute another block in the same Flowchart as the command, or in a different Flowchart.")]
     [AddComponentMenu("")]
     public class Call : Command, IBlockCaller
@@ -45,7 +45,7 @@ namespace Fungus
         [Tooltip("Command index to start executing")]
         [FormerlySerializedAs("commandIndex")]
         [SerializeField] protected int startIndex;
-    
+
         [Tooltip("Select if the calling block should stop or continue executing commands, or wait until the called block finishes.")]
         [SerializeField] protected CallMode callMode;
 
@@ -63,7 +63,7 @@ namespace Fungus
                     return;
                 }
 
-                if(targetBlock.IsExecuting())
+                if (targetBlock.IsExecuting())
                 {
                     Debug.LogWarning(targetBlock.BlockName + " cannot be called/executed, it is already running.");
                     Continue();
@@ -74,7 +74,8 @@ namespace Fungus
                 Action onComplete = null;
                 if (callMode == CallMode.WaitUntilFinished)
                 {
-                    onComplete = delegate {
+                    onComplete = delegate
+                    {
                         Continue();
                     };
                 }
@@ -125,9 +126,9 @@ namespace Fungus
             if (targetBlock != null)
             {
                 connectedBlocks.Add(targetBlock);
-            }       
+            }
         }
-        
+
         public override string GetSummary()
         {
             string summary = "";

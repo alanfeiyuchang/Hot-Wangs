@@ -6,8 +6,8 @@ using UnityEngine;
 
 namespace Fungus.EditorUtils
 {
-    [CustomEditor (typeof(Call))]
-    public class CallEditor : CommandEditor 
+    [CustomEditor(typeof(Call))]
+    public class CallEditor : CommandEditor
     {
         protected SerializedProperty targetFlowchartProp;
         protected SerializedProperty targetBlockProp;
@@ -47,8 +47,8 @@ namespace Fungus.EditorUtils
             if (flowchart != null)
             {
                 BlockEditor.BlockField(targetBlockProp,
-                                       new GUIContent("Target Block", "Block to call"), 
-                                       new GUIContent("<None>"), 
+                                       new GUIContent("Target Block", "Block to call"),
+                                       new GUIContent("<None>"),
                                        flowchart);
 
                 EditorGUILayout.PropertyField(startLabelProp);

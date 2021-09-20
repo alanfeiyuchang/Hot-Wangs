@@ -21,11 +21,11 @@ namespace Fungus
     /// <summary>
     /// Writes a log message to the debug console.
     /// </summary>
-    [CommandInfo("Scripting", 
-                 "Debug Log", 
+    [CommandInfo("Scripting",
+                 "Debug Log",
                  "Writes a log message to the debug console.")]
     [AddComponentMenu("")]
-    public class DebugLog : Command 
+    public class DebugLog : Command
     {
         [Tooltip("Display type of debug log info")]
         [SerializeField] protected DebugLogType logType;
@@ -35,22 +35,22 @@ namespace Fungus
 
         #region Public members
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
             var flowchart = GetFlowchart();
             string message = flowchart.SubstituteVariables(logMessage.Value);
 
             switch (logType)
             {
-            case DebugLogType.Info:
-                Debug.Log(message);
-                break;
-            case DebugLogType.Warning:
-                Debug.LogWarning(message);
-                break;
-            case DebugLogType.Error:
-                Debug.LogError(message);
-                break;
+                case DebugLogType.Info:
+                    Debug.Log(message);
+                    break;
+                case DebugLogType.Warning:
+                    Debug.LogWarning(message);
+                    break;
+                case DebugLogType.Error:
+                    Debug.LogError(message);
+                    break;
             }
 
             Continue();

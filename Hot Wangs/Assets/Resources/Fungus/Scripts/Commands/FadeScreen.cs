@@ -1,7 +1,7 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Fungus
 {
@@ -9,12 +9,12 @@ namespace Fungus
     /// Draws a fullscreen texture over the scene to give a fade effect. Setting Target Alpha to 1 will obscure the screen, alpha 0 will reveal the screen.
     /// If no Fade Texture is provided then a default flat color texture is used.
     /// </summary>
-    [CommandInfo("Camera", 
-                 "Fade Screen", 
+    [CommandInfo("Camera",
+                 "Fade Screen",
                  "Draws a fullscreen texture over the scene to give a fade effect. Setting Target Alpha to 1 will obscure the screen, alpha 0 will reveal the screen. " +
                  "If no Fade Texture is provided then a default flat color texture is used.")]
     [AddComponentMenu("")]
-    public class FadeScreen : Command 
+    public class FadeScreen : Command
     {
         [Tooltip("Time for fade effect to complete")]
         [SerializeField] protected float duration = 1f;
@@ -38,7 +38,7 @@ namespace Fungus
         public override void OnEnter()
         {
             var cameraManager = FungusManager.Instance.CameraManager;
-            
+
             if (fadeTexture)
             {
                 cameraManager.ScreenFadeTexture = fadeTexture;
@@ -47,30 +47,31 @@ namespace Fungus
             {
                 cameraManager.ScreenFadeTexture = CameraManager.CreateColorTexture(fadeColor, 32, 32);
             }
-            
-            cameraManager.Fade(targetAlpha, duration, delegate { 
+
+            cameraManager.Fade(targetAlpha, duration, delegate
+            {
                 if (waitUntilFinished)
                 {
                     Continue();
                 }
             }, fadeTweenType);
-            
+
             if (!waitUntilFinished)
             {
                 Continue();
             }
         }
-        
+
         public override string GetSummary()
         {
             return "Fade to " + targetAlpha + " over " + duration + " seconds";
         }
-        
+
         public override Color GetButtonColor()
         {
             return new Color32(216, 228, 170, 255);
         }
 
         #endregion
-    }    
+    }
 }

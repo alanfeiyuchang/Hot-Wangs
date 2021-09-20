@@ -13,35 +13,35 @@ namespace Fungus
     [AddComponentMenu("")]
     public class RigidbodyProperty : BaseVariableProperty
     {
-		//generated property
-        public enum Property 
-        { 
-            Velocity, 
-            AngularVelocity, 
-            Drag, 
-            AngularDrag, 
-            Mass, 
-            UseGravity, 
-            MaxDepenetrationVelocity, 
-            IsKinematic, 
-            FreezeRotation, 
-            CenterOfMass, 
-            WorldCenterOfMass, 
-            InertiaTensorRotation, 
-            InertiaTensor, 
-            DetectCollisions, 
-            Position, 
-            Rotation, 
-            SolverIterations, 
-            SolverVelocityIterations, 
-            SleepThreshold, 
-            MaxAngularVelocity, 
+        //generated property
+        public enum Property
+        {
+            Velocity,
+            AngularVelocity,
+            Drag,
+            AngularDrag,
+            Mass,
+            UseGravity,
+            MaxDepenetrationVelocity,
+            IsKinematic,
+            FreezeRotation,
+            CenterOfMass,
+            WorldCenterOfMass,
+            InertiaTensorRotation,
+            InertiaTensor,
+            DetectCollisions,
+            Position,
+            Rotation,
+            SolverIterations,
+            SolverVelocityIterations,
+            SleepThreshold,
+            MaxAngularVelocity,
         }
 
-		
+
         [SerializeField]
         protected Property property;
-		
+
         [SerializeField]
         protected RigidbodyData rigidbodyData;
 

@@ -27,24 +27,24 @@ namespace Fungus
         {
             switch (setOperator)
             {
-            case SetOperator.Negate:
-                Value = Value * -1;
-                break;
-            case SetOperator.Add:
-                Value += value;
-                break;
-            case SetOperator.Subtract:
-                Value -= value;
-                break;
-            case SetOperator.Multiply:
-                Value *= value;
-                break;
-            case SetOperator.Divide:
-                Value /= value;
-                break;
-            default:
-                base.Apply(setOperator, value);
-                break;
+                case SetOperator.Negate:
+                    Value = Value * -1;
+                    break;
+                case SetOperator.Add:
+                    Value += value;
+                    break;
+                case SetOperator.Subtract:
+                    Value -= value;
+                    break;
+                case SetOperator.Multiply:
+                    Value *= value;
+                    break;
+                case SetOperator.Divide:
+                    Value /= value;
+                    break;
+                default:
+                    base.Apply(setOperator, value);
+                    break;
             }
         }
 
@@ -57,21 +57,21 @@ namespace Fungus
 
             switch (compareOperator)
             {
-            case CompareOperator.LessThan:
-                condition = lhs < rhs;
-                break;
-            case CompareOperator.GreaterThan:
-                condition = lhs > rhs;
-                break;
-            case CompareOperator.LessThanOrEquals:
-                condition = lhs <= rhs;
-                break;
-            case CompareOperator.GreaterThanOrEquals:
-                condition = lhs >= rhs;
-                break;
-            default:
-                condition = base.Evaluate(compareOperator, value);
-                break;
+                case CompareOperator.LessThan:
+                    condition = lhs < rhs;
+                    break;
+                case CompareOperator.GreaterThan:
+                    condition = lhs > rhs;
+                    break;
+                case CompareOperator.LessThanOrEquals:
+                    condition = lhs <= rhs;
+                    break;
+                case CompareOperator.GreaterThanOrEquals:
+                    condition = lhs >= rhs;
+                    break;
+                default:
+                    condition = base.Evaluate(compareOperator, value);
+                    break;
             }
 
             return condition;

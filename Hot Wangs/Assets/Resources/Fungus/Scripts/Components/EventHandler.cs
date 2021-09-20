@@ -1,9 +1,9 @@
 // This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
-using System;
 
 namespace Fungus
 {
@@ -18,7 +18,7 @@ namespace Fungus
             this.EventHandlerName = eventHandlerName;
             this.HelpText = helpText;
         }
-        
+
         public string Category { get; set; }
         public string EventHandlerName { get; set; }
         public string HelpText { get; set; }
@@ -36,7 +36,7 @@ namespace Fungus
     [RequireComponent(typeof(Flowchart))]
     [AddComponentMenu("")]
     public class EventHandler : MonoBehaviour
-    {   
+    {
         [HideInInspector]
         [FormerlySerializedAs("parentSequence")]
         [SerializeField] protected Block parentBlock;
@@ -69,7 +69,7 @@ namespace Fungus
             var flowchart = ParentBlock.GetFlowchart();
 
             //if somehow the flowchart is invalid or has been disabled we don't want to continue
-            if(flowchart == null || !flowchart.isActiveAndEnabled)
+            if (flowchart == null || !flowchart.isActiveAndEnabled)
             {
                 return false;
             }
