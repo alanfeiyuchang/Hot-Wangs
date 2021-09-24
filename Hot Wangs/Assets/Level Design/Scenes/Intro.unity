@@ -571,13 +571,14 @@ GameObject:
   - component: {fileID: 1356773944}
   - component: {fileID: 1356773942}
   - component: {fileID: 1356773946}
+  - component: {fileID: 1356773931}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1356773928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,9 +603,11 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
+  selectedBlocks:
+  - {fileID: 1356773930}
   selectedCommands: []
-  variables: []
+  variables:
+  - {fileID: 1356773931}
   description: 
   stepPause: 0
   colorCommands: 1
@@ -675,6 +678,21 @@ MonoBehaviour:
   - {fileID: 1356773938}
   - {fileID: 1356773936}
   suppressAllAutoSelections: 0
+--- !u!114 &1356773931
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356773927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d02d9822eec54c98afe95bb497211b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: 0
+  key: Var
+  value: 0
 --- !u!4 &1356773932
 Transform:
   m_ObjectHideFlags: 0
@@ -1645,16 +1663,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   luaEnvironment: {fileID: 1915016799593268920}
-  luaFile: {fileID: 4900000, guid: 9cc68b549ee3d3043aab516d65ee14e8, type: 3}
-  luaScript: "--stage.show(jason, \"Jason\", \"offscreen left\", \"middle\")\r\nsay(\"hi\")\nstage.hide(jason,
-    \"left\")\n\r\nsetcharacter(jason)\r\nsay(\"Welcome to Hot Wangs! Where the girls
-    ain\u2019t girls, and the ranch...well, you know. \")\r\nsetcharacter(jason)\r\nsay(\"Listen
-    up, rookie, today we\u2019re running try-outs at the fembeer\u2122 tap. Have
-    you ever tended bar before? \")\r\n\r\nlocal choice = 0\r\nchoice = choose {\"Yes\",
-    \"No\"}\r\nif choice == 1 then goto optionA end\r\nif choice == 2 then goto optionB
-    end\r\n\r\n::optionA::\r\nsetcharacter(jason)\r\nsay(\"That\u2019s great, kid,
-    but don\u2019t get cocky! It never hurts to refresh our memories. \")\r\nstage.hide(jason)\r\n\r\n::optionB::\r\nsetcharacter(jason)\r\nsay(\"That\u2019s
-    ok; I\u2019ll be your coach! Let me show you how it\u2019s done. \")\r\nstage.hide(jason)\r\n"
+  luaFile: {fileID: 0}
+  luaScript: 
   runAsCoroutine: 1
 --- !u!114 &1915016799593206106
 MonoBehaviour:

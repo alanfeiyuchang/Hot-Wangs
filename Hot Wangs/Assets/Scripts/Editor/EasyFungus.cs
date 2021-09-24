@@ -12,6 +12,10 @@ public class EasyFungus : EditorWindow
     private StreamWriter sw;
     private JSONNode jsonData;
 
+    private bool inMenu = false;
+    private bool inOption = false;
+    private List<string> optionList = new List<string>();
+
     [MenuItem("Window/Easy Fungus")]
     public static void ShowWindow()
     {
@@ -62,10 +66,25 @@ public class EasyFungus : EditorWindow
         jsonData = JSON.Parse(modifiedJson);
         string luaPath = AssetDatabase.GetAssetPath(luaFile);
         sw = new StreamWriter(luaPath);
-
+        sw.WriteLine("local choice = 0");
         for (int i = 0; i < itemNum; i++)
         {
             string cmd = jsonData[i]["commandType"];
+
+            if (cmd == "Menu")
+            {
+                if (!inMenu) MenuStart();
+                else sw.Write(", ");
+                MenuCommand(jsonData[i]["text"], jsonData[i]["goto"]);
+                inMenu = true;
+            }
+            else
+            {
+                if (inMenu) MenuEnd();
+                inMenu = false;
+                //sw.WriteLine(" ");
+            }
+
             if (cmd == "Say")
             {
                 SayCommand(jsonData[i]["character"], jsonData[i]["text"]);
@@ -89,7 +108,22 @@ public class EasyFungus : EditorWindow
                     HideCommand(jsonData[i]["character"], jsonData[i]["end"]);
                 }
             }
+            else if (cmd[0] == 'O' || cmd[0] == 'o') // if option
+            {
+                if (!inOption)
+                {
+                    OptionStart(cmd);
+                }
+                inOption = true;
+            }
+            else if (cmd == "EndOption")
+            {
+                OptionEnd();
+                inOption = false;
+            }
+
         }
+        EndOptionLine();
         sw.Close();
 
     }
@@ -99,7 +133,6 @@ public class EasyFungus : EditorWindow
         sw.WriteLine($"setcharacter({character.ToLower()})");
         sw.WriteLine($"say({AddQuote(text)})");
     }
-
 
     void ShowMoveCommand(string character, string portrait, string from, string to)
     {
@@ -116,6 +149,45 @@ public class EasyFungus : EditorWindow
     void HideCommand(string character, string position)
     {
         sw.WriteLine($"stage.hide({character.ToLower()}, {AddQuote(position.ToLower())})");
+    }
+
+    void MenuStart()
+    {
+        optionList.Clear();
+        sw.Write("choice = choose { ");
+    }
+
+    void MenuCommand(string menuText, string gotoOption)
+    {
+        sw.Write(AddQuote(menuText));
+        optionList.Add(gotoOption);
+    }
+
+    void MenuEnd()
+    {
+        sw.WriteLine(" }");
+        for (int i = 1; i <= optionList.Count; i++)
+        {
+            Debug.Log(optionList[i - 1]);
+            sw.WriteLine("if choice == " + i.ToString() + " then goto " + optionList[i-1] + " end");
+        }
+    }
+
+    void OptionStart(string optionName)
+    {
+        sw.WriteLine(" ");
+        sw.WriteLine("::" + optionName + "::");
+    }
+
+    void OptionEnd()
+    {
+        sw.WriteLine("goto endoptions");
+        sw.WriteLine(" ");
+    }
+
+    void EndOptionLine()
+    {
+        sw.WriteLine("::endoptions::");
     }
 
     string AddQuote(string s)

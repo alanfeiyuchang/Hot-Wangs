@@ -13,42 +13,63 @@
         "text": "Hello there"
     },
     {
-        "commandType": "Menu"
+        "commandType": "Menu",
+        "text": "Hi",
+        "goto": "Option1"
     },
     {
-        "commandType": "Option",
-        "text": "Hi"
+        "commandType": "Menu",
+        "text": "Bye",
+        "goto": "Option2"
     },
     {
-        "commandType": "Say",
-        "character": "Jason",
-        "text": "Something"
-    },
-    {
-        "commandType": "Menu"
-    },
-    {
-        "commandType": "Option",
-        "text": "Something1"
-    },
-    {
-        "commandType": "Option",
-        "text": "Something2"
-    },
-    {
-        "commandType": "EndMenu"
-    },
-    {
-        "commandType": "Option",
-        "text": "Bye"
+        "commandType": "Option1"
     },
     {
         "commandType": "Say",
         "character": "Jason",
-        "text": "Bye"
+        "text": "Something according to hi"
     },
     {
-        "commandType": "EndMenu"
+        "commandType": "EndOption"
+    },
+    {
+        "commandType": "Option2"
+    },
+    {
+        "commandType": "Menu",
+        "text": "I will see you later",
+        "goto": "Option3"
+    },
+    {
+        "commandType": "Menu",
+        "text": "I will not see you anymore",
+        "goto": "Option4"
+    },
+    {
+        "commandType": "EndOption"
+    },
+    {
+        "commandType": "Option3"
+    },
+    {
+        "commandType": "Say",
+        "character": "Jason",
+        "text": "See you later"
+    },
+    {
+        "commandType": "EndOption"
+    },
+    {
+        "commandType": "Option4"
+    },
+    {
+        "commandType": "Say",
+        "character": "Jason",
+        "text": "See you never"
+    },
+    {
+        "commandType": "EndOption"
     },
     {
         "commandType": "Move",

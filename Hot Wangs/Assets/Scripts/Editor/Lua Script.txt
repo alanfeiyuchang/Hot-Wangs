@@ -1,8 +1,34 @@
+local choice = 0
 stage.show(jason, "Jason", "offscreen left", "middle")
 setcharacter(jason)
 say("Hello there")
+choice = choose { "Hi", "Bye" }
+if choice == 1 then goto Option1 end
+if choice == 2 then goto Option2 end
+ 
+::Option1::
 setcharacter(jason)
-say("Something")
+say("Something according to hi")
+goto endoptions
+ 
+ 
+::Option2::
+choice = choose { "I will see you later", "I will not see you anymore" }
+if choice == 1 then goto Option3 end
+if choice == 2 then goto Option4 end
+goto endoptions
+ 
+ 
+::Option3::
 setcharacter(jason)
-say("Bye")
+say("See you later")
+goto endoptions
+ 
+ 
+::Option4::
+setcharacter(jason)
+say("See you never")
+goto endoptions
+ 
 stage.hide(jason, "middle")
+::endoptions::
