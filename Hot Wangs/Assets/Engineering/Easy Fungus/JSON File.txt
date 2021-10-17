@@ -26,6 +26,11 @@
         "commandType": "Option1"
     },
     {
+        "commandType": "SetBoolean",
+        "variable": "Mistake",
+        "text": true
+    },
+    {
         "commandType": "Say",
         "character": "Jason",
         "text": "Something according to hi"
@@ -35,6 +40,11 @@
     },
     {
         "commandType": "Option2"
+    },
+    {
+        "commandType": "IncreaseNumber",
+        "variable": "JasonLike",
+        "text": 12
     },
     {
         "commandType": "Menu",
@@ -55,6 +65,7 @@
     {
         "commandType": "Say",
         "character": "Jason",
+        "variable": "JasonLike",
         "text": "See you later"
     },
     {

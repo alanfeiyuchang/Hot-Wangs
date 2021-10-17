@@ -7,12 +7,14 @@ if choice == 1 then goto Option1 end
 if choice == 2 then goto Option2 end
  
 ::Option1::
+flowchart.SetBooleanVariable("Mistake", true)
 setcharacter(jason)
 say("Something according to hi")
 goto endoptions
  
  
 ::Option2::
+flowchart.SetIntegerVariable("JasonLike", flowchart.GetIntegerVariable("JasonLike") + 12)
 choice = choose { "I will see you later", "I will not see you anymore" }
 if choice == 1 then goto Option3 end
 if choice == 2 then goto Option4 end

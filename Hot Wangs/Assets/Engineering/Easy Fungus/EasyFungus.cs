@@ -85,6 +85,7 @@ public class EasyFungus : EditorWindow
                 //sw.WriteLine(" ");
             }
 
+
             if (cmd == "Say")
             {
                 SayCommand(jsonData[i]["character"], jsonData[i]["text"]);
@@ -108,18 +109,30 @@ public class EasyFungus : EditorWindow
                     HideCommand(jsonData[i]["character"], jsonData[i]["end"]);
                 }
             }
-            else if (cmd[0] == 'O' || cmd[0] == 'o') // if option
-            {
-                if (!inOption)
-                {
-                    OptionStart(cmd);
-                }
-                inOption = true;
-            }
             else if (cmd == "EndOption")
             {
                 OptionEnd();
                 inOption = false;
+            }
+            else if (cmd == "IncreaseNumber")
+            {
+                increaseNumber(jsonData[i]["variable"], jsonData[i]["text"]);
+            }
+            else if (cmd == "SetBoolean")
+            {
+                setBool(jsonData[i]["variable"], jsonData[i]["text"]);
+            }
+            else if (cmd == "Goto")
+            {
+                sw.WriteLine($"goto {jsonData[i]["goto"]}");
+            }
+            else// if option
+            {
+                if (!inOption && cmd != "Menu")
+                {
+                    OptionStart(cmd);
+                }
+                inOption = true;
             }
 
         }
@@ -188,6 +201,17 @@ public class EasyFungus : EditorWindow
     void EndOptionLine()
     {
         sw.WriteLine("::endoptions::");
+    }
+
+    void increaseNumber(string variable, string num)
+    {
+        sw.WriteLine("flowchart.SetIntegerVariable(\"" + variable + "\", " +
+            "flowchart.GetIntegerVariable(\"" + variable + "\") + " + num +")");
+    }
+
+    void setBool(string variable, string b)
+    {
+        sw.WriteLine("flowchart.SetBooleanVariable(\"" + variable + "\", " + b + ")");
     }
 
     string AddQuote(string s)
